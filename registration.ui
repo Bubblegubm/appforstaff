@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Registration</class>
+ <widget class="QMainWindow" name="Registration">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -107,6 +107,7 @@ background-color: rgba(0, 0, 0, 200)
      <font>
       <family>Ambient(RUS BY LYAJKA)</family>
       <pointsize>26</pointsize>
+      <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>

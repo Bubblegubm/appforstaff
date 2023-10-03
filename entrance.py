@@ -18,14 +18,14 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QMainWindow,
     QPushButton, QSizePolicy, QWidget)
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        if not MainWindow.objectName():
-            MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1280, 720)
-        MainWindow.setFocusPolicy(Qt.ClickFocus)
-        MainWindow.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0.358, y1:0.266636, x2:1, y2:1, stop:0 rgba(163, 5, 255, 255), stop:1 rgba(92, 51, 255, 255))")
-        self.centralwidget = QWidget(MainWindow)
+class Ui_Antrance(object):
+    def setupUi(self, Antrance):
+        if not Antrance.objectName():
+            Antrance.setObjectName(u"Antrance")
+        Antrance.resize(1280, 720)
+        Antrance.setFocusPolicy(Qt.ClickFocus)
+        Antrance.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0.358, y1:0.266636, x2:1, y2:1, stop:0 rgba(163, 5, 255, 255), stop:1 rgba(92, 51, 255, 255))")
+        self.centralwidget = QWidget(Antrance)
         self.centralwidget.setObjectName(u"centralwidget")
         self.Login = QLineEdit(self.centralwidget)
         self.Login.setObjectName(u"Login")
@@ -158,22 +158,22 @@ class Ui_MainWindow(object):
 "\n"
 "")
         self.LableAntrance.setAlignment(Qt.AlignCenter)
-        MainWindow.setCentralWidget(self.centralwidget)
+        Antrance.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
+        self.retranslateUi(Antrance)
 
-        QMetaObject.connectSlotsByName(MainWindow)
+        QMetaObject.connectSlotsByName(Antrance)
     # setupUi
 
-    def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+    def retranslateUi(self, Antrance):
+        Antrance.setWindowTitle(QCoreApplication.translate("Antrance", u"MainWindow", None))
         self.Login.setText("")
-        self.Login.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u041b\u043e\u0433\u0438\u043d", None))
-        self.ButtonAntrance.setText(QCoreApplication.translate("MainWindow", u"\u0412\u0445\u043e\u0434", None))
-        self.ButtonRegistration.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f", None))
+        self.Login.setPlaceholderText(QCoreApplication.translate("Antrance", u"\u041b\u043e\u0433\u0438\u043d", None))
+        self.ButtonAntrance.setText(QCoreApplication.translate("Antrance", u"\u0412\u0445\u043e\u0434", None))
+        self.ButtonRegistration.setText(QCoreApplication.translate("Antrance", u"\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f", None))
         self.Password.setText("")
-        self.Password.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u041f\u0430\u0440\u043e\u043b\u044c", None))
-        self.ButtonProblemsWithAntrance.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u043e\u0431\u043b\u0435\u043c\u044b \u0441\u043e \u0432\u0445\u043e\u0434\u043e\u043c", None))
-        self.LableAntrance.setText(QCoreApplication.translate("MainWindow", u"\u0410\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f", None))
+        self.Password.setPlaceholderText(QCoreApplication.translate("Antrance", u"\u041f\u0430\u0440\u043e\u043b\u044c", None))
+        self.ButtonProblemsWithAntrance.setText(QCoreApplication.translate("Antrance", u"\u041f\u0440\u043e\u0431\u043b\u0435\u043c\u044b \u0441\u043e \u0432\u0445\u043e\u0434\u043e\u043c", None))
+        self.LableAntrance.setText(QCoreApplication.translate("Antrance", u"\u0410\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f", None))
     # retranslateUi
 

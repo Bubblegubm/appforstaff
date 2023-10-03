@@ -18,14 +18,14 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QLabel, QLineEdit, QMainWindow,
     QPushButton, QSizePolicy, QWidget)
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        if not MainWindow.objectName():
-            MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1280, 720)
-        MainWindow.setFocusPolicy(Qt.ClickFocus)
-        MainWindow.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0.358, y1:0.266636, x2:1, y2:1, stop:0 rgba(163, 5, 255, 255), stop:1 rgba(92, 51, 255, 255))")
-        self.centralwidget = QWidget(MainWindow)
+class Ui_Registration(object):
+    def setupUi(self, Registration):
+        if not Registration.objectName():
+            Registration.setObjectName(u"Registration")
+        Registration.resize(1280, 720)
+        Registration.setFocusPolicy(Qt.ClickFocus)
+        Registration.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0.358, y1:0.266636, x2:1, y2:1, stop:0 rgba(163, 5, 255, 255), stop:1 rgba(92, 51, 255, 255))")
+        self.centralwidget = QWidget(Registration)
         self.centralwidget.setObjectName(u"centralwidget")
         self.Surname = QLineEdit(self.centralwidget)
         self.Surname.setObjectName(u"Surname")
@@ -191,26 +191,26 @@ class Ui_MainWindow(object):
 "\n"
 "")
         self.LabelRegistration.setAlignment(Qt.AlignCenter)
-        MainWindow.setCentralWidget(self.centralwidget)
+        Registration.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
+        self.retranslateUi(Registration)
 
-        QMetaObject.connectSlotsByName(MainWindow)
+        QMetaObject.connectSlotsByName(Registration)
     # setupUi
 
-    def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+    def retranslateUi(self, Registration):
+        Registration.setWindowTitle(QCoreApplication.translate("Registration", u"MainWindow", None))
         self.Surname.setText("")
-        self.Surname.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u0424\u0430\u043c\u0438\u043b\u0438\u044f", None))
-        self.ButtonRegistration.setText(QCoreApplication.translate("MainWindow", u"\u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u0442\u044c\u0441\u044f", None))
+        self.Surname.setPlaceholderText(QCoreApplication.translate("Registration", u"\u0424\u0430\u043c\u0438\u043b\u0438\u044f", None))
+        self.ButtonRegistration.setText(QCoreApplication.translate("Registration", u"\u0417\u0430\u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0438\u0440\u043e\u0432\u0430\u0442\u044c\u0441\u044f", None))
         self.Name.setText("")
-        self.Name.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u0418\u043c\u044f", None))
+        self.Name.setPlaceholderText(QCoreApplication.translate("Registration", u"\u0418\u043c\u044f", None))
         self.Surname2.setText("")
-        self.Surname2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u041e\u0442\u0447\u0435\u0441\u0442\u0432\u043e", None))
+        self.Surname2.setPlaceholderText(QCoreApplication.translate("Registration", u"\u041e\u0442\u0447\u0435\u0441\u0442\u0432\u043e", None))
         self.Login.setText("")
-        self.Login.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u041b\u043e\u0433\u0438\u043d", None))
+        self.Login.setPlaceholderText(QCoreApplication.translate("Registration", u"\u041b\u043e\u0433\u0438\u043d", None))
         self.Password.setText("")
-        self.Password.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u041f\u0430\u0440\u043e\u043b\u044c", None))
-        self.LabelRegistration.setText(QCoreApplication.translate("MainWindow", u"\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f", None))
+        self.Password.setPlaceholderText(QCoreApplication.translate("Registration", u"\u041f\u0430\u0440\u043e\u043b\u044c", None))
+        self.LabelRegistration.setText(QCoreApplication.translate("Registration", u"\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f", None))
     # retranslateUi
 

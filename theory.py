@@ -18,14 +18,14 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QMainWindow, QProgressBar, QPushButton,
     QSizePolicy, QTextEdit, QWidget)
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        if not MainWindow.objectName():
-            MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1280, 720)
-        MainWindow.setFocusPolicy(Qt.ClickFocus)
-        MainWindow.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0.358, y1:0.266636, x2:1, y2:1, stop:0 rgba(163, 5, 255, 255), stop:1 rgba(92, 51, 255, 255))")
-        self.centralwidget = QWidget(MainWindow)
+class Ui_Theory(object):
+    def setupUi(self, Theory):
+        if not Theory.objectName():
+            Theory.setObjectName(u"Theory")
+        Theory.resize(1280, 720)
+        Theory.setFocusPolicy(Qt.ClickFocus)
+        Theory.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0.358, y1:0.266636, x2:1, y2:1, stop:0 rgba(163, 5, 255, 255), stop:1 rgba(92, 51, 255, 255))")
+        self.centralwidget = QWidget(Theory)
         self.centralwidget.setObjectName(u"centralwidget")
         self.Question = QTextEdit(self.centralwidget)
         self.Question.setObjectName(u"Question")
@@ -117,16 +117,16 @@ class Ui_MainWindow(object):
 "font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
 "background-color: rgba(0, 0, 0, 100);\n"
 "padding-left: 10px;")
-        MainWindow.setCentralWidget(self.centralwidget)
+        Theory.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
+        self.retranslateUi(Theory)
 
-        QMetaObject.connectSlotsByName(MainWindow)
+        QMetaObject.connectSlotsByName(Theory)
     # setupUi
 
-    def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.Question.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+    def retranslateUi(self, Theory):
+        Theory.setWindowTitle(QCoreApplication.translate("Theory", u"MainWindow", None))
+        self.Question.setHtml(QCoreApplication.translate("Theory", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Ambient(RUS BY LYAJKA)'; font-size:26pt; font-weight:400; font-style:normal;\">\n"
@@ -135,9 +135,9 @@ class Ui_MainWindow(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">3 \u0441\u0442\u0440\u043e\u0447\u043a\u0430 \u0432\u043e\u043f\u0440\u043e\u0441\u0430</p>\n"
 "<p style=\" margin-top:0"
                         "px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">4 \u0441\u0442\u0440\u043e\u0447\u043a\u0430 \u0432\u043e\u043f\u0440\u043e\u0441\u0430</p></body></html>", None))
-        self.ButtonBack.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0437\u0430\u0434", None))
-        self.ButtonForward.setText(QCoreApplication.translate("MainWindow", u"\u0412\u043f\u0435\u0440\u0451\u0434", None))
-        self.Answer.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.ButtonBack.setText(QCoreApplication.translate("Theory", u"\u041d\u0430\u0437\u0430\u0434", None))
+        self.ButtonForward.setText(QCoreApplication.translate("Theory", u"\u0412\u043f\u0435\u0440\u0451\u0434", None))
+        self.Answer.setHtml(QCoreApplication.translate("Theory", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Ambient(RUS BY LYAJKA)'; font-size:26pt; font-weight:400; font-style:normal;\">\n"
