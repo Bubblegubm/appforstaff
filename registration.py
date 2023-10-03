@@ -191,6 +191,28 @@ class Ui_Registration(object):
 "\n"
 "")
         self.LabelRegistration.setAlignment(Qt.AlignCenter)
+        self.ButtonBack = QPushButton(self.centralwidget)
+        self.ButtonBack.setObjectName(u"ButtonBack")
+        self.ButtonBack.setEnabled(True)
+        self.ButtonBack.setGeometry(QRect(20, 620, 150, 80))
+        self.ButtonBack.setMaximumSize(QSize(16777215, 16777215))
+        self.ButtonBack.setFont(font)
+        self.ButtonBack.setStyleSheet(u"QPushButton{\n"
+"color: rgb(255, 255, 255);\n"
+"border: 3px solid rgb(255, 255, 255);\n"
+"border-radius: 7px;\n"
+"font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+"background-color: rgba(0, 0, 0, 100);\n"
+"width: 50px;\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"background-color: rgba(0, 0, 0, 150);\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"background-color: rgba(0, 0, 0, 200);\n"
+"}")
         Registration.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(Registration)
@@ -212,5 +234,6 @@ class Ui_Registration(object):
         self.Password.setText("")
         self.Password.setPlaceholderText(QCoreApplication.translate("Registration", u"\u041f\u0430\u0440\u043e\u043b\u044c", None))
         self.LabelRegistration.setText(QCoreApplication.translate("Registration", u"\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f", None))
+        self.ButtonBack.setText(QCoreApplication.translate("Registration", u"\u041d\u0430\u0437\u0430\u0434", None))
     # retranslateUi
 
