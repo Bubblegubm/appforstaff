@@ -20,7 +20,7 @@
    <string notr="true">background-color: qlineargradient(spread:pad, x1:0.358, y1:0.266636, x2:1, y2:1, stop:0 rgba(163, 5, 255, 255), stop:1 rgba(92, 51, 255, 255))</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="ButtonTheory">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -42,7 +42,6 @@
      <font>
       <family>Ambient(RUS BY LYAJKA)</family>
       <pointsize>26</pointsize>
-      <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>
@@ -69,7 +68,7 @@ background-color: rgba(0, 0, 0, 200);
      <string>Теория</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="ButtonKVIZ">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -91,7 +90,6 @@ background-color: rgba(0, 0, 0, 200);
      <font>
       <family>Ambient(RUS BY LYAJKA)</family>
       <pointsize>26</pointsize>
-      <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>
@@ -118,7 +116,7 @@ background-color: rgba(0, 0, 0, 200);
      <string>КВИЗ</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="ButtonCompetition">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -140,7 +138,6 @@ background-color: rgba(0, 0, 0, 200);
      <font>
       <family>Ambient(RUS BY LYAJKA)</family>
       <pointsize>26</pointsize>
-      <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>
@@ -167,7 +164,7 @@ background-color: rgba(0, 0, 0, 200);
      <string>Соревнование</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="ButtonStatistics">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -189,7 +186,6 @@ background-color: rgba(0, 0, 0, 200);
      <font>
       <family>Ambient(RUS BY LYAJKA)</family>
       <pointsize>26</pointsize>
-      <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>
@@ -216,7 +212,7 @@ background-color: rgba(0, 0, 0, 200);
      <string>Статистика</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="ButtonProfile">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -238,7 +234,6 @@ background-color: rgba(0, 0, 0, 200);
      <font>
       <family>Ambient(RUS BY LYAJKA)</family>
       <pointsize>26</pointsize>
-      <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
      </font>

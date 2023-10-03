@@ -20,7 +20,7 @@
    <string notr="true">background-color: qlineargradient(spread:pad, x1:0.358, y1:0.266636, x2:1, y2:1, stop:0 rgba(163, 5, 255, 255), stop:1 rgba(92, 51, 255, 255))</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="Login">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -85,7 +85,7 @@ background-color: rgba(0, 0, 0, 200)
      <string>Логин</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="ButtonAntrance">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -133,7 +133,7 @@ background-color: rgba(0, 0, 0, 200);
      <string>Вход</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="ButtonRegistration">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -184,7 +184,7 @@ background-color: rgba(0, 0, 0, 200);
      <string>Регистрация</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="Password">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -243,7 +243,7 @@ background-color: rgba(0, 0, 0, 200)
      <string>Пароль</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="ButtonProblemsWithAntrance">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -294,7 +294,7 @@ background-color: rgba(0, 0, 0, 200);
      <string>Проблемы со входом</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="LableAntrance">
     <property name="geometry">
      <rect>
       <x>770</x>
