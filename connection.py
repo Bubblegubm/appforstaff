@@ -18,6 +18,10 @@ class Data:
         query = QtSql.QSqlQuery()
         query.exec("CREATE TABLE IF NOT EXISTS users (ID integer primary key AUTOINCREMENT, Name VARCHAR(20), "
                    "Surname VARCHAR(30), Surname2 VARCHAR(30), Login VARCHAR(30), Password VARCHAR(30), Role BOOLEAN)")
+
+        query.exec("CREATE TABLE IF NOT EXISTS statistics (ID integer primary key AUTOINCREMENT, "
+                   "Time REAL, Count REAL, User_ID INTEGER)")
+
         return True
 
     def execute_query_with_params(self, sql_query, query_values=None):
