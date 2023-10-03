@@ -21,6 +21,9 @@ class Window_Antrance(QMainWindow):
         self.ui = Ui_Antrance()
         self.ui.setupUi(self)
 
+        self.ui.IconFailLogin.setVisible(False)
+        self.ui.IconFailPassword.setVisible(False)
+
         self.ui.ButtonRegistration.clicked.connect(self.open_window_registration)
         self.ui.ButtonAntrance.clicked.connect(self.pressed_button_antrance)
 
@@ -44,5 +47,17 @@ class Window_Registration(QMainWindow):
 class Window_MainWindow(QMainWindow):
     def __init__(self, parent):
         super(Window_MainWindow, self).__init__(parent)
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+
+class Window_Test(QMainWindow):
+    def __init__(self, parent):
+        super(Window_Test, self).__init__(parent)
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
+
+class Window_Theory(QMainWindow):
+    def __init__(self, parent):
+        super(Window_Theory, self).__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)

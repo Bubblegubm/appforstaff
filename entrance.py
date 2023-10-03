@@ -158,6 +158,24 @@ class Ui_Antrance(object):
 "\n"
 "")
         self.LableAntrance.setAlignment(Qt.AlignCenter)
+        self.IconFailLogin = QLabel(self.centralwidget)
+        self.IconFailLogin.setObjectName(u"IconFailLogin")
+        self.IconFailLogin.setGeometry(QRect(1180, 280, 50, 50))
+        self.IconFailLogin.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"border: 3px solid rgb(255, 255, 255);\n"
+"border-radius: 7px;\n"
+"font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+"background-color: rgba(0, 0, 0, 100);")
+        self.IconFailLogin.setAlignment(Qt.AlignCenter)
+        self.IconFailPassword = QLabel(self.centralwidget)
+        self.IconFailPassword.setObjectName(u"IconFailPassword")
+        self.IconFailPassword.setGeometry(QRect(1180, 350, 50, 50))
+        self.IconFailPassword.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"border: 3px solid rgb(255, 255, 255);\n"
+"border-radius: 7px;\n"
+"font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+"background-color: rgba(0, 0, 0, 100);")
+        self.IconFailPassword.setAlignment(Qt.AlignCenter)
         Antrance.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(Antrance)
@@ -175,5 +193,7 @@ class Ui_Antrance(object):
         self.Password.setPlaceholderText(QCoreApplication.translate("Antrance", u"\u041f\u0430\u0440\u043e\u043b\u044c", None))
         self.ButtonProblemsWithAntrance.setText(QCoreApplication.translate("Antrance", u"\u041f\u0440\u043e\u0431\u043b\u0435\u043c\u044b \u0441\u043e \u0432\u0445\u043e\u0434\u043e\u043c", None))
         self.LableAntrance.setText(QCoreApplication.translate("Antrance", u"\u0410\u0432\u0442\u043e\u0440\u0438\u0437\u0430\u0446\u0438\u044f", None))
+        self.IconFailLogin.setText(QCoreApplication.translate("Antrance", u"!", None))
+        self.IconFailPassword.setText(QCoreApplication.translate("Antrance", u"!", None))
     # retranslateUi
 

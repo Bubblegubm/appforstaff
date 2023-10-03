@@ -326,6 +326,52 @@ border-radius: 30px;
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QLabel" name="IconFailLogin">
+    <property name="geometry">
+     <rect>
+      <x>1180</x>
+      <y>280</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+border: 3px solid rgb(255, 255, 255);
+border-radius: 7px;
+font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+background-color: rgba(0, 0, 0, 100);</string>
+    </property>
+    <property name="text">
+     <string>!</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="IconFailPassword">
+    <property name="geometry">
+     <rect>
+      <x>1180</x>
+      <y>350</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+border: 3px solid rgb(255, 255, 255);
+border-radius: 7px;
+font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+background-color: rgba(0, 0, 0, 100);</string>
+    </property>
+    <property name="text">
+     <string>!</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
