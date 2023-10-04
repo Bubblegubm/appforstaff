@@ -44,11 +44,30 @@ class Window_Registration(QMainWindow):
     def open_window_entrance(self):
         self.setCentralWidget(Window_Antrance(self.centralWidget()))
 
+    def pressed_button_registration(self):
+        self.setCentralWidget(Window_MainWindow(self.centralWidget()))
+
 class Window_MainWindow(QMainWindow):
     def __init__(self, parent):
         super(Window_MainWindow, self).__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+    def open_window_theory(self):
+        self.setCentralWidget(Window_Theory(self.centralWidget()))
+
+    def open_window_test(self):
+        self.setCentralWidget(Window_Test(self.centralWidget()))
+
+    def open_window_KVIZ(self):
+        return 1
+
+    def open_window_competition(self):
+        return 1
+
+    def open_window_statistics(self):
+        return 1
+
 
 class Window_Test(QMainWindow):
     def __init__(self, parent):
@@ -56,8 +75,29 @@ class Window_Test(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+    def pressed_button_forward(self):
+        return 1
+
+    def pressed_button_back(self):
+        return 1
+
+    def pressed_button_answer1(self):
+        return 1
+
+    def pressed_button_answer2(self):
+        return 1
+
+    def pressed_button_answer3(self):
+        return 1
+
 class Window_Theory(QMainWindow):
     def __init__(self, parent):
         super(Window_Theory, self).__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+    def pressed_button_forward(self):
+        return 1
+
+    def pressed_button_back(self):
+        return 1
