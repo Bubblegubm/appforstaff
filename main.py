@@ -1,6 +1,5 @@
 import sys
-import PySide6
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication
 from widgets_classes import Window
 
 if __name__ == "__main__":

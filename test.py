@@ -55,7 +55,7 @@ class Ui_Test(object):
 "border-bottom-right-radius: 7px;\n"
 "font: 16pt \"Ambient(RUS BY LYAJKA)\";\n"
 "}")
-        self.ProgressBar.setValue(70)
+        self.ProgressBar.setValue(0)
         self.ProgressBar.setAlignment(Qt.AlignCenter)
         self.ButtonBack = QPushButton(self.centralwidget)
         self.ButtonBack.setObjectName(u"ButtonBack")
@@ -68,44 +68,26 @@ class Ui_Test(object):
         font.setBold(False)
         font.setItalic(False)
         self.ButtonBack.setFont(font)
-        self.ButtonBack.setStyleSheet(u"QPushButton{\n"
-"color: rgb(255, 255, 255);\n"
+        self.ButtonBack.setStyleSheet(u"color: rgba(255, 255, 255, 100);\n"
 "border: 3px solid rgb(255, 255, 255);\n"
 "border-radius: 7px;\n"
 "font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
 "background-color: rgba(0, 0, 0, 100);\n"
 "width: 50px;\n"
-"}\n"
-"\n"
-"QPushButton::hover{\n"
-"background-color: rgba(0, 0, 0, 150);\n"
-"}\n"
-"\n"
-"QPushButton::pressed{\n"
-"background-color: rgba(0, 0, 0, 200);\n"
-"}")
+"")
         self.ButtonForward = QPushButton(self.centralwidget)
         self.ButtonForward.setObjectName(u"ButtonForward")
         self.ButtonForward.setEnabled(True)
         self.ButtonForward.setGeometry(QRect(920, 610, 200, 80))
         self.ButtonForward.setMaximumSize(QSize(16777215, 16777215))
         self.ButtonForward.setFont(font)
-        self.ButtonForward.setStyleSheet(u"QPushButton{\n"
-"color: rgb(255, 255, 255);\n"
+        self.ButtonForward.setStyleSheet(u"color: rgba(255, 255, 255, 100);\n"
 "border: 3px solid rgb(255, 255, 255);\n"
 "border-radius: 7px;\n"
 "font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
 "background-color: rgba(0, 0, 0, 100);\n"
 "width: 50px;\n"
-"}\n"
-"\n"
-"QPushButton::hover{\n"
-"background-color: rgba(0, 0, 0, 150);\n"
-"}\n"
-"\n"
-"QPushButton::pressed{\n"
-"background-color: rgba(0, 0, 0, 200);\n"
-"}")
+"")
         self.ButtonAnswer1 = QPushButton(self.centralwidget)
         self.ButtonAnswer1.setObjectName(u"ButtonAnswer1")
         self.ButtonAnswer1.setGeometry(QRect(20, 240, 1240, 100))

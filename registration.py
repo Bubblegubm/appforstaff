@@ -213,6 +213,60 @@ class Ui_Registration(object):
 "QPushButton::pressed{\n"
 "background-color: rgba(0, 0, 0, 200);\n"
 "}")
+        self.IconFailSurname = QLabel(self.centralwidget)
+        self.IconFailSurname.setObjectName(u"IconFailSurname")
+        self.IconFailSurname.setGeometry(QRect(860, 210, 50, 50))
+        self.IconFailSurname.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"border: 3px solid rgb(255, 255, 255);\n"
+"border-radius: 7px;\n"
+"font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+"background-color: rgba(0, 0, 0, 100);")
+        self.IconFailSurname.setAlignment(Qt.AlignCenter)
+        self.IconFailName = QLabel(self.centralwidget)
+        self.IconFailName.setObjectName(u"IconFailName")
+        self.IconFailName.setGeometry(QRect(860, 280, 50, 50))
+        self.IconFailName.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"border: 3px solid rgb(255, 255, 255);\n"
+"border-radius: 7px;\n"
+"font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+"background-color: rgba(0, 0, 0, 100);")
+        self.IconFailName.setAlignment(Qt.AlignCenter)
+        self.IconFailSurname2 = QLabel(self.centralwidget)
+        self.IconFailSurname2.setObjectName(u"IconFailSurname2")
+        self.IconFailSurname2.setGeometry(QRect(860, 350, 50, 50))
+        self.IconFailSurname2.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"border: 3px solid rgb(255, 255, 255);\n"
+"border-radius: 7px;\n"
+"font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+"background-color: rgba(0, 0, 0, 100);")
+        self.IconFailSurname2.setAlignment(Qt.AlignCenter)
+        self.IconFailLoginNone = QLabel(self.centralwidget)
+        self.IconFailLoginNone.setObjectName(u"IconFailLoginNone")
+        self.IconFailLoginNone.setGeometry(QRect(860, 420, 50, 50))
+        self.IconFailLoginNone.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"border: 3px solid rgb(255, 255, 255);\n"
+"border-radius: 7px;\n"
+"font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+"background-color: rgba(0, 0, 0, 100);")
+        self.IconFailLoginNone.setAlignment(Qt.AlignCenter)
+        self.IconFailPassword = QLabel(self.centralwidget)
+        self.IconFailPassword.setObjectName(u"IconFailPassword")
+        self.IconFailPassword.setGeometry(QRect(860, 490, 50, 50))
+        self.IconFailPassword.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"border: 3px solid rgb(255, 255, 255);\n"
+"border-radius: 7px;\n"
+"font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+"background-color: rgba(0, 0, 0, 100);")
+        self.IconFailPassword.setAlignment(Qt.AlignCenter)
+        self.IconFailLoginBusy = QLabel(self.centralwidget)
+        self.IconFailLoginBusy.setObjectName(u"IconFailLoginBusy")
+        self.IconFailLoginBusy.setGeometry(QRect(860, 420, 370, 50))
+        self.IconFailLoginBusy.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"border: 3px solid rgb(255, 255, 255);\n"
+"border-radius: 7px;\n"
+"font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+"background-color: rgba(0, 0, 0, 100);")
+        self.IconFailLoginBusy.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
         Registration.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(Registration)
@@ -235,5 +289,11 @@ class Ui_Registration(object):
         self.Password.setPlaceholderText(QCoreApplication.translate("Registration", u"\u041f\u0430\u0440\u043e\u043b\u044c", None))
         self.LabelRegistration.setText(QCoreApplication.translate("Registration", u"\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044f", None))
         self.ButtonBack.setText(QCoreApplication.translate("Registration", u"\u041d\u0430\u0437\u0430\u0434", None))
+        self.IconFailSurname.setText(QCoreApplication.translate("Registration", u"!", None))
+        self.IconFailName.setText(QCoreApplication.translate("Registration", u"!", None))
+        self.IconFailSurname2.setText(QCoreApplication.translate("Registration", u"!", None))
+        self.IconFailLoginNone.setText(QCoreApplication.translate("Registration", u"!", None))
+        self.IconFailPassword.setText(QCoreApplication.translate("Registration", u"!", None))
+        self.IconFailLoginBusy.setText(QCoreApplication.translate("Registration", u"\u042d\u0442\u043e\u0442 \u043b\u043e\u0433\u0438\u043d \u0443\u0436\u0435 \u0437\u0430\u043d\u044f\u0442", None))
     # retranslateUi
 

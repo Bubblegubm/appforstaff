@@ -80,7 +80,7 @@ font: 16pt &quot;Ambient(RUS BY LYAJKA)&quot;;
 }</string>
     </property>
     <property name="value">
-     <number>70</number>
+     <number>0</number>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -114,22 +114,13 @@ font: 16pt &quot;Ambient(RUS BY LYAJKA)&quot;;
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton{
-color: rgb(255, 255, 255);
+     <string notr="true">color: rgba(255, 255, 255, 100);
 border: 3px solid rgb(255, 255, 255);
 border-radius: 7px;
 font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
 background-color: rgba(0, 0, 0, 100);
 width: 50px;
-}
-
-QPushButton::hover{
-background-color: rgba(0, 0, 0, 150);
-}
-
-QPushButton::pressed{
-background-color: rgba(0, 0, 0, 200);
-}</string>
+</string>
     </property>
     <property name="text">
      <string>Назад</string>
@@ -163,22 +154,13 @@ background-color: rgba(0, 0, 0, 200);
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton{
-color: rgb(255, 255, 255);
+     <string notr="true">color: rgba(255, 255, 255, 100);
 border: 3px solid rgb(255, 255, 255);
 border-radius: 7px;
 font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
 background-color: rgba(0, 0, 0, 100);
 width: 50px;
-}
-
-QPushButton::hover{
-background-color: rgba(0, 0, 0, 150);
-}
-
-QPushButton::pressed{
-background-color: rgba(0, 0, 0, 200);
-}</string>
+</string>
     </property>
     <property name="text">
      <string>Вперёд</string>
