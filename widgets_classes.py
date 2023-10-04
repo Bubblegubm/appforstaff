@@ -55,7 +55,7 @@ class Window_Registration(QMainWindow):
         self.setCentralWidget(Window_Antrance(self.centralWidget()))
 
     def pressed_button_registration(self):
-        a, b, c, d, e = check_valid_input(self.ui.Surname.text(), self.ui.Name.text(),
+        a, b, c, d, e = check_valid_input_registration(self.ui.Surname.text(), self.ui.Name.text(),
                                           self.ui.Surname2.text(), self.ui.Login.text(),
                                           self.ui.Password.text())
         print(a, b, c, d, e)

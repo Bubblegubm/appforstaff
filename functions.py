@@ -35,7 +35,7 @@ def check_valid_password(password):
         return False
     return True
 
-def check_valid_input(surname, name, surname2, login, password):
+def check_valid_input_registration(surname, name, surname2, login, password):
     if check_valid_name(surname): A = 0
     else: A = 1
     if check_valid_name(name): B = 0
