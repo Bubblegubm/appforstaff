@@ -30,7 +30,7 @@ class Ui_Registration(object):
         self.Surname = QLineEdit(self.centralwidget)
         self.Surname.setObjectName(u"Surname")
         self.Surname.setEnabled(True)
-        self.Surname.setGeometry(QRect(440, 210, 400, 50))
+        self.Surname.setGeometry(QRect(440, 180, 400, 50))
         self.Surname.setMinimumSize(QSize(0, 0))
         self.Surname.setSizeIncrement(QSize(300, 40))
         self.Surname.setBaseSize(QSize(300, 40))
@@ -55,7 +55,7 @@ class Ui_Registration(object):
         self.ButtonRegistration = QPushButton(self.centralwidget)
         self.ButtonRegistration.setObjectName(u"ButtonRegistration")
         self.ButtonRegistration.setEnabled(True)
-        self.ButtonRegistration.setGeometry(QRect(440, 570, 400, 50))
+        self.ButtonRegistration.setGeometry(QRect(440, 610, 400, 50))
         self.ButtonRegistration.setMaximumSize(QSize(16777215, 16777215))
         font = QFont()
         font.setFamilies([u"Ambient(RUS BY LYAJKA)"])
@@ -82,7 +82,7 @@ class Ui_Registration(object):
         self.Name = QLineEdit(self.centralwidget)
         self.Name.setObjectName(u"Name")
         self.Name.setEnabled(True)
-        self.Name.setGeometry(QRect(440, 280, 400, 50))
+        self.Name.setGeometry(QRect(440, 250, 400, 50))
         self.Name.setMinimumSize(QSize(0, 0))
         self.Name.setSizeIncrement(QSize(300, 40))
         self.Name.setBaseSize(QSize(300, 40))
@@ -107,7 +107,7 @@ class Ui_Registration(object):
         self.Surname2 = QLineEdit(self.centralwidget)
         self.Surname2.setObjectName(u"Surname2")
         self.Surname2.setEnabled(True)
-        self.Surname2.setGeometry(QRect(440, 350, 400, 50))
+        self.Surname2.setGeometry(QRect(440, 320, 400, 50))
         self.Surname2.setMinimumSize(QSize(0, 0))
         self.Surname2.setSizeIncrement(QSize(300, 40))
         self.Surname2.setBaseSize(QSize(300, 40))
@@ -132,7 +132,7 @@ class Ui_Registration(object):
         self.Login = QLineEdit(self.centralwidget)
         self.Login.setObjectName(u"Login")
         self.Login.setEnabled(True)
-        self.Login.setGeometry(QRect(440, 420, 400, 50))
+        self.Login.setGeometry(QRect(440, 390, 400, 50))
         self.Login.setMinimumSize(QSize(0, 0))
         self.Login.setSizeIncrement(QSize(300, 40))
         self.Login.setBaseSize(QSize(300, 40))
@@ -157,7 +157,7 @@ class Ui_Registration(object):
         self.Password = QLineEdit(self.centralwidget)
         self.Password.setObjectName(u"Password")
         self.Password.setEnabled(True)
-        self.Password.setGeometry(QRect(440, 490, 400, 50))
+        self.Password.setGeometry(QRect(440, 460, 400, 50))
         self.Password.setMinimumSize(QSize(0, 0))
         self.Password.setSizeIncrement(QSize(300, 40))
         self.Password.setBaseSize(QSize(300, 40))
@@ -181,7 +181,7 @@ class Ui_Registration(object):
         self.Password.setAlignment(Qt.AlignCenter)
         self.LabelRegistration = QLabel(self.centralwidget)
         self.LabelRegistration.setObjectName(u"LabelRegistration")
-        self.LabelRegistration.setGeometry(QRect(440, 80, 400, 100))
+        self.LabelRegistration.setGeometry(QRect(440, 50, 400, 100))
         self.LabelRegistration.setSizeIncrement(QSize(400, 100))
         self.LabelRegistration.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "font: 40pt \"Ambient(RUS BY LYAJKA)\";\n"
@@ -215,7 +215,7 @@ class Ui_Registration(object):
 "}")
         self.IconFailSurname = QLabel(self.centralwidget)
         self.IconFailSurname.setObjectName(u"IconFailSurname")
-        self.IconFailSurname.setGeometry(QRect(860, 210, 50, 50))
+        self.IconFailSurname.setGeometry(QRect(860, 180, 50, 50))
         self.IconFailSurname.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "border: 3px solid rgb(255, 255, 255);\n"
 "border-radius: 7px;\n"
@@ -224,7 +224,7 @@ class Ui_Registration(object):
         self.IconFailSurname.setAlignment(Qt.AlignCenter)
         self.IconFailName = QLabel(self.centralwidget)
         self.IconFailName.setObjectName(u"IconFailName")
-        self.IconFailName.setGeometry(QRect(860, 280, 50, 50))
+        self.IconFailName.setGeometry(QRect(860, 250, 50, 50))
         self.IconFailName.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "border: 3px solid rgb(255, 255, 255);\n"
 "border-radius: 7px;\n"
@@ -233,7 +233,7 @@ class Ui_Registration(object):
         self.IconFailName.setAlignment(Qt.AlignCenter)
         self.IconFailSurname2 = QLabel(self.centralwidget)
         self.IconFailSurname2.setObjectName(u"IconFailSurname2")
-        self.IconFailSurname2.setGeometry(QRect(860, 350, 50, 50))
+        self.IconFailSurname2.setGeometry(QRect(860, 320, 50, 50))
         self.IconFailSurname2.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "border: 3px solid rgb(255, 255, 255);\n"
 "border-radius: 7px;\n"
@@ -242,7 +242,7 @@ class Ui_Registration(object):
         self.IconFailSurname2.setAlignment(Qt.AlignCenter)
         self.IconFailLoginNone = QLabel(self.centralwidget)
         self.IconFailLoginNone.setObjectName(u"IconFailLoginNone")
-        self.IconFailLoginNone.setGeometry(QRect(860, 420, 50, 50))
+        self.IconFailLoginNone.setGeometry(QRect(860, 390, 50, 50))
         self.IconFailLoginNone.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "border: 3px solid rgb(255, 255, 255);\n"
 "border-radius: 7px;\n"
@@ -251,7 +251,7 @@ class Ui_Registration(object):
         self.IconFailLoginNone.setAlignment(Qt.AlignCenter)
         self.IconFailPassword = QLabel(self.centralwidget)
         self.IconFailPassword.setObjectName(u"IconFailPassword")
-        self.IconFailPassword.setGeometry(QRect(860, 490, 50, 50))
+        self.IconFailPassword.setGeometry(QRect(860, 460, 50, 50))
         self.IconFailPassword.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "border: 3px solid rgb(255, 255, 255);\n"
 "border-radius: 7px;\n"
@@ -260,13 +260,47 @@ class Ui_Registration(object):
         self.IconFailPassword.setAlignment(Qt.AlignCenter)
         self.IconFailLoginBusy = QLabel(self.centralwidget)
         self.IconFailLoginBusy.setObjectName(u"IconFailLoginBusy")
-        self.IconFailLoginBusy.setGeometry(QRect(860, 420, 370, 50))
+        self.IconFailLoginBusy.setGeometry(QRect(860, 390, 370, 50))
         self.IconFailLoginBusy.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "border: 3px solid rgb(255, 255, 255);\n"
 "border-radius: 7px;\n"
 "font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
 "background-color: rgba(0, 0, 0, 100);")
         self.IconFailLoginBusy.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+        self.SecretWord = QLineEdit(self.centralwidget)
+        self.SecretWord.setObjectName(u"SecretWord")
+        self.SecretWord.setEnabled(True)
+        self.SecretWord.setGeometry(QRect(440, 530, 400, 50))
+        self.SecretWord.setMinimumSize(QSize(0, 0))
+        self.SecretWord.setSizeIncrement(QSize(300, 40))
+        self.SecretWord.setBaseSize(QSize(300, 40))
+        self.SecretWord.setMouseTracking(True)
+        self.SecretWord.setTabletTracking(False)
+        self.SecretWord.setFocusPolicy(Qt.ClickFocus)
+        self.SecretWord.setStyleSheet(u"QLineEdit{\n"
+"color: rgb(255, 255, 255);\n"
+"font: 20pt \"Ambient(RUS BY LYAJKA)\";\n"
+"background-color: rgba(0, 0, 0, 150);\n"
+"border: 3px solid rgba(255, 255, 255, 255);\n"
+"border-radius: 10px;\n"
+"padding: 0 8px;\n"
+"}\n"
+"QLineEdit::hover{\n"
+"background-color: rgba(0, 0, 0, 100);\n"
+"}\n"
+"QLineEdit::focus{\n"
+"background-color: rgba(0, 0, 0, 200)\n"
+"}")
+        self.SecretWord.setAlignment(Qt.AlignCenter)
+        self.IconFailSecretWord = QLabel(self.centralwidget)
+        self.IconFailSecretWord.setObjectName(u"IconFailSecretWord")
+        self.IconFailSecretWord.setGeometry(QRect(860, 530, 50, 50))
+        self.IconFailSecretWord.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"border: 3px solid rgb(255, 255, 255);\n"
+"border-radius: 7px;\n"
+"font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+"background-color: rgba(0, 0, 0, 100);")
+        self.IconFailSecretWord.setAlignment(Qt.AlignCenter)
         Registration.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(Registration)
@@ -295,5 +329,8 @@ class Ui_Registration(object):
         self.IconFailLoginNone.setText(QCoreApplication.translate("Registration", u"!", None))
         self.IconFailPassword.setText(QCoreApplication.translate("Registration", u"!", None))
         self.IconFailLoginBusy.setText(QCoreApplication.translate("Registration", u"\u042d\u0442\u043e\u0442 \u043b\u043e\u0433\u0438\u043d \u0443\u0436\u0435 \u0437\u0430\u043d\u044f\u0442", None))
+        self.SecretWord.setText("")
+        self.SecretWord.setPlaceholderText(QCoreApplication.translate("Registration", u"\u0421\u0435\u043a\u0440\u0435\u0442\u043d\u043e\u0435 \u0441\u043b\u043e\u0432\u043e", None))
+        self.IconFailSecretWord.setText(QCoreApplication.translate("Registration", u"!", None))
     # retranslateUi
 

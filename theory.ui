@@ -154,13 +154,22 @@ width: 50px;
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgba(255, 255, 255, 100);
+     <string notr="true">QPushButton{
+color: rgb(255, 255, 255);
 border: 3px solid rgb(255, 255, 255);
 border-radius: 7px;
 font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
 background-color: rgba(0, 0, 0, 100);
 width: 50px;
-</string>
+}
+
+QPushButton::hover{
+background-color: rgba(0, 0, 0, 150);
+}
+
+QPushButton::pressed{
+background-color: rgba(0, 0, 0, 200);
+}</string>
     </property>
     <property name="text">
      <string>Вперёд</string>

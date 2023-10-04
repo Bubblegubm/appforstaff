@@ -81,13 +81,22 @@ class Ui_Theory(object):
         self.ButtonForward.setGeometry(QRect(920, 610, 200, 80))
         self.ButtonForward.setMaximumSize(QSize(16777215, 16777215))
         self.ButtonForward.setFont(font)
-        self.ButtonForward.setStyleSheet(u"color: rgba(255, 255, 255, 100);\n"
+        self.ButtonForward.setStyleSheet(u"QPushButton{\n"
+"color: rgb(255, 255, 255);\n"
 "border: 3px solid rgb(255, 255, 255);\n"
 "border-radius: 7px;\n"
 "font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
 "background-color: rgba(0, 0, 0, 100);\n"
 "width: 50px;\n"
-"")
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"background-color: rgba(0, 0, 0, 150);\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"background-color: rgba(0, 0, 0, 200);\n"
+"}")
         self.Answer = QTextEdit(self.centralwidget)
         self.Answer.setObjectName(u"Answer")
         self.Answer.setEnabled(True)

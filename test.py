@@ -81,13 +81,22 @@ class Ui_Test(object):
         self.ButtonForward.setGeometry(QRect(920, 610, 200, 80))
         self.ButtonForward.setMaximumSize(QSize(16777215, 16777215))
         self.ButtonForward.setFont(font)
-        self.ButtonForward.setStyleSheet(u"color: rgba(255, 255, 255, 100);\n"
+        self.ButtonForward.setStyleSheet(u"QPushButton{\n"
+"color: rgb(255, 255, 255);\n"
 "border: 3px solid rgb(255, 255, 255);\n"
 "border-radius: 7px;\n"
 "font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
 "background-color: rgba(0, 0, 0, 100);\n"
 "width: 50px;\n"
-"")
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"background-color: rgba(0, 0, 0, 150);\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"background-color: rgba(0, 0, 0, 200);\n"
+"}")
         self.ButtonAnswer1 = QPushButton(self.centralwidget)
         self.ButtonAnswer1.setObjectName(u"ButtonAnswer1")
         self.ButtonAnswer1.setGeometry(QRect(20, 240, 1240, 100))
@@ -102,6 +111,14 @@ class Ui_Test(object):
 "text-align: top, left;\n"
 "padding-left: 10px;\n"
 "padding-top: 5px;\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"background-color: rgba(0, 0, 0, 150);\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"background-color: rgba(0, 0, 0, 200);\n"
 "}")
         self.ButtonAnswer2 = QPushButton(self.centralwidget)
         self.ButtonAnswer2.setObjectName(u"ButtonAnswer2")
@@ -117,6 +134,14 @@ class Ui_Test(object):
 "text-align: top, left;\n"
 "padding-left: 10px;\n"
 "padding-top: 5px;\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"background-color: rgba(0, 0, 0, 150);\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"background-color: rgba(0, 0, 0, 200);\n"
 "}")
         self.ButtonAnswer3 = QPushButton(self.centralwidget)
         self.ButtonAnswer3.setObjectName(u"ButtonAnswer3")
@@ -132,6 +157,14 @@ class Ui_Test(object):
 "text-align: top, left;\n"
 "padding-left: 10px;\n"
 "padding-top: 5px;\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"background-color: rgba(0, 0, 0, 150);\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"background-color: rgba(0, 0, 0, 200);\n"
 "}")
         Test.setCentralWidget(self.centralwidget)
 

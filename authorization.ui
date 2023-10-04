@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Antrance</class>
- <widget class="QMainWindow" name="Antrance">
+ <class>Authorization</class>
+ <widget class="QMainWindow" name="Authorization">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -85,7 +85,7 @@ background-color: rgba(0, 0, 0, 200)
      <string>Логин</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="ButtonAntrance">
+   <widget class="QPushButton" name="ButtonAuthorization">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -244,7 +244,7 @@ background-color: rgba(0, 0, 0, 200)
      <string>Пароль</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="ButtonProblemsWithAntrance">
+   <widget class="QPushButton" name="ButtonProblemsWithAuthorization">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -295,7 +295,7 @@ background-color: rgba(0, 0, 0, 200);
      <string>Проблемы со входом</string>
     </property>
    </widget>
-   <widget class="QLabel" name="LableAntrance">
+   <widget class="QLabel" name="LableAuthorization">
     <property name="geometry">
      <rect>
       <x>770</x>
