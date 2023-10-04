@@ -45,8 +45,8 @@ def check_valid_input(surname, name, surname2, login, password):
     if check_valid_name(surname2): C = 0
     else: C = 1
     if check_valid_login(login): D = 0
-    else: D = 0
+    else: D = 1
     if check_valid_password(password): E = 0
-    else: E = 0
+    else: E = 1
 
     return A, B, C, D, E
