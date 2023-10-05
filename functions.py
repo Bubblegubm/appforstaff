@@ -35,7 +35,15 @@ def check_valid_password(password):
         return False
     return True
 
-def check_valid_input_registration(surname, name, surname2, login, password):
+def check_secret_word(secret_word):
+    pattern = r'^[a-zA-Z0-9]*$'
+    if re.match(pattern, secret_word):
+        return 1
+    else:
+        return 0
+
+
+def check_valid_input_registration(surname, name, surname2, login, password, secret_word):
     if check_valid_name(surname): A = 0
     else: A = 1
     if check_valid_name(name): B = 0
@@ -46,5 +54,8 @@ def check_valid_input_registration(surname, name, surname2, login, password):
     else: D = 1
     if check_valid_password(password): E = 0
     else: E = 1
+    if check_secret_word(secret_word): F = 0
+    else: F = 1
 
-    return A, B, C, D, E
+
+    return A, B, C, D, E, F
