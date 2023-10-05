@@ -12,6 +12,14 @@ from recover_password_2 import Ui_RecoverPassword2
 
 from functions import check_valid_input_registration
 
+StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);"\
+    "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;}"\
+    "QPushButton::hover{background-color: rgba(0, 0, 0, 150);}"\
+    "QPushButton::pressed{background-color: rgba(0, 0, 0, 200);}"
+
+StyleSheetForButtonUnavailable = u"color: rgba(255, 255, 255, 100); border: 3px solid rgb(255, 255, 255);"\
+    "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;"
+
 class Window(QMainWindow):
     def __init__(self):
         super(Window, self).__init__()
@@ -32,12 +40,17 @@ class Window_Authorization(QMainWindow):
 
         self.ui.ButtonRegistration.clicked.connect(self.pressed_button_registration)
         self.ui.ButtonAuthorization.clicked.connect(self.pressed_button_authorization)
+        self.ui.ButtonProblemsWithAuthorization.clicked.connect(self.pressed_button_problems_with_authorization)
 
     def pressed_button_registration(self):
         self.setCentralWidget(Window_Registration(self.centralWidget()))
 
     def pressed_button_authorization(self):
         self.setCentralWidget(Window_MainWindow(self.centralWidget()))
+
+    def pressed_button_problems_with_authorization(self):
+        self.setCentralWidget(Window_RecoverPassword1(self.centralWidget()))
+
 
 class Window_Registration(QMainWindow):
     def __init__(self, parent):
@@ -138,28 +151,8 @@ class Window_Theory(QMainWindow):
         self.design_progress_bar()
 
     def design_button_back(self):
-        if self.current_page == 0: self.ui.ButtonBack.setStyleSheet(u"color: rgba(255, 255, 255, 100);\n"
-            "border: 3px solid rgb(255, 255, 255);\n"
-            "border-radius: 7px;\n"
-            "font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
-            "background-color: rgba(0, 0, 0, 100);\n"
-            "width: 50px;\n")
-        else: self.ui.ButtonBack.setStyleSheet(u"QPushButton{\n"
-            "color: rgba(255, 255, 255, 255);\n"
-            "border: 3px solid rgb(255, 255, 255);\n"
-            "border-radius: 7px;\n"
-            "font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
-            "background-color: rgba(0, 0, 0, 100);\n"
-            "width: 50px;\n"
-            "}\n"
-            "\n"
-            "QPushButton::hover{\n"
-            "background-color: rgba(0, 0, 0, 150);\n"
-            "}\n"
-            "\n"
-            "QPushButton::pressed{\n"
-            "background-color: rgba(0, 0, 0, 200);\n"
-            "}")
+        if self.current_page == 0: self.ui.ButtonBack.setStyleSheet(StyleSheetForButtonUnavailable)
+        else: self.ui.ButtonBack.setStyleSheet(StyleSheetForButtonAvailable)
 
     def design_button_forward(self):
         if self.current_page >= self.count_page - 1:
@@ -215,28 +208,8 @@ class Window_Test(QMainWindow):
         return 1
 
     def design_button_back(self):
-        if self.current_page == 0: self.ui.ButtonBack.setStyleSheet(u"color: rgba(255, 255, 255, 100);\n"
-            "border: 3px solid rgb(255, 255, 255);\n"
-            "border-radius: 7px;\n"
-            "font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
-            "background-color: rgba(0, 0, 0, 100);\n"
-            "width: 50px;\n")
-        else: self.ui.ButtonBack.setStyleSheet(u"QPushButton{\n"
-            "color: rgba(255, 255, 255, 255);\n"
-            "border: 3px solid rgb(255, 255, 255);\n"
-            "border-radius: 7px;\n"
-            "font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
-            "background-color: rgba(0, 0, 0, 100);\n"
-            "width: 50px;\n"
-            "}\n"
-            "\n"
-            "QPushButton::hover{\n"
-            "background-color: rgba(0, 0, 0, 150);\n"
-            "}\n"
-            "\n"
-            "QPushButton::pressed{\n"
-            "background-color: rgba(0, 0, 0, 200);\n"
-            "}")
+        if self.current_page == 0: self.ui.ButtonBack.setStyleSheet(StyleSheetForButtonUnavailable)
+        else: self.ui.ButtonBack.setStyleSheet(StyleSheetForButtonAvailable)
 
     def design_button_forward(self):
         if self.current_page >= self.count_page - 1:
@@ -256,8 +229,32 @@ class Window_RecoverPassword1(QMainWindow):
         self.ui = Ui_RecoverPassword1()
         self.ui.setupUi(self)
 
+        self.ui.Error.setVisible(False)
+
+        self.ui.ButtonBack.clicked.connect(self.pressed_button_back)
+        self.ui.ButtonFurther.clicked.connect(self.pressed_button_further)
+
+
+    def pressed_button_back(self):
+        self.setCentralWidget(Window_Authorization(self.centralWidget()))
+
+    def pressed_button_further(self):
+        self.setCentralWidget(Window_RecoverPassword2(self.centralWidget()))
+
+
 class Window_RecoverPassword2(QMainWindow):
     def __init__(self, parent):
         super(Window_RecoverPassword2, self).__init__(parent)
         self.ui = Ui_RecoverPassword2()
         self.ui.setupUi(self)
+
+        self.ui.IconFailPassword.setVisible(False)
+
+        self.ui.ButtonBack.clicked.connect(self.pressed_button_back)
+        self.ui.ButtonRecoverPassword.clicked.connect(self.pressed_button_recover_password)
+
+    def pressed_button_back(self):
+        self.setCentralWidget(Window_RecoverPassword1(self.centralWidget()))
+
+    def pressed_button_recover_password(self):
+        self.setCentralWidget(Window_MainWindow(self.centralWidget()))
