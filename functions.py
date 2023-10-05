@@ -36,7 +36,7 @@ def check_valid_password(password):
     return True
 
 def check_secret_word(secret_word):
-    pattern = r'^[a-zA-Z0-9]*$'
+    pattern = r'^[a-zA-Zа-яА-ЯёЁ0-9]+$'
     if re.match(pattern, secret_word):
         return 1
     else:
