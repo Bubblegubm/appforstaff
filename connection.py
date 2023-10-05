@@ -17,10 +17,14 @@ class Data:
 
         query = QtSql.QSqlQuery()
         query.exec("CREATE TABLE IF NOT EXISTS users (ID integer primary key AUTOINCREMENT, Name VARCHAR(20), "
-                   "Surname VARCHAR(30), Surname2 VARCHAR(30), Login VARCHAR(30), Password VARCHAR(30), Role BOOLEAN)")
+                   "Surname VARCHAR(30), Surname2 VARCHAR(30), Login VARCHAR(30), Password VARCHAR(30),"
+                   " Secret_word VARCHAR(30), Role BOOLEAN)")
 
         query.exec("CREATE TABLE IF NOT EXISTS statistics (ID integer primary key AUTOINCREMENT, "
                    "Time REAL, Count REAL, User_ID INTEGER)")
+
+        query.exec("CREATE TABLE IF NOT EXISTS theory (ID integer primary key AUTOINCREMENT, Question VARCHAR(200),"
+                   "True_answer VARCHAR(1000), False_answer VARCHAR(1000), Second_false_answer VARCHAR(1000))")
 
         return True
 
@@ -35,21 +39,17 @@ class Data:
         query.exec()
         return query
 
-    def add_new_user_query(self, name, surname, surname2, login, password, role):
-        sql_query = "INSERT INTO users (Name, Surname, Surname2, Login, Password, Role) VALUES (?, ?, ?, ?, ?, ?)"
-        self.execute_query_with_params(sql_query, [name, surname, surname2, login, password, role])
+    def add_new_user_query(self, name, surname, surname2, login, password,
+                           secret_word, role):
+        sql_query = "INSERT INTO users (Name, Surname, Surname2, Login, Password, Secret_word, Role)" \
+                    " VALUES (?, ?, ?, ?, ?, ?, ?)"
+        self.execute_query_with_params(sql_query, [name, surname, surname2, login, password, secret_word, role])
 
-    def update_user_query(self, name, surname, surname2, login, password, role, id):
-        sql_query = "UPDATE users SET Name=?, Surname=?, Surname2=?, Login=?, Password=?, Role=?, WHERE ID=?"
-        self.execute_query_with_params(sql_query, [name, surname, surname2, login, password, role, id])
+    def update_user_query(self, name, surname, surname2, login, password, secret_word, role, id):
+        sql_query = "UPDATE users SET Name=?, Surname=?, Surname2=?, Login=?, Password=?, Secret_word=?," \
+                    " Role=?, WHERE ID=?"
+        self.execute_query_with_params(sql_query, [name, surname, surname2, login, password, secret_word, role, id])
 
-    def delete_use_query(self, id):
+    def delete_user_query(self, id):
         sql_query = "DELETE FROM users WHERE ID=?"
         self.execute_query_with_params(sql_query, [id])
-
-    def output_user(self, column):
-        sql_query = f"SELECT ({column}) FROM users"
-
-        self.execute_query_with_params(sql_query)
-
-        return '0'

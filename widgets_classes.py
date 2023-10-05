@@ -1,6 +1,7 @@
 from PySide6.QtCore import Qt
 from PySide6.QtGui import Qt
 from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6 import QtWidgets
 
 from authorization import Ui_Authorization
 from registration import Ui_Registration
@@ -12,13 +13,16 @@ from recover_password_2 import Ui_RecoverPassword2
 
 from functions import check_valid_input_registration
 
-StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);"\
-    "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;}"\
-    "QPushButton::hover{background-color: rgba(0, 0, 0, 150);}"\
-    "QPushButton::pressed{background-color: rgba(0, 0, 0, 200);}"
+from connection import Data
 
-StyleSheetForButtonUnavailable = u"color: rgba(255, 255, 255, 100); border: 3px solid rgb(255, 255, 255);"\
-    "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;"
+StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
+                               "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;}" \
+                               "QPushButton::hover{background-color: rgba(0, 0, 0, 150);}" \
+                               "QPushButton::pressed{background-color: rgba(0, 0, 0, 200);}"
+
+StyleSheetForButtonUnavailable = u"color: rgba(255, 255, 255, 100); border: 3px solid rgb(255, 255, 255);" \
+                                 "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;"
+
 
 class Window(QMainWindow):
     def __init__(self):
@@ -28,8 +32,9 @@ class Window(QMainWindow):
 
         self.setCentralWidget(Window_Authorization(self.centralWidget()))
 
+
 class Window_Authorization(QMainWindow):
-    def __init__(self, parent = None):
+    def __init__(self, parent=None):
         super(Window_Authorization, self).__init__(parent)
 
         self.ui = Ui_Authorization()
@@ -57,6 +62,7 @@ class Window_Registration(QMainWindow):
         super(Window_Registration, self).__init__(parent)
         self.ui = Ui_Registration()
         self.ui.setupUi(self)
+        self.conn = Data()
 
         self.ui.IconFailSurname.setVisible(False)
         self.ui.IconFailName.setVisible(False)
@@ -73,33 +79,57 @@ class Window_Registration(QMainWindow):
         self.setCentralWidget(Window_Authorization(self.centralWidget()))
 
     def pressed_button_registration(self):
-        a, b, c, d, e, f = check_valid_input_registration(self.ui.Surname.text(), self.ui.Name.text(),
-                                          self.ui.Surname2.text(), self.ui.Login.text(),
-                                          self.ui.Password.text(), self.ui.SecretWord.text())
-        #print(a, b, c, d, e, f)
+        name = self.ui.Name.text()
+        surname = self.ui.Surname.text()
+        surname2 = self.ui.Surname2.text()
+        login = self.ui.Login.text()
+        password = self.ui.Password.text()
+        secret_word = self.ui.SecretWord.text()
+        role = True
 
-        if a == 1: self.ui.IconFailSurname.setVisible(True)
-        else: self.ui.IconFailSurname.setVisible(False)
+        a, b, c, d, e, f = check_valid_input_registration(surname, name,
+                                                          surname2, login,
+                                                          password, secret_word)
 
-        if b == 1: self.ui.IconFailName.setVisible(True)
-        else: self.ui.IconFailName.setVisible(False)
+        # print(a, b, c, d, e, f)
 
-        if c == 1: self.ui.IconFailSurname2.setVisible(True)
-        else: self.ui.IconFailSurname2.setVisible(False)
+        if a == 1:
+            self.ui.IconFailSurname.setVisible(True)
+        else:
+            self.ui.IconFailSurname.setVisible(False)
 
-        if d == 1: self.ui.IconFailLoginNone.setVisible(True)
-        elif d == 2: self.ui.IconFailLoginBusy.setVisible(True)
+        if b == 1:
+            self.ui.IconFailName.setVisible(True)
+        else:
+            self.ui.IconFailName.setVisible(False)
+
+        if c == 1:
+            self.ui.IconFailSurname2.setVisible(True)
+        else:
+            self.ui.IconFailSurname2.setVisible(False)
+
+        if d == 1:
+            self.ui.IconFailLoginNone.setVisible(True)
+        elif d == 2:
+            self.ui.IconFailLoginBusy.setVisible(True)
         else:
             self.ui.IconFailLoginNone.setVisible(False)
             self.ui.IconFailLoginBusy.setVisible(False)
 
-        if e == 1: self.ui.IconFailPassword.setVisible(True)
-        else: self.ui.IconFailPassword.setVisible(False)
+        if e == 1:
+            self.ui.IconFailPassword.setVisible(True)
+        else:
+            self.ui.IconFailPassword.setVisible(False)
 
-        if f == 1: self.ui.IconFailSecretWord.setVisible(True)
-        else: self.ui.IconFailSecretWord.setVisible(False)
+        if f == 1:
+            self.ui.IconFailSecretWord.setVisible(True)
+        else:
+            self.ui.IconFailSecretWord.setVisible(False)
 
-        if not (a or b or c or d or e or f): self.setCentralWidget(Window_MainWindow(self.centralWidget()))
+        if not (a or b or c or d or e or f):
+            self.conn.add_new_user_query(name, surname, surname2, login, password, secret_word, role)
+            self.setCentralWidget(Window_MainWindow(self.centralWidget()))
+
 
 class Window_MainWindow(QMainWindow):
     def __init__(self, parent):
@@ -151,8 +181,10 @@ class Window_Theory(QMainWindow):
         self.design_progress_bar()
 
     def design_button_back(self):
-        if self.current_page == 0: self.ui.ButtonBack.setStyleSheet(StyleSheetForButtonUnavailable)
-        else: self.ui.ButtonBack.setStyleSheet(StyleSheetForButtonAvailable)
+        if self.current_page == 0:
+            self.ui.ButtonBack.setStyleSheet(StyleSheetForButtonUnavailable)
+        else:
+            self.ui.ButtonBack.setStyleSheet(StyleSheetForButtonAvailable)
 
     def design_button_forward(self):
         if self.current_page >= self.count_page - 1:
@@ -208,13 +240,16 @@ class Window_Test(QMainWindow):
         return 1
 
     def design_button_back(self):
-        if self.current_page == 0: self.ui.ButtonBack.setStyleSheet(StyleSheetForButtonUnavailable)
-        else: self.ui.ButtonBack.setStyleSheet(StyleSheetForButtonAvailable)
+        if self.current_page == 0:
+            self.ui.ButtonBack.setStyleSheet(StyleSheetForButtonUnavailable)
+        else:
+            self.ui.ButtonBack.setStyleSheet(StyleSheetForButtonAvailable)
 
     def design_button_forward(self):
         if self.current_page >= self.count_page - 1:
             self.ui.ButtonForward.setText('Завершить')
-        else: self.ui.ButtonForward.setText('Далее')
+        else:
+            self.ui.ButtonForward.setText('Далее')
 
     def design_progress_bar(self):
         self.ui.ProgressBar.setValue(100 * round(self.current_page / self.count_page, 2))
@@ -233,7 +268,6 @@ class Window_RecoverPassword1(QMainWindow):
 
         self.ui.ButtonBack.clicked.connect(self.pressed_button_back)
         self.ui.ButtonFurther.clicked.connect(self.pressed_button_further)
-
 
     def pressed_button_back(self):
         self.setCentralWidget(Window_Authorization(self.centralWidget()))
