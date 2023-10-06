@@ -13,8 +13,6 @@ from recover_password_2 import Ui_RecoverPassword2
 
 from functions import check_valid_input_registration
 
-from connection import Data
-
 StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
                                "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;}" \
                                "QPushButton::hover{background-color: rgba(0, 0, 0, 150);}" \
@@ -62,7 +60,6 @@ class Window_Registration(QMainWindow):
         super(Window_Registration, self).__init__(parent)
         self.ui = Ui_Registration()
         self.ui.setupUi(self)
-        self.conn = Data()
 
         self.ui.IconFailSurname.setVisible(False)
         self.ui.IconFailName.setVisible(False)
@@ -85,11 +82,9 @@ class Window_Registration(QMainWindow):
         login = self.ui.Login.text()
         password = self.ui.Password.text()
         secret_word = self.ui.SecretWord.text()
-        role = True
 
         a, b, c, d, e, f = check_valid_input_registration(surname, name,
-                                                          surname2, login,
-                                                          password, secret_word)
+                            surname2, login, password, secret_word)
 
         # print(a, b, c, d, e, f)
 
@@ -127,7 +122,6 @@ class Window_Registration(QMainWindow):
             self.ui.IconFailSecretWord.setVisible(False)
 
         if not (a or b or c or d or e or f):
-            self.conn.add_new_user_query(name, surname, surname2, login, password, secret_word, role)
             self.setCentralWidget(Window_MainWindow(self.centralWidget()))
 
 
