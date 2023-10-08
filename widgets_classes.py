@@ -1,5 +1,5 @@
 from PySide6.QtCore import Qt
-from PySide6.QtGui import Qt
+from PySide6.QtGui import Qt, QFontDatabase
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6 import QtWidgets
 
@@ -19,17 +19,18 @@ StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); bo
                                "QPushButton::hover{background-color: rgba(0, 0, 0, 150);}" \
                                "QPushButton::pressed{background-color: rgba(0, 0, 0, 200);}"
 
-StyleSheetForButtonAvailableForVariantAnswer = u"QPushButton{color: rgb(255, 255, 255); border: 3px solid rgb(255, 255, 255);"\
-                                "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px; text-align:"\
-                                "top, left; padding-left: 10px; padding-top: 5px;} QPushButton::hover{background-color: rgba(0, 0, 0, 150);}" \
-                               "QPushButton::pressed{background-color: rgba(0, 0, 0, 200);}"
+StyleSheetForButtonAvailableForVariantAnswer = u"QPushButton{color: rgb(255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
+                                               "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px; text-align:" \
+                                               "top, left; padding-left: 10px; padding-top: 5px;} QPushButton::hover{background-color: rgba(0, 0, 0, 150);}" \
+                                               "QPushButton::pressed{background-color: rgba(0, 0, 0, 200);}"
 
 StyleSheetForButtonUnavailable = u"color: rgba(255, 255, 255, 100); border: 3px solid rgb(255, 255, 255);" \
                                  "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;"
 
 StyleSheetForButtonSelected = u"color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
-                                 "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(17, 207, 0, 255); width: 50px; text-align:"\
-                                "top, left; padding-left: 10px; padding-top: 5px;"
+                              "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(17, 207, 0, 255); width: 50px; text-align:" \
+                              "top, left; padding-left: 10px; padding-top: 5px;"
+
 
 class Window(QMainWindow):
     def __init__(self):
@@ -38,6 +39,9 @@ class Window(QMainWindow):
         self.ui.setupUi(self)
 
         self.setCentralWidget(Window_Authorization(self.centralWidget()))
+
+        QFontDatabase.addApplicationFont("Fonts\\ljk_Ambient-Medium.ttf")
+
 
 
 class Window_Authorization(QMainWindow):
@@ -255,9 +259,12 @@ class Window_Test(QMainWindow):
         self.ui.ButtonAnswer3.clicked.connect(self.pressed_button_answer3)
 
     def pressed_button_forward(self):
-        if self.current_page < self.count_page: self.array_answers[self.current_page] = [self.select_answer1, self.select_answer2, self.select_answer3]
+        if self.current_page < self.count_page: self.array_answers[self.current_page] = [self.select_answer1,
+                                                                                         self.select_answer2,
+                                                                                         self.select_answer3]
 
-        if (self.current_page < self.count_page) and (self.select_answer1 or self.select_answer2 or self.select_answer3): self.current_page += 1
+        if (self.current_page < self.count_page) and (
+                self.select_answer1 or self.select_answer2 or self.select_answer3): self.current_page += 1
 
         if self.current_page < self.count_page:
             self.select_answer1 = self.array_answers[self.current_page][0]
@@ -325,7 +332,7 @@ class Window_Test(QMainWindow):
         else:
             self.ui.ButtonBack.setStyleSheet(StyleSheetForButtonAvailable)
 
-    def design_button_forward(self): #need edit!
+    def design_button_forward(self):  # need edit!
         if self.current_page >= self.count_page - 1:
             self.ui.ButtonForward.setText('Завершить')
         else:
