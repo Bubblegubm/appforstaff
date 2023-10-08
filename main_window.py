@@ -76,13 +76,13 @@ class Ui_MainWindow(object):
 "QPushButton::pressed{\n"
 "background-color: rgba(0, 0, 0, 200);\n"
 "}")
-        self.ButtonCompetition = QPushButton(self.centralwidget)
-        self.ButtonCompetition.setObjectName(u"ButtonCompetition")
-        self.ButtonCompetition.setEnabled(True)
-        self.ButtonCompetition.setGeometry(QRect(450, 415, 400, 70))
-        self.ButtonCompetition.setMaximumSize(QSize(16777215, 16777215))
-        self.ButtonCompetition.setFont(font)
-        self.ButtonCompetition.setStyleSheet(u"QPushButton{\n"
+        self.ButtonSpeedTest = QPushButton(self.centralwidget)
+        self.ButtonSpeedTest.setObjectName(u"ButtonSpeedTest")
+        self.ButtonSpeedTest.setEnabled(True)
+        self.ButtonSpeedTest.setGeometry(QRect(450, 415, 400, 70))
+        self.ButtonSpeedTest.setMaximumSize(QSize(16777215, 16777215))
+        self.ButtonSpeedTest.setFont(font)
+        self.ButtonSpeedTest.setStyleSheet(u"QPushButton{\n"
 "color: rgb(255, 255, 255);\n"
 "border: 3px solid rgb(255, 255, 255);\n"
 "border-radius: 7px;\n"
@@ -131,7 +131,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.ButtonTheory.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0435\u043e\u0440\u0438\u044f", None))
         self.ButtonTest.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0435\u0441\u0442", None))
-        self.ButtonCompetition.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043e\u0440\u0435\u0432\u043d\u043e\u0432\u0430\u043d\u0438\u0435", None))
+        self.ButtonSpeedTest.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043a\u043e\u0440\u043e\u0441\u0442\u043d\u043e\u0439 \u0442\u0435\u0441\u0442", None))
         self.ButtonProfile.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u043e\u0444\u0438\u043b\u044c", None))
     # retranslateUi
 

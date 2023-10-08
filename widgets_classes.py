@@ -10,6 +10,7 @@ from theory import Ui_Theory
 from test import Ui_Test
 from recover_password_1 import Ui_RecoverPassword1
 from recover_password_2 import Ui_RecoverPassword2
+from profile import Ui_Profile
 
 from functions import check_valid_input_registration
 
@@ -141,7 +142,8 @@ class Window_MainWindow(QMainWindow):
 
         self.ui.ButtonTheory.clicked.connect(self.pressed_button_theory)
         self.ui.ButtonTest.clicked.connect(self.pressed_button_test)
-        self.ui.ButtonCompetition.clicked.connect(self.pressed_button_competition)
+        self.ui.ButtonSpeedTest.clicked.connect(self.pressed_button_speed_test)
+        self.ui.ButtonProfile.clicked.connect(self.pressed_button_profile)
 
     def pressed_button_theory(self):
         self.setCentralWidget(Window_Theory(self.centralWidget()))
@@ -149,8 +151,11 @@ class Window_MainWindow(QMainWindow):
     def pressed_button_test(self):
         self.setCentralWidget(Window_Test(self.centralWidget()))
 
-    def pressed_button_competition(self):
+    def pressed_button_speed_test(self):
         return 1
+
+    def pressed_button_profile(self):
+        self.setCentralWidget(Window_Profile(self.centralWidget()))
 
 
 class Window_Theory(QMainWindow):
@@ -375,3 +380,23 @@ class Window_RecoverPassword2(QMainWindow):
 
     def pressed_button_recover_password(self):
         self.setCentralWidget(Window_MainWindow(self.centralWidget()))
+
+
+class Window_Profile(QMainWindow):
+    def __init__(self, parent):
+        super(Window_Profile, self).__init__(parent)
+        self.ui = Ui_Profile()
+        self.ui.setupUi(self)
+
+        self.ui.NameSurnameUser.setTextInteractionFlags(Qt.TextInteractionFlag(False))
+        self.ui.ResultsTest.setTextInteractionFlags(Qt.TextInteractionFlag(False))
+        self.ui.ResurtsSpeedTest.setTextInteractionFlags(Qt.TextInteractionFlag(False))
+
+        self.ui.ButtonBack.clicked.connect(self.pressed_button_back)
+        self.ui.ButtonChangePassword.clicked.connect(self.pressed_button_change_password)
+
+    def pressed_button_back(self):
+        self.setCentralWidget(Window_MainWindow(self.centralWidget()))
+
+    def pressed_button_change_password(self):
+        return 1

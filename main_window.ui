@@ -118,7 +118,7 @@ background-color: rgba(0, 0, 0, 200);
      <string>Тест</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="ButtonCompetition">
+   <widget class="QPushButton" name="ButtonSpeedTest">
     <property name="enabled">
      <bool>true</bool>
     </property>
@@ -164,7 +164,7 @@ background-color: rgba(0, 0, 0, 200);
 }</string>
     </property>
     <property name="text">
-     <string>Соревнование</string>
+     <string>Скоростной тест</string>
     </property>
    </widget>
    <widget class="QPushButton" name="ButtonProfile">
