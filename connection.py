@@ -43,6 +43,7 @@ class Data:
                            secret_word, role):
         sql_query = "INSERT INTO users (Name, Surname, Surname2, Login, Password, Secret_word, Role)" \
                     " VALUES (?, ?, ?, ?, ?, ?, ?)"
+        print(True)
         self.execute_query_with_params(sql_query, [name, surname, surname2, login, password, secret_word, role])
 
     def update_user_query(self, name, surname, surname2, login, password, secret_word, role, id):
@@ -53,3 +54,21 @@ class Data:
     def delete_user_query(self, id):
         sql_query = "DELETE FROM users WHERE ID=?"
         self.execute_query_with_params(sql_query, [id])
+
+    def output_login_query(self, login):
+        sql_query = QtSql.QSqlQuery()
+        sql_query.exec("SELECT Login FROM users")
+        id = 0
+
+        while sql_query.next():
+            if sql_query.value(id) == login:
+                return login
+
+    def output_password_query(self, password, login):
+        sql_query = QtSql.QSqlQuery()
+        sql_query.exec("SELECT Login, Password FROM users")
+        idl, idp = range(2)
+
+        while sql_query.next():
+            if sql_query.value(idl) == login and sql_query.value(idp) == password:
+                return password
