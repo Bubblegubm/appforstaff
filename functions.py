@@ -7,16 +7,11 @@ import re
 conn = Data()
 
 
-def check_login(login):
-    if login == conn.output_login_query(login):
-        return False
+def check_login_password(login, password):
+    return conn.output_login_password_query(login, password)
 
-
-def check_password(password, login):
-    if check_login(login) == True: return True
-    if password == conn.output_password_query(password, login):
-        return False
-
+def output_ID(login, password):
+    return conn.output_ID(login, password)
 
 def check_valid_name(name):
     pattern = r'^[a-zA-Zа-яА-ЯёЁ]+$'
@@ -82,3 +77,8 @@ def check_valid_input_registration(surname, name, surname2, login, password, sec
         conn.add_new_user_query(name, surname, surname2, login, password, secret_word, 1)
 
     return A, B, C, D, E, F
+
+
+#def profile(id):
+#    name, surname, surname2 = conn.output_profile_query(id)
+#    print(f"{name},{surname},{surname2}")

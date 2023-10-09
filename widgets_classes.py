@@ -12,7 +12,7 @@ from recover_password_1 import Ui_RecoverPassword1
 from recover_password_2 import Ui_RecoverPassword2
 from profile import Ui_Profile
 
-from functions import check_valid_input_registration, check_login, check_password
+from functions import check_valid_input_registration, check_login_password, output_ID
 
 StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
                                "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;}" \
@@ -65,19 +65,20 @@ class Window_Authorization(QMainWindow):
         login = self.ui.Login.text()
         password = self.ui.Password.text()
 
-        a = check_login(login)
-        b = check_password(password, login)
+        a, b = check_login_password(login, password)
 
-        if a == 1:
+        print(output_ID(login, password))
+
+        if a == 0:
             self.ui.IconFailLogin.setVisible(True)
         else:
             self.ui.IconFailLogin.setVisible(False)
-        if b == 1:
+        if b == 0:
             self.ui.IconFailPassword.setVisible(True)
         else:
             self.ui.IconFailPassword.setVisible(False)
 
-        if a == 0 and b == 0:
+        if a == 1 and b == 1:
             self.setCentralWidget(Window_MainWindow(self.centralWidget()))
 
     def pressed_button_problems_with_authorization(self):

@@ -55,20 +55,40 @@ class Data:
         sql_query = "DELETE FROM users WHERE ID=?"
         self.execute_query_with_params(sql_query, [id])
 
-    def output_login_query(self, login):
-        sql_query = QtSql.QSqlQuery()
-        sql_query.exec("SELECT Login FROM users")
-        id = 0
-
-        while sql_query.next():
-            if sql_query.value(id) == login:
-                return login
-
-    def output_password_query(self, password, login):
+    def output_login_password_query(self, login, password):
         sql_query = QtSql.QSqlQuery()
         sql_query.exec("SELECT Login, Password FROM users")
-        idl, idp = range(2)
+        sql_login, sql_password = range(2)
 
         while sql_query.next():
-            if sql_query.value(idl) == login and sql_query.value(idp) == password:
-                return password
+            if sql_query.value(sql_login) == login and sql_query.value(sql_password) == password:
+                return True, True
+            elif sql_query.value(sql_login) == login and sql_query.value(sql_password) != password:
+                return True, False
+
+        return False, False
+
+    def output_ID(self, login, password):
+        sql_query = QtSql.QSqlQuery()
+        sql_query.exec("SELECT ID, Login, Password FROM users")
+        sql_id, sql_login, sql_password = range(3)
+
+        while sql_query.next():
+            if sql_query.value(sql_login) == login and sql_query.value(sql_password) == password:
+                return sql_query.value(sql_id)
+
+
+    #def output_user(self, name=None, surname=None, surname2=None, login=None, password=None,
+    #                secret_word=None, role=None, id=None):
+    #    sql_query = QtSql.QSqlQuery()
+    #    sql_query.exec("SELECT ID, Name, Surname, Surname2, Login, Password, Secret_word, Role FROM users")
+    #    sql_id, sql_name, sql_surname, sql_surname2, sql_login, sql_password, sql_secret_word, sql_role = range(8)
+    #
+    #    while sql_query.next():
+    #        print(sql_query.value(sql_login))
+    #        if sql_query.value(sql_login) == login and sql_query.value(sql_password) == password:
+    #            return login, password
+    #        elif sql_query.value(sql_login) == login and sql_query.value(sql_password) != password:
+    #            return login, False
+    #        elif sql_query.value(sql_login) != login and sql_query.value(sql_password) == password:
+    #            return False, password
