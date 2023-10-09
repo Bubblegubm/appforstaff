@@ -26,7 +26,7 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>450</x>
+      <x>440</x>
       <y>235</y>
       <width>400</width>
       <height>70</height>
@@ -75,7 +75,7 @@ background-color: rgba(0, 0, 0, 200);
     </property>
     <property name="geometry">
      <rect>
-      <x>450</x>
+      <x>440</x>
       <y>325</y>
       <width>400</width>
       <height>70</height>
@@ -124,7 +124,7 @@ background-color: rgba(0, 0, 0, 200);
     </property>
     <property name="geometry">
      <rect>
-      <x>450</x>
+      <x>440</x>
       <y>415</y>
       <width>400</width>
       <height>70</height>
@@ -214,6 +214,128 @@ background-color: rgba(0, 0, 0, 200);
     </property>
     <property name="text">
      <string>Профиль</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ButtonCancel">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>410</y>
+      <width>240</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Ambient(RUS BY LYAJKA)</family>
+      <pointsize>26</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+color: rgb(255, 255, 255);
+border: 3px solid rgb(255, 255, 255);
+border-radius: 7px;
+font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+background-color: rgba(0, 0, 0, 100);
+width: 50px;
+}
+
+QPushButton::hover{
+background-color: rgba(0, 0, 0, 150);
+}
+
+QPushButton::pressed{
+background-color: rgba(0, 0, 0, 200);
+}</string>
+    </property>
+    <property name="text">
+     <string>Отмена</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ButtonBegin">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>410</y>
+      <width>240</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Ambient(RUS BY LYAJKA)</family>
+      <pointsize>26</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+color: rgb(255, 255, 255);
+border: 3px solid rgb(255, 255, 255);
+border-radius: 7px;
+font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+background-color: rgba(0, 0, 0, 100);
+width: 50px;
+}
+
+QPushButton::hover{
+background-color: rgba(0, 0, 0, 150);
+}
+
+QPushButton::pressed{
+background-color: rgba(0, 0, 0, 200);
+}</string>
+    </property>
+    <property name="text">
+     <string>Начать</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="AcceptTest">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>240</y>
+      <width>500</width>
+      <height>150</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+border: 3px solid rgb(255, 255, 255);
+border-radius: 7px;
+font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+background-color: rgba(0, 0, 0, 100);
+padding-left: 10px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>

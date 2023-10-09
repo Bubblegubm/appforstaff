@@ -77,6 +77,8 @@ class Data:
             if sql_query.value(sql_login) == login and sql_query.value(sql_password) == password:
                 return sql_query.value(sql_id)
 
+    def dataUser(self, ID):
+        return 1
 
     #def output_user(self, name=None, surname=None, surname2=None, login=None, password=None,
     #                secret_word=None, role=None, id=None):

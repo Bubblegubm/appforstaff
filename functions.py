@@ -78,6 +78,8 @@ def check_valid_input_registration(surname, name, surname2, login, password, sec
 
     return A, B, C, D, E, F
 
+def dataUser(ID):
+    return 1
 
 #def profile(id):
 #    name, surname, surname2 = conn.output_profile_query(id)

@@ -12,7 +12,7 @@ from recover_password_1 import Ui_RecoverPassword1
 from recover_password_2 import Ui_RecoverPassword2
 from profile import Ui_Profile
 
-from functions import check_valid_input_registration, check_login_password, output_ID
+from functions import check_valid_input_registration, check_login_password, output_ID, dataUser
 
 StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
                                "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;}" \
@@ -31,12 +31,16 @@ StyleSheetForButtonSelected = u"color: rgba(255, 255, 255, 255); border: 3px sol
                               "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(17, 207, 0, 255); width: 50px; text-align:" \
                               "top, left; padding-left: 10px; padding-top: 5px;"
 
+data_User = {"ID": 0, "Name": "", "Surname": "", "Surname2": "", "Login": "", "Password": "", "SecretWord": "",
+                 "Role": ""}
+
 
 class Window(QMainWindow):
     def __init__(self):
         super(Window, self).__init__()
         self.ui = Ui_Authorization()
         self.ui.setupUi(self)
+        #self.dataUser = {"ID": 0, "Name": "", "Surname": "", "Surname2": "", "Login": "", "Password": "", "SecretWord": "", "Role": ""}
 
         self.setCentralWidget(Window_Authorization(self.centralWidget()))
 
@@ -50,6 +54,8 @@ class Window_Authorization(QMainWindow):
 
         self.ui = Ui_Authorization()
         self.ui.setupUi(self)
+
+        #self.dataUser = {"ID": 0, "Name": "", "Surname": "", "Surname2": "", "Login": "", "Password": "", "SecretWord": "", "Role": ""}
 
         self.ui.IconFailLogin.setVisible(False)
         self.ui.IconFailPassword.setVisible(False)
@@ -67,7 +73,7 @@ class Window_Authorization(QMainWindow):
 
         a, b = check_login_password(login, password)
 
-        print(output_ID(login, password))
+        #print(output_ID(login, password))
 
         if a == 0:
             self.ui.IconFailLogin.setVisible(True)
@@ -79,6 +85,8 @@ class Window_Authorization(QMainWindow):
             self.ui.IconFailPassword.setVisible(False)
 
         if a == 1 and b == 1:
+            ID = output_ID(login, password)
+            data_User = dataUser(ID)
             self.setCentralWidget(Window_MainWindow(self.centralWidget()))
 
     def pressed_button_problems_with_authorization(self):
@@ -160,22 +168,84 @@ class Window_MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        self.countAcceptTest = False
+        self.countAcceptSpeedTest = False
+
+        self.design_window()
+
         self.ui.ButtonTheory.clicked.connect(self.pressed_button_theory)
         self.ui.ButtonTest.clicked.connect(self.pressed_button_test)
         self.ui.ButtonSpeedTest.clicked.connect(self.pressed_button_speed_test)
         self.ui.ButtonProfile.clicked.connect(self.pressed_button_profile)
+        self.ui.ButtonCancel.clicked.connect(self.pressed_button_cancel)
+        self.ui.ButtonBegin.clicked.connect(self.pressed_button_begin)
 
     def pressed_button_theory(self):
-        self.setCentralWidget(Window_Theory(self.centralWidget()))
+        if not (self.countAcceptTest or self.countAcceptSpeedTest):
+            self.setCentralWidget(Window_Theory(self.centralWidget()))
 
     def pressed_button_test(self):
-        self.setCentralWidget(Window_Test(self.centralWidget()))
+        if not (self.countAcceptTest or self.countAcceptSpeedTest):
+            self.countAcceptTest = True
+            self.design_window()
 
     def pressed_button_speed_test(self):
-        return 1
+        if not(self.countAcceptTest or self.countAcceptSpeedTest):
+            self.countAcceptSpeedTest = True
+            self.design_window()
 
     def pressed_button_profile(self):
-        self.setCentralWidget(Window_Profile(self.centralWidget()))
+        if not (self.countAcceptTest or self.countAcceptSpeedTest):
+            self.setCentralWidget(Window_Profile(self.centralWidget()))
+
+    def pressed_button_cancel(self):
+        self.countAcceptTest = False
+        self.countAcceptSpeedTest = False
+        self.design_window()
+
+    def pressed_button_begin(self):
+        if self.countAcceptTest:
+            self.setCentralWidget(Window_Test(self.centralWidget()))
+        if self.countAcceptSpeedTest:
+            return 1
+
+    def design_window(self):
+        if self.countAcceptTest:
+            self.ui.ButtonTheory.setVisible(False)
+            self.ui.ButtonTest.setVisible(False)
+            self.ui.ButtonSpeedTest.setVisible(False)
+            self.ui.ButtonProfile.setStyleSheet(StyleSheetForButtonUnavailable)
+
+            self.ui.AcceptTest.setText("Вы готовы приступить\nк тесту?\nВыйти из него будет нельзя!")
+
+            self.ui.AcceptTest.setVisible(True)
+            self.ui.ButtonCancel.setVisible(True)
+            self.ui.ButtonBegin.setVisible(True)
+
+        elif self.countAcceptSpeedTest:
+            self.ui.ButtonTheory.setVisible(False)
+            self.ui.ButtonTest.setVisible(False)
+            self.ui.ButtonSpeedTest.setVisible(False)
+            self.ui.ButtonProfile.setStyleSheet(StyleSheetForButtonUnavailable)
+
+            self.ui.AcceptTest.setText("Вы готовы приступить\nк скоростному тесту?\nВыйти из него будет нельзя!")
+
+            self.ui.AcceptTest.setVisible(True)
+            self.ui.ButtonCancel.setVisible(True)
+            self.ui.ButtonBegin.setVisible(True)
+
+        else:
+            self.ui.ButtonTheory.setVisible(True)
+            self.ui.ButtonTest.setVisible(True)
+            self.ui.ButtonSpeedTest.setVisible(True)
+            self.ui.ButtonProfile.setStyleSheet(StyleSheetForButtonAvailable)
+
+            self.ui.AcceptTest.setVisible(False)
+            self.ui.ButtonCancel.setVisible(False)
+            self.ui.ButtonBegin.setVisible(False)
+
+
+
 
 
 class Window_Theory(QMainWindow):
@@ -195,18 +265,24 @@ class Window_Theory(QMainWindow):
 
         self.ui.ButtonBack.clicked.connect(self.pressed_button_back)
         self.ui.ButtonForward.clicked.connect(self.pressed_button_forward)
+        self.ui.ButtonExit.clicked.connect(self.pressed_button_exit)
 
     def pressed_button_forward(self):
         if self.current_page < self.count_page: self.current_page += 1
         self.design_button_back()
         self.design_button_forward()
         self.design_progress_bar()
+        if self.current_page == self.count_page:
+            self.setCentralWidget(Window_MainWindow(self.centralWidget()))
 
     def pressed_button_back(self):
         if self.current_page > 0: self.current_page -= 1
         self.design_button_back()
         self.design_button_forward()
         self.design_progress_bar()
+
+    def pressed_button_exit(self):
+        self.setCentralWidget(Window_MainWindow(self.centralWidget()))
 
     def design_button_back(self):
         if self.current_page == 0:
@@ -279,6 +355,9 @@ class Window_Test(QMainWindow):
         self.design_button_back()
         self.design_button_forward()
         self.design_progress_bar()
+
+        if self.current_page == self.count_page:
+            self.setCentralWidget(Window_MainWindow(self.centralWidget()))
 
     def pressed_button_back(self):
         if self.current_page < self.count_page: self.array_answers[self.current_page] = [self.select_answer1,
@@ -413,7 +492,9 @@ class Window_Profile(QMainWindow):
 
         self.ui.NameSurnameUser.setTextInteractionFlags(Qt.TextInteractionFlag(False))
         self.ui.ResultsTest.setTextInteractionFlags(Qt.TextInteractionFlag(False))
-        self.ui.ResurtsSpeedTest.setTextInteractionFlags(Qt.TextInteractionFlag(False))
+        self.ui.ResultsSpeedTest.setTextInteractionFlags(Qt.TextInteractionFlag(False))
+
+
 
         self.ui.ButtonBack.clicked.connect(self.pressed_button_back)
         self.ui.ButtonChangePassword.clicked.connect(self.pressed_button_change_password)

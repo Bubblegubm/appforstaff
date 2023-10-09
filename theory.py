@@ -30,7 +30,7 @@ class Ui_Theory(object):
         self.Question = QTextEdit(self.centralwidget)
         self.Question.setObjectName(u"Question")
         self.Question.setEnabled(True)
-        self.Question.setGeometry(QRect(20, 20, 1240, 200))
+        self.Question.setGeometry(QRect(20, 100, 1240, 200))
         self.Question.setFocusPolicy(Qt.NoFocus)
         self.Question.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "border: 3px solid rgb(255, 255, 255);\n"
@@ -100,7 +100,7 @@ class Ui_Theory(object):
         self.Answer = QTextEdit(self.centralwidget)
         self.Answer.setObjectName(u"Answer")
         self.Answer.setEnabled(True)
-        self.Answer.setGeometry(QRect(20, 240, 1240, 200))
+        self.Answer.setGeometry(QRect(20, 320, 1240, 200))
         self.Answer.setFocusPolicy(Qt.NoFocus)
         self.Answer.setStyleSheet(u"color: rgb(255, 255, 255);\n"
 "border: 3px solid rgb(255, 255, 255);\n"
@@ -108,6 +108,28 @@ class Ui_Theory(object):
 "font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
 "background-color: rgba(0, 0, 0, 100);\n"
 "padding-left: 10px;")
+        self.ButtonExit = QPushButton(self.centralwidget)
+        self.ButtonExit.setObjectName(u"ButtonExit")
+        self.ButtonExit.setEnabled(True)
+        self.ButtonExit.setGeometry(QRect(540, 20, 200, 60))
+        self.ButtonExit.setMaximumSize(QSize(16777215, 16777215))
+        self.ButtonExit.setFont(font)
+        self.ButtonExit.setStyleSheet(u"QPushButton{\n"
+"color: rgb(255, 255, 255);\n"
+"border: 3px solid rgb(255, 255, 255);\n"
+"border-radius: 7px;\n"
+"font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+"background-color: rgba(0, 0, 0, 100);\n"
+"width: 50px;\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"background-color: rgba(0, 0, 0, 150);\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"background-color: rgba(0, 0, 0, 200);\n"
+"}")
         Theory.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(Theory)
@@ -137,5 +159,6 @@ class Ui_Theory(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">3 \u0441\u0442\u0440\u043e\u0447\u043a\u0430 \u043e\u0442\u0432\u0435\u0442\u0430</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:"
                         "0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">4 \u0441\u0442\u0440\u043e\u0447\u043a\u0430 \u043e\u0442\u0432\u0435\u0442\u0430</p></body></html>", None))
+        self.ButtonExit.setText(QCoreApplication.translate("Theory", u"\u0412\u044b\u0439\u0442\u0438", None))
     # retranslateUi
 

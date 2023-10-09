@@ -15,8 +15,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QMainWindow, QPushButton, QSizePolicy,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QLabel, QMainWindow, QPushButton,
+    QSizePolicy, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -30,7 +30,7 @@ class Ui_MainWindow(object):
         self.ButtonTheory = QPushButton(self.centralwidget)
         self.ButtonTheory.setObjectName(u"ButtonTheory")
         self.ButtonTheory.setEnabled(True)
-        self.ButtonTheory.setGeometry(QRect(450, 235, 400, 70))
+        self.ButtonTheory.setGeometry(QRect(440, 235, 400, 70))
         self.ButtonTheory.setMaximumSize(QSize(16777215, 16777215))
         font = QFont()
         font.setFamilies([u"Ambient(RUS BY LYAJKA)"])
@@ -57,7 +57,7 @@ class Ui_MainWindow(object):
         self.ButtonTest = QPushButton(self.centralwidget)
         self.ButtonTest.setObjectName(u"ButtonTest")
         self.ButtonTest.setEnabled(True)
-        self.ButtonTest.setGeometry(QRect(450, 325, 400, 70))
+        self.ButtonTest.setGeometry(QRect(440, 325, 400, 70))
         self.ButtonTest.setMaximumSize(QSize(16777215, 16777215))
         self.ButtonTest.setFont(font)
         self.ButtonTest.setStyleSheet(u"QPushButton{\n"
@@ -79,7 +79,7 @@ class Ui_MainWindow(object):
         self.ButtonSpeedTest = QPushButton(self.centralwidget)
         self.ButtonSpeedTest.setObjectName(u"ButtonSpeedTest")
         self.ButtonSpeedTest.setEnabled(True)
-        self.ButtonSpeedTest.setGeometry(QRect(450, 415, 400, 70))
+        self.ButtonSpeedTest.setGeometry(QRect(440, 415, 400, 70))
         self.ButtonSpeedTest.setMaximumSize(QSize(16777215, 16777215))
         self.ButtonSpeedTest.setFont(font)
         self.ButtonSpeedTest.setStyleSheet(u"QPushButton{\n"
@@ -120,6 +120,60 @@ class Ui_MainWindow(object):
 "QPushButton::pressed{\n"
 "background-color: rgba(0, 0, 0, 200);\n"
 "}")
+        self.ButtonCancel = QPushButton(self.centralwidget)
+        self.ButtonCancel.setObjectName(u"ButtonCancel")
+        self.ButtonCancel.setEnabled(True)
+        self.ButtonCancel.setGeometry(QRect(390, 410, 240, 70))
+        self.ButtonCancel.setMaximumSize(QSize(16777215, 16777215))
+        self.ButtonCancel.setFont(font)
+        self.ButtonCancel.setStyleSheet(u"QPushButton{\n"
+"color: rgb(255, 255, 255);\n"
+"border: 3px solid rgb(255, 255, 255);\n"
+"border-radius: 7px;\n"
+"font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+"background-color: rgba(0, 0, 0, 100);\n"
+"width: 50px;\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"background-color: rgba(0, 0, 0, 150);\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"background-color: rgba(0, 0, 0, 200);\n"
+"}")
+        self.ButtonBegin = QPushButton(self.centralwidget)
+        self.ButtonBegin.setObjectName(u"ButtonBegin")
+        self.ButtonBegin.setEnabled(True)
+        self.ButtonBegin.setGeometry(QRect(650, 410, 240, 70))
+        self.ButtonBegin.setMaximumSize(QSize(16777215, 16777215))
+        self.ButtonBegin.setFont(font)
+        self.ButtonBegin.setStyleSheet(u"QPushButton{\n"
+"color: rgb(255, 255, 255);\n"
+"border: 3px solid rgb(255, 255, 255);\n"
+"border-radius: 7px;\n"
+"font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+"background-color: rgba(0, 0, 0, 100);\n"
+"width: 50px;\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"background-color: rgba(0, 0, 0, 150);\n"
+"}\n"
+"\n"
+"QPushButton::pressed{\n"
+"background-color: rgba(0, 0, 0, 200);\n"
+"}")
+        self.AcceptTest = QLabel(self.centralwidget)
+        self.AcceptTest.setObjectName(u"AcceptTest")
+        self.AcceptTest.setGeometry(QRect(390, 240, 500, 150))
+        self.AcceptTest.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"border: 3px solid rgb(255, 255, 255);\n"
+"border-radius: 7px;\n"
+"font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+"background-color: rgba(0, 0, 0, 100);\n"
+"padding-left: 10px;")
+        self.AcceptTest.setAlignment(Qt.AlignCenter)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -133,5 +187,8 @@ class Ui_MainWindow(object):
         self.ButtonTest.setText(QCoreApplication.translate("MainWindow", u"\u0422\u0435\u0441\u0442", None))
         self.ButtonSpeedTest.setText(QCoreApplication.translate("MainWindow", u"\u0421\u043a\u043e\u0440\u043e\u0441\u0442\u043d\u043e\u0439 \u0442\u0435\u0441\u0442", None))
         self.ButtonProfile.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u043e\u0444\u0438\u043b\u044c", None))
+        self.ButtonCancel.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0442\u043c\u0435\u043d\u0430", None))
+        self.ButtonBegin.setText(QCoreApplication.translate("MainWindow", u"\u041d\u0430\u0447\u0430\u0442\u044c", None))
+        self.AcceptTest.setText("")
     # retranslateUi
 
