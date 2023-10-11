@@ -10,9 +10,10 @@ from theory import Ui_Theory
 from test import Ui_Test
 from recover_password_1 import Ui_RecoverPassword1
 from recover_password_2 import Ui_RecoverPassword2
+from change_password import Ui_ChangePassword
 from profile import Ui_Profile
 
-from functions import check_valid_input_registration, check_login_password, output_ID, dataUser, recoverPassword1, \
+from functions import check_valid_input_registration, check_valid_password, check_login_password, output_ID, dataUser, recoverPassword1, \
     recoverPassword2
 
 StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
@@ -32,29 +33,27 @@ StyleSheetForButtonSelected = u"color: rgba(255, 255, 255, 255); border: 3px sol
                               "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(17, 207, 0, 255); width: 50px; text-align:" \
                               "top, left; padding-left: 10px; padding-top: 5px;"
 
-data_User = {"ID": 0, "Name": "", "Surname": "", "Surname2": "", "Login": "", "Password": "", "SecretWord": "",
-                 "Role": ""}
-
 
 class Window(QMainWindow):
     def __init__(self):
         super(Window, self).__init__()
         self.ui = Ui_Authorization()
         self.ui.setupUi(self)
+        self.data_User = {'ID': 0, 'Name': "", 'Surname': "", 'Surname2': "", 'Login': "", 'Password': "", 'SecretWord': "",
+                 'Role': ""}
         #self.dataUser = {"ID": 0, "Name": "", "Surname": "", "Surname2": "", "Login": "", "Password": "", "SecretWord": "", "Role": ""}
-
-        self.setCentralWidget(Window_Authorization(self.centralWidget()))
-
         QFontDatabase.addApplicationFont("Fonts\\ljk_Ambient-Medium.ttf")
+        self.setCentralWidget(Window_Authorization(self.data_User, self.centralWidget()))
 
 
 
 class Window_Authorization(QMainWindow):
-    def __init__(self, parent=None):
+    def __init__(self, data_User: dict,  parent=None):
         super(Window_Authorization, self).__init__(parent)
 
         self.ui = Ui_Authorization()
         self.ui.setupUi(self)
+        self.data_User = data_User
 
         #self.dataUser = {"ID": 0, "Name": "", "Surname": "", "Surname2": "", "Login": "", "Password": "", "SecretWord": "", "Role": ""}
 
@@ -66,7 +65,7 @@ class Window_Authorization(QMainWindow):
         self.ui.ButtonProblemsWithAuthorization.clicked.connect(self.pressed_button_problems_with_authorization)
 
     def pressed_button_registration(self):
-        self.setCentralWidget(Window_Registration(self.centralWidget()))
+        self.setCentralWidget(Window_Registration(self.centralWidget(), self.data_User))
 
     def pressed_button_authorization(self):
         login = self.ui.Login.text()
@@ -87,18 +86,19 @@ class Window_Authorization(QMainWindow):
 
         if a == 1 and b == 1:
             ID = output_ID(login, password)
-            data_User = dataUser(ID)
-            print(data_User)
-            self.setCentralWidget(Window_MainWindow(self.centralWidget()))
+            self.data_User = dataUser(ID)
+            print(self.data_User)
+            self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
     def pressed_button_problems_with_authorization(self):
-        self.setCentralWidget(Window_RecoverPassword1(self.centralWidget()))
+        self.setCentralWidget(Window_RecoverPassword1(self.centralWidget(), self.data_User))
 
 class Window_Registration(QMainWindow):
-    def __init__(self, parent):
+    def __init__(self, parent, data_User: dict):
         super(Window_Registration, self).__init__(parent)
         self.ui = Ui_Registration()
         self.ui.setupUi(self)
+        self.data_User = data_User
 
         self.ui.IconFailSurname.setVisible(False)
         self.ui.IconFailName.setVisible(False)
@@ -112,7 +112,7 @@ class Window_Registration(QMainWindow):
         self.ui.ButtonRegistration.clicked.connect(self.pressed_button_registration)
 
     def pressed_button_back(self):
-        self.setCentralWidget(Window_Authorization(self.centralWidget()))
+        self.setCentralWidget(Window_Authorization(self.centralWidget(), self.data_User))
 
     def pressed_button_registration(self):
         name = self.ui.Name.text()
@@ -160,14 +160,15 @@ class Window_Registration(QMainWindow):
             self.ui.IconFailSecretWord.setVisible(False)
 
         if not (a or b or c or d or e or f):
-            self.setCentralWidget(Window_MainWindow(self.centralWidget()))
+            self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
 
 class Window_MainWindow(QMainWindow):
-    def __init__(self, parent):
+    def __init__(self, parent, data_User: dict):
         super(Window_MainWindow, self).__init__(parent)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.data_User = data_User
 
         self.countAcceptTest = False
         self.countAcceptSpeedTest = False
@@ -183,7 +184,7 @@ class Window_MainWindow(QMainWindow):
 
     def pressed_button_theory(self):
         if not (self.countAcceptTest or self.countAcceptSpeedTest):
-            self.setCentralWidget(Window_Theory(self.centralWidget()))
+            self.setCentralWidget(Window_Theory(self.centralWidget(), self.data_User))
 
     def pressed_button_test(self):
         if not (self.countAcceptTest or self.countAcceptSpeedTest):
@@ -197,7 +198,7 @@ class Window_MainWindow(QMainWindow):
 
     def pressed_button_profile(self):
         if not (self.countAcceptTest or self.countAcceptSpeedTest):
-            self.setCentralWidget(Window_Profile(self.centralWidget()))
+            self.setCentralWidget(Window_Profile(self.centralWidget(), self.data_User))
 
     def pressed_button_cancel(self):
         self.countAcceptTest = False
@@ -206,7 +207,7 @@ class Window_MainWindow(QMainWindow):
 
     def pressed_button_begin(self):
         if self.countAcceptTest:
-            self.setCentralWidget(Window_Test(self.centralWidget()))
+            self.setCentralWidget(Window_Test(self.centralWidget(), self.data_User))
         if self.countAcceptSpeedTest:
             return 1
 
@@ -247,10 +248,11 @@ class Window_MainWindow(QMainWindow):
 
 
 class Window_Theory(QMainWindow):
-    def __init__(self, parent):
+    def __init__(self, parent, data_User: dict):
         super(Window_Theory, self).__init__(parent)
         self.ui = Ui_Theory()
         self.ui.setupUi(self)
+        self.data_User = data_User
 
         self.current_page = 0
         self.count_page = 5
@@ -271,7 +273,7 @@ class Window_Theory(QMainWindow):
         self.design_button_forward()
         self.design_progress_bar()
         if self.current_page == self.count_page:
-            self.setCentralWidget(Window_MainWindow(self.centralWidget()))
+            self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
     def pressed_button_back(self):
         if self.current_page > 0: self.current_page -= 1
@@ -280,7 +282,7 @@ class Window_Theory(QMainWindow):
         self.design_progress_bar()
 
     def pressed_button_exit(self):
-        self.setCentralWidget(Window_MainWindow(self.centralWidget()))
+        self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
     def design_button_back(self):
         if self.current_page == 0:
@@ -305,10 +307,11 @@ class Window_Theory(QMainWindow):
 
 
 class Window_Test(QMainWindow):
-    def __init__(self, parent):
+    def __init__(self, parent, data_User: dict):
         super(Window_Test, self).__init__(parent)
         self.ui = Ui_Test()
         self.ui.setupUi(self)
+        self.data_User = data_User
 
         self.current_page = 0
         self.count_page = 3
@@ -355,7 +358,7 @@ class Window_Test(QMainWindow):
         self.design_progress_bar()
 
         if self.current_page == self.count_page:
-            self.setCentralWidget(Window_MainWindow(self.centralWidget()))
+            self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
     def pressed_button_back(self):
         if self.current_page < self.count_page: self.array_answers[self.current_page] = [self.select_answer1,
@@ -447,10 +450,11 @@ class Window_Test(QMainWindow):
 
 
 class Window_RecoverPassword1(QMainWindow):
-    def __init__(self, parent):
+    def __init__(self, parent, data_User: dict):
         super(Window_RecoverPassword1, self).__init__(parent)
         self.ui = Ui_RecoverPassword1()
         self.ui.setupUi(self)
+        self.data_User = data_User
 
         self.ui.Error.setVisible(False)
 
@@ -458,7 +462,7 @@ class Window_RecoverPassword1(QMainWindow):
         self.ui.ButtonFurther.clicked.connect(self.pressed_button_further)
 
     def pressed_button_back(self):
-        self.setCentralWidget(Window_Authorization(self.centralWidget()))
+        self.setCentralWidget(Window_Authorization(self.centralWidget(), self.data_User))
 
     def pressed_button_further(self):
         name = self.ui.Name.text()
@@ -466,15 +470,22 @@ class Window_RecoverPassword1(QMainWindow):
         surname2 = self.ui.Surname2.text()
         login = self.ui.Login.text()
         secret_word = self.ui.SecretWord.text()
-        print(recoverPassword1(name, surname, surname2, login, secret_word))
-        self.setCentralWidget(Window_RecoverPassword2(self.centralWidget()))
+        id = recoverPassword1(name, surname, surname2, login, secret_word)
+        if id == -1:
+            self.ui.Error.setVisible(True)
+        else:
+            self.setCentralWidget(Window_RecoverPassword2(self.centralWidget(), self.data_User, id))
+
 
 
 class Window_RecoverPassword2(QMainWindow):
-    def __init__(self, parent):
+    def __init__(self, parent, data_User: dict, id = None):
         super(Window_RecoverPassword2, self).__init__(parent)
         self.ui = Ui_RecoverPassword2()
         self.ui.setupUi(self)
+        self.data_User = data_User
+        if id != None:
+            self.id = id
 
         self.ui.IconFailPassword.setVisible(False)
 
@@ -482,31 +493,62 @@ class Window_RecoverPassword2(QMainWindow):
         self.ui.ButtonRecoverPassword.clicked.connect(self.pressed_button_recover_password)
 
     def pressed_button_back(self):
-        self.setCentralWidget(Window_RecoverPassword1(self.centralWidget()))
+        self.setCentralWidget(Window_RecoverPassword1(self.centralWidget(), self.data_User))
 
     def pressed_button_recover_password(self):
         password = self.ui.NewPassword.text()
-        recoverPassword2(password, ID)
-        self.setCentralWidget(Window_MainWindow(self.centralWidget()))
+        if check_valid_password(password):
+            recoverPassword2(password, self.id)
+            self.data_User = dataUser(self.id)
+            self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
+        else:
+            self.ui.IconFailPassword.setVisible(True)
 
 
 class Window_Profile(QMainWindow):
-    def __init__(self, parent):
+    def __init__(self, parent, data_User: dict):
         super(Window_Profile, self).__init__(parent)
         self.ui = Ui_Profile()
         self.ui.setupUi(self)
+        self.data_User = data_User
 
         self.ui.NameSurnameUser.setTextInteractionFlags(Qt.TextInteractionFlag(False))
         self.ui.ResultsTest.setTextInteractionFlags(Qt.TextInteractionFlag(False))
         self.ui.ResultsSpeedTest.setTextInteractionFlags(Qt.TextInteractionFlag(False))
 
-
+        self.ui.NameSurnameUser.setText(f"{self.data_User.get('Name')}\n{self.data_User.get('Surname')}\n{self.data_User.get('Surname2')}")
+        #print(f"sadasdasdasd {self.data_User['Name']}\n{self.data_User['Surname']}\n{self.data_User['Surname2']}")
 
         self.ui.ButtonBack.clicked.connect(self.pressed_button_back)
         self.ui.ButtonChangePassword.clicked.connect(self.pressed_button_change_password)
 
     def pressed_button_back(self):
-        self.setCentralWidget(Window_MainWindow(self.centralWidget()))
+        self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
     def pressed_button_change_password(self):
-        return 1
+        self.setCentralWidget(Window_ChangePassword(self.centralWidget(), self.data_User))
+
+
+class Window_ChangePassword(QMainWindow):
+    def __init__(self, parent, data_User: dict):
+        super(Window_ChangePassword, self).__init__(parent)
+        self.ui = Ui_ChangePassword()
+        self.ui.setupUi(self)
+        self.data_User = data_User
+
+        self.ui.IconFailPassword.setVisible(False)
+
+        self.ui.ButtonBack.clicked.connect(self.pressed_button_back)
+        self.ui.ButtonChangePassword.clicked.connect(self.pressed_button_change_password)
+
+    def pressed_button_back(self):
+        self.setCentralWidget(Window_Profile(self.centralWidget(), self.data_User))
+
+    def pressed_button_change_password(self):
+        password = self.ui.NewPassword.text()
+        if check_valid_password(password):
+            recoverPassword2(password, self.data_User['ID'])
+            self.data_User = dataUser(self.data_User['ID'])
+            self.setCentralWidget(Window_Profile(self.centralWidget(), self.data_User))
+        else:
+            self.ui.IconFailPassword.setVisible(True)

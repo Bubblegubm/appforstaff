@@ -82,9 +82,10 @@ class Data:
         sql_id, sql_name, sql_surname, sql_surname2, sql_login, sql_password, sql_secret_word, sql_role = range(8)
         while sql_query.next():
             if ID == sql_query.value(sql_id):
-                return sql_query.value(sql_id), sql_query.value(sql_name), sql_query.value(sql_surname), \
-                    sql_query.value(sql_surname2), sql_query.value(sql_login), sql_query.value(sql_password), \
-                    sql_query.value(sql_secret_word), sql_query.value(sql_role)
+                return {'ID': sql_query.value(sql_id), 'Name': sql_query.value(sql_name),
+                        'Surname': sql_query.value(sql_surname), 'Surname2': sql_query.value(sql_surname2),
+                        'Login': sql_query.value(sql_login), 'Password': sql_query.value(sql_password),
+                        'SecretWord': sql_query.value(sql_secret_word), 'Role': sql_query.value(sql_role)}
 
     def recoverPassword1(self, name, surname, surname2, login, secret_word):
         sql_query = QtSql.QSqlQuery()
