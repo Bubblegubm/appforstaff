@@ -12,7 +12,8 @@ from recover_password_1 import Ui_RecoverPassword1
 from recover_password_2 import Ui_RecoverPassword2
 from profile import Ui_Profile
 
-from functions import check_valid_input_registration, check_login_password, output_ID, dataUser
+from functions import check_valid_input_registration, check_login_password, output_ID, dataUser, recoverPassword1, \
+    recoverPassword2
 
 StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
                                "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;}" \
@@ -245,9 +246,6 @@ class Window_MainWindow(QMainWindow):
             self.ui.ButtonBegin.setVisible(False)
 
 
-
-
-
 class Window_Theory(QMainWindow):
     def __init__(self, parent):
         super(Window_Theory, self).__init__(parent)
@@ -463,6 +461,12 @@ class Window_RecoverPassword1(QMainWindow):
         self.setCentralWidget(Window_Authorization(self.centralWidget()))
 
     def pressed_button_further(self):
+        name = self.ui.Name.text()
+        surname = self.ui.Surname.text()
+        surname2 = self.ui.Surname2.text()
+        login = self.ui.Login.text()
+        secret_word = self.ui.SecretWord.text()
+        print(recoverPassword1(name, surname, surname2, login, secret_word))
         self.setCentralWidget(Window_RecoverPassword2(self.centralWidget()))
 
 
@@ -481,6 +485,8 @@ class Window_RecoverPassword2(QMainWindow):
         self.setCentralWidget(Window_RecoverPassword1(self.centralWidget()))
 
     def pressed_button_recover_password(self):
+        password = self.ui.NewPassword.text()
+        recoverPassword2(password, ID)
         self.setCentralWidget(Window_MainWindow(self.centralWidget()))
 
 

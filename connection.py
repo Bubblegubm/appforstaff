@@ -46,10 +46,9 @@ class Data:
         print(True)
         self.execute_query_with_params(sql_query, [name, surname, surname2, login, password, secret_word, role])
 
-    def update_user_query(self, name, surname, surname2, login, password, secret_word, role, id):
-        sql_query = "UPDATE users SET Name=?, Surname=?, Surname2=?, Login=?, Password=?, Secret_word=?," \
-                    " Role=?, WHERE ID=?"
-        self.execute_query_with_params(sql_query, [name, surname, surname2, login, password, secret_word, role, id])
+    def update_user_query(self, password, id):
+        sql_query = "UPDATE users SET Password=? WHERE ID=?"
+        self.execute_query_with_params(sql_query, [password, id])
 
     def delete_user_query(self, id):
         sql_query = "DELETE FROM users WHERE ID=?"
@@ -83,11 +82,23 @@ class Data:
         sql_id, sql_name, sql_surname, sql_surname2, sql_login, sql_password, sql_secret_word, sql_role = range(8)
         while sql_query.next():
             if ID == sql_query.value(sql_id):
-                return sql_query.value(sql_id),sql_query.value(sql_name), sql_query.value(sql_surname), \
+                return sql_query.value(sql_id), sql_query.value(sql_name), sql_query.value(sql_surname), \
                     sql_query.value(sql_surname2), sql_query.value(sql_login), sql_query.value(sql_password), \
                     sql_query.value(sql_secret_word), sql_query.value(sql_role)
 
-    #def output_user(self, name=None, surname=None, surname2=None, login=None, password=None,
+    def recoverPassword1(self, name, surname, surname2, login, secret_word):
+        sql_query = QtSql.QSqlQuery()
+        sql_query.exec("SELECT ID, Name, Surname, Surname2, Login, Secret_word FROM users")
+        sql_id, sql_name, sql_surname, sql_surname2, sql_login, sql_secret_word = range(6)
+        while sql_query.next():
+            if (sql_query.value(sql_name) == name) and (sql_query.value(sql_surname) == surname) \
+                    and (sql_query.value(sql_surname2) == surname2) and (sql_query.value(sql_login) == login) \
+                    and (sql_query.value(sql_secret_word) == secret_word):
+                return sql_query.value(sql_id)
+        return -1
+
+
+    # def output_user(self, name=None, surname=None, surname2=None, login=None, password=None,
     #                secret_word=None, role=None, id=None):
     #    sql_query = QtSql.QSqlQuery()
     #    sql_query.exec("SELECT ID, Name, Surname, Surname2, Login, Password, Secret_word, Role FROM users")

@@ -80,3 +80,9 @@ def check_valid_input_registration(surname, name, surname2, login, password, sec
 
 def dataUser(ID):
     return conn.dataUser(ID)
+
+def recoverPassword1(name, surname, surname2, login, secret_word):
+    return conn.recoverPassword1(name, surname, surname2, login, secret_word)
+
+def recoverPassword2(password, id):
+    return conn.update_user_query(password, id)
