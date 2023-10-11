@@ -87,11 +87,11 @@ class Window_Authorization(QMainWindow):
         if a == 1 and b == 1:
             ID = output_ID(login, password)
             data_User = dataUser(ID)
+            print(data_User)
             self.setCentralWidget(Window_MainWindow(self.centralWidget()))
 
     def pressed_button_problems_with_authorization(self):
         self.setCentralWidget(Window_RecoverPassword1(self.centralWidget()))
-
 
 class Window_Registration(QMainWindow):
     def __init__(self, parent):

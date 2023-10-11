@@ -78,7 +78,14 @@ class Data:
                 return sql_query.value(sql_id)
 
     def dataUser(self, ID):
-        return 1
+        sql_query = QtSql.QSqlQuery()
+        sql_query.exec("SELECT ID, Name, Surname, Surname2, Login, Password, Secret_word, Role FROM users")
+        sql_id, sql_name, sql_surname, sql_surname2, sql_login, sql_password, sql_secret_word, sql_role = range(8)
+        while sql_query.next():
+            if ID == sql_query.value(sql_id):
+                return sql_query.value(sql_id),sql_query.value(sql_name), sql_query.value(sql_surname), \
+                    sql_query.value(sql_surname2), sql_query.value(sql_login), sql_query.value(sql_password), \
+                    sql_query.value(sql_secret_word), sql_query.value(sql_role)
 
     #def output_user(self, name=None, surname=None, surname2=None, login=None, password=None,
     #                secret_word=None, role=None, id=None):
