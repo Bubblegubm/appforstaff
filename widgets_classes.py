@@ -48,7 +48,7 @@ class Window(QMainWindow):
 
 
 class Window_Authorization(QMainWindow):
-    def __init__(self, data_User: dict,  parent=None):
+    def __init__(self, data_User: dict,  parent):
         super(Window_Authorization, self).__init__(parent)
 
         self.ui = Ui_Authorization()
@@ -112,7 +112,7 @@ class Window_Registration(QMainWindow):
         self.ui.ButtonRegistration.clicked.connect(self.pressed_button_registration)
 
     def pressed_button_back(self):
-        self.setCentralWidget(Window_Authorization(self.centralWidget(), self.data_User))
+        self.setCentralWidget(Window_Authorization(self.data_User, self.centralWidget()))
 
     def pressed_button_registration(self):
         name = self.ui.Name.text()
@@ -462,7 +462,7 @@ class Window_RecoverPassword1(QMainWindow):
         self.ui.ButtonFurther.clicked.connect(self.pressed_button_further)
 
     def pressed_button_back(self):
-        self.setCentralWidget(Window_Authorization(self.centralWidget(), self.data_User))
+        self.setCentralWidget(Window_Authorization(self.data_User, self.centralWidget()))
 
     def pressed_button_further(self):
         name = self.ui.Name.text()
