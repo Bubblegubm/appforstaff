@@ -13,7 +13,8 @@ from recover_password_2 import Ui_RecoverPassword2
 from change_password import Ui_ChangePassword
 from profile import Ui_Profile
 
-from functions import check_valid_input_registration, check_valid_password, check_login_password, output_ID, dataUser, recoverPassword1, \
+from functions import check_valid_input_registration, check_valid_password, check_login_password, output_ID, dataUser, \
+    recoverPassword1, \
     recoverPassword2
 
 StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
@@ -22,15 +23,18 @@ StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); bo
                                "QPushButton::pressed{background-color: rgba(0, 0, 0, 200);}"
 
 StyleSheetForButtonAvailableForVariantAnswer = u"QPushButton{color: rgb(255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
-                                               "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px; text-align:" \
-                                               "top, left; padding-left: 10px; padding-top: 5px;} QPushButton::hover{background-color: rgba(0, 0, 0, 150);}" \
+                                               "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\";" \
+                                               "background-color: rgba(0, 0, 0, 100); width: 50px; text-align:" \
+                                               "top, left; padding-left: 10px; padding-top: 5px;}" \
+                                               "QPushButton::hover{background-color: rgba(0, 0, 0, 150);}" \
                                                "QPushButton::pressed{background-color: rgba(0, 0, 0, 200);}"
 
 StyleSheetForButtonUnavailable = u"color: rgba(255, 255, 255, 100); border: 3px solid rgb(255, 255, 255);" \
                                  "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;"
 
 StyleSheetForButtonSelected = u"color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
-                              "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(17, 207, 0, 255); width: 50px; text-align:" \
+                              "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\";" \
+                              "background-color: rgba(17, 207, 0, 255); width: 50px; text-align:" \
                               "top, left; padding-left: 10px; padding-top: 5px;"
 
 
@@ -39,23 +43,23 @@ class Window(QMainWindow):
         super(Window, self).__init__()
         self.ui = Ui_Authorization()
         self.ui.setupUi(self)
-        self.data_User = {'ID': 0, 'Name': "", 'Surname': "", 'Surname2': "", 'Login': "", 'Password': "", 'SecretWord': "",
-                 'Role': ""}
-        #self.dataUser = {"ID": 0, "Name": "", "Surname": "", "Surname2": "", "Login": "", "Password": "", "SecretWord": "", "Role": ""}
+        self.data_User = {'ID': 0, 'Name': "", 'Surname': "", 'Surname2': "", 'Login': "", 'Password': "",
+                          'SecretWord': "",
+                          'Role': ""}
+        # self.dataUser = {"ID": 0, "Name": "", "Surname": "", "Surname2": "", "Login": "", "Password": "", "SecretWord": "", "Role": ""}
         QFontDatabase.addApplicationFont("Fonts\\ljk_Ambient-Medium.ttf")
         self.setCentralWidget(Window_Authorization(self.data_User, self.centralWidget()))
 
 
-
 class Window_Authorization(QMainWindow):
-    def __init__(self, data_User: dict,  parent):
+    def __init__(self, data_User: dict, parent):
         super(Window_Authorization, self).__init__(parent)
 
         self.ui = Ui_Authorization()
         self.ui.setupUi(self)
         self.data_User = data_User
 
-        #self.dataUser = {"ID": 0, "Name": "", "Surname": "", "Surname2": "", "Login": "", "Password": "", "SecretWord": "", "Role": ""}
+        # self.dataUser = {"ID": 0, "Name": "", "Surname": "", "Surname2": "", "Login": "", "Password": "", "SecretWord": "", "Role": ""}
 
         self.ui.IconFailLogin.setVisible(False)
         self.ui.IconFailPassword.setVisible(False)
@@ -73,7 +77,7 @@ class Window_Authorization(QMainWindow):
 
         a, b = check_login_password(login, password)
 
-        #print(output_ID(login, password))
+        # print(output_ID(login, password))
 
         if a == 0:
             self.ui.IconFailLogin.setVisible(True)
@@ -92,6 +96,7 @@ class Window_Authorization(QMainWindow):
 
     def pressed_button_problems_with_authorization(self):
         self.setCentralWidget(Window_RecoverPassword1(self.centralWidget(), self.data_User))
+
 
 class Window_Registration(QMainWindow):
     def __init__(self, parent, data_User: dict):
@@ -160,6 +165,8 @@ class Window_Registration(QMainWindow):
             self.ui.IconFailSecretWord.setVisible(False)
 
         if not (a or b or c or d or e or f):
+            ID = output_ID(login, password)
+            self.data_User = dataUser(ID)
             self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
 
@@ -192,7 +199,7 @@ class Window_MainWindow(QMainWindow):
             self.design_window()
 
     def pressed_button_speed_test(self):
-        if not(self.countAcceptTest or self.countAcceptSpeedTest):
+        if not (self.countAcceptTest or self.countAcceptSpeedTest):
             self.countAcceptSpeedTest = True
             self.design_window()
 
@@ -477,9 +484,8 @@ class Window_RecoverPassword1(QMainWindow):
             self.setCentralWidget(Window_RecoverPassword2(self.centralWidget(), self.data_User, id))
 
 
-
 class Window_RecoverPassword2(QMainWindow):
-    def __init__(self, parent, data_User: dict, id = None):
+    def __init__(self, parent, data_User: dict, id=None):
         super(Window_RecoverPassword2, self).__init__(parent)
         self.ui = Ui_RecoverPassword2()
         self.ui.setupUi(self)
@@ -516,8 +522,9 @@ class Window_Profile(QMainWindow):
         self.ui.ResultsTest.setTextInteractionFlags(Qt.TextInteractionFlag(False))
         self.ui.ResultsSpeedTest.setTextInteractionFlags(Qt.TextInteractionFlag(False))
 
-        self.ui.NameSurnameUser.setText(f"{self.data_User.get('Name')}\n{self.data_User.get('Surname')}\n{self.data_User.get('Surname2')}")
-        #print(f"sadasdasdasd {self.data_User['Name']}\n{self.data_User['Surname']}\n{self.data_User['Surname2']}")
+        self.ui.NameSurnameUser.setText(
+            f"{self.data_User.get('Name')}\n{self.data_User.get('Surname')}\n{self.data_User.get('Surname2')}")
+        # print(f"sadasdasdasd {self.data_User['Name']}\n{self.data_User['Surname']}\n{self.data_User['Surname2']}")
 
         self.ui.ButtonBack.clicked.connect(self.pressed_button_back)
         self.ui.ButtonChangePassword.clicked.connect(self.pressed_button_change_password)
