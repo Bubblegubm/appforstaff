@@ -1,7 +1,8 @@
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QTimer
 from PySide6.QtGui import Qt, QFontDatabase
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6 import QtWidgets
+import time
 
 from authorization import Ui_Authorization
 from registration import Ui_Registration
@@ -12,10 +13,11 @@ from recover_password_1 import Ui_RecoverPassword1
 from recover_password_2 import Ui_RecoverPassword2
 from change_password import Ui_ChangePassword
 from profile import Ui_Profile
+from speed_test import Ui_SpeedTest
 
 from functions import check_valid_input_registration, check_valid_password, check_login_password, output_ID, dataUser, \
     recoverPassword1, \
-    recoverPassword2
+    recoverPassword2, output_test, output_speed_test
 
 StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
                                "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;}" \
@@ -216,7 +218,7 @@ class Window_MainWindow(QMainWindow):
         if self.countAcceptTest:
             self.setCentralWidget(Window_Test(self.centralWidget(), self.data_User))
         if self.countAcceptSpeedTest:
-            return 1
+            self.setCentralWidget(Window_SpeedTest(self.centralWidget(), self.data_User))
 
     def design_window(self):
         if self.countAcceptTest:
@@ -262,7 +264,7 @@ class Window_Theory(QMainWindow):
         self.data_User = data_User
 
         self.current_page = 0
-        self.count_page = 5
+        self.count_page, self.dataTheory = 1, 1
 
         self.design_button_back()
         self.design_button_forward()
@@ -308,9 +310,11 @@ class Window_Theory(QMainWindow):
 
     def design_question(self):
         self.ui.Question.setTextInteractionFlags(Qt.TextInteractionFlag(False))
+        self.ui.Question.setText(self.dataTheory[self.current_page][0])
 
     def design_answer(self):
         self.ui.Answer.setTextInteractionFlags(Qt.TextInteractionFlag(False))
+        self.ui.Answer.setText(self.dataTheory[self.current_page][1])
 
 
 class Window_Test(QMainWindow):
@@ -321,7 +325,8 @@ class Window_Test(QMainWindow):
         self.data_User = data_User
 
         self.current_page = 0
-        self.count_page = 3
+        self.dataTest = output_test()
+        self.count_page = len(self.dataTest)
 
         self.array_answers = [[False for j in range(3)] for i in range(self.count_page)]
 
@@ -436,24 +441,31 @@ class Window_Test(QMainWindow):
 
     def design_question(self):
         self.ui.Question.setTextInteractionFlags(Qt.TextInteractionFlag(False))
+        self.ui.Question.setText(self.dataTest[self.current_page][0])
 
     def design_button_answer1(self):
         if (self.select_answer1):
             self.ui.ButtonAnswer1.setStyleSheet(StyleSheetForButtonSelected)
+            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][1])
         else:
             self.ui.ButtonAnswer1.setStyleSheet(StyleSheetForButtonAvailableForVariantAnswer)
+            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][1])
 
     def design_button_answer2(self):
         if (self.select_answer2):
             self.ui.ButtonAnswer2.setStyleSheet(StyleSheetForButtonSelected)
+            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][2])
         else:
             self.ui.ButtonAnswer2.setStyleSheet(StyleSheetForButtonAvailableForVariantAnswer)
+            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][2])
 
     def design_button_answer3(self):
         if (self.select_answer3):
             self.ui.ButtonAnswer3.setStyleSheet(StyleSheetForButtonSelected)
+            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][3])
         else:
             self.ui.ButtonAnswer3.setStyleSheet(StyleSheetForButtonAvailableForVariantAnswer)
+            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][3])
 
 
 class Window_RecoverPassword1(QMainWindow):
@@ -559,3 +571,183 @@ class Window_ChangePassword(QMainWindow):
             self.setCentralWidget(Window_Profile(self.centralWidget(), self.data_User))
         else:
             self.ui.IconFailPassword.setVisible(True)
+
+
+class Window_SpeedTest(QMainWindow):
+
+    def update_timer(self):
+        self.time += 1
+        self.design_timer()
+
+    def __init__(self, parent, data_User: dict):
+        super(Window_SpeedTest, self).__init__(parent)
+        self.ui = Ui_SpeedTest()
+        self.ui.setupUi(self)
+        self.data_User = data_User
+        self.time = 0
+
+        self.current_page = 0
+        self.dataTest = output_speed_test()
+        self.count_page = len(self.dataTest)
+
+        self.array_answers = [[False for j in range(3)] for i in range(self.count_page)]
+
+        self.select_answer1 = False
+        self.select_answer2 = False
+        self.select_answer3 = False
+
+        self.design_button_back()
+        self.design_button_forward()
+        self.design_progress_bar()
+        self.design_question()
+        self.design_button_answer1()
+        self.design_button_answer2()
+        self.design_button_answer3()
+
+        self.ui.ButtonBack.clicked.connect(self.pressed_button_back)
+        self.ui.ButtonForward.clicked.connect(self.pressed_button_forward)
+        self.ui.ButtonAnswer1.clicked.connect(self.pressed_button_answer1)
+        self.ui.ButtonAnswer2.clicked.connect(self.pressed_button_answer2)
+        self.ui.ButtonAnswer3.clicked.connect(self.pressed_button_answer3)
+
+        # Создание таймера
+        timer = QTimer()
+
+        # Установка интервала времени в миллисекундах
+        timer.setInterval(1000)
+
+        # Подключение обработчика события timeout
+        timer.timeout.connect(self.update_timer)
+
+    def pressed_button_forward(self):
+        if self.current_page < self.count_page: self.array_answers[self.current_page] = [self.select_answer1,
+                                                                                         self.select_answer2,
+                                                                                         self.select_answer3]
+
+        if (self.current_page < self.count_page) and (
+                self.select_answer1 or self.select_answer2 or self.select_answer3): self.current_page += 1
+
+        if self.current_page < self.count_page:
+            self.select_answer1 = self.array_answers[self.current_page][0]
+            self.select_answer2 = self.array_answers[self.current_page][1]
+            self.select_answer3 = self.array_answers[self.current_page][2]
+
+        self.design_button_answer1()
+        self.design_button_answer2()
+        self.design_button_answer3()
+
+        self.design_button_back()
+        self.design_button_forward()
+        self.design_progress_bar()
+
+        if self.current_page == self.count_page:
+            self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
+
+    def pressed_button_back(self):
+        if self.current_page < self.count_page: self.array_answers[self.current_page] = [self.select_answer1,
+                                                                                         self.select_answer2,
+                                                                                         self.select_answer3]
+        if self.current_page > 0: self.current_page -= 1
+
+        self.select_answer1 = self.array_answers[self.current_page][0]
+        self.select_answer2 = self.array_answers[self.current_page][1]
+        self.select_answer3 = self.array_answers[self.current_page][2]
+
+        self.design_button_answer1()
+        self.design_button_answer2()
+        self.design_button_answer3()
+        self.design_button_back()
+        self.design_button_forward()
+        self.design_progress_bar()
+
+    def pressed_button_answer1(self):
+        self.select_answer1 = True
+        self.select_answer2 = False
+        self.select_answer3 = False
+
+        self.design_button_answer1()
+        self.design_button_answer2()
+        self.design_button_answer3()
+        self.design_button_forward()
+
+    def pressed_button_answer2(self):
+        self.select_answer1 = False
+        self.select_answer2 = True
+        self.select_answer3 = False
+
+        self.design_button_answer1()
+        self.design_button_answer2()
+        self.design_button_answer3()
+        self.design_button_forward()
+
+    def pressed_button_answer3(self):
+        self.select_answer1 = False
+        self.select_answer2 = False
+        self.select_answer3 = True
+
+        self.design_button_answer1()
+        self.design_button_answer2()
+        self.design_button_answer3()
+        self.design_button_forward()
+
+    def design_button_back(self):
+        if self.current_page == 0:
+            self.ui.ButtonBack.setStyleSheet(StyleSheetForButtonUnavailable)
+        else:
+            self.ui.ButtonBack.setStyleSheet(StyleSheetForButtonAvailable)
+
+    def design_button_forward(self):  # need edit!
+        if self.current_page >= self.count_page - 1:
+            self.ui.ButtonForward.setText('Завершить')
+        else:
+            self.ui.ButtonForward.setText('Далее')
+
+        if (self.select_answer1 or self.select_answer2 or self.select_answer3) == False:
+            self.ui.ButtonForward.setStyleSheet(StyleSheetForButtonUnavailable)
+        else:
+            self.ui.ButtonForward.setStyleSheet(StyleSheetForButtonAvailable)
+
+    def design_progress_bar(self):
+        self.ui.ProgressBar.setValue(100 * round(self.current_page / self.count_page, 2))
+
+    def design_question(self):
+        self.ui.Question.setTextInteractionFlags(Qt.TextInteractionFlag(False))
+        self.ui.Question.setText(self.dataTest[self.current_page][0])
+
+    def design_button_answer1(self):
+        if (self.select_answer1):
+            self.ui.ButtonAnswer1.setStyleSheet(StyleSheetForButtonSelected)
+            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][1])
+        else:
+            self.ui.ButtonAnswer1.setStyleSheet(StyleSheetForButtonAvailableForVariantAnswer)
+            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][1])
+
+    def design_button_answer2(self):
+        if (self.select_answer2):
+            self.ui.ButtonAnswer2.setStyleSheet(StyleSheetForButtonSelected)
+            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][2])
+        else:
+            self.ui.ButtonAnswer2.setStyleSheet(StyleSheetForButtonAvailableForVariantAnswer)
+            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][2])
+
+    def design_button_answer3(self):
+        if (self.select_answer3):
+            self.ui.ButtonAnswer3.setStyleSheet(StyleSheetForButtonSelected)
+            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][3])
+        else:
+            self.ui.ButtonAnswer3.setStyleSheet(StyleSheetForButtonAvailableForVariantAnswer)
+            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][3])
+
+    def design_timer(self):
+        time_text = "00:00"
+        if ((self.time // 60) < 10):
+            time_text[1] = str(self.time // 60)
+        else:
+            time_text = str(self.time // 60) + ":00"
+
+        if ((self.time % 60) < 10):
+            time_text[4] = str(self.time % 60)
+        else:
+            time_text = time_text[:3] + str(self.time % 60)
+
+        self.ui.Timer.setText(time_text)
