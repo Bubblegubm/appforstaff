@@ -18,7 +18,7 @@ from speed_test import Ui_SpeedTest
 from functions import check_valid_input_registration, check_valid_password, check_login_password, output_ID, dataUser, \
     recoverPassword1, \
     recoverPassword2, output_test, output_speed_test, add_statistic_speed_test, update_statistic_speed_test, \
-    add_statistic_test, update_statistic_test
+    add_statistic_test, update_statistic_test, output_user_statistic
 
 StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
                                "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;}" \
@@ -533,6 +533,8 @@ class Window_Profile(QMainWindow):
         self.ui = Ui_Profile()
         self.ui.setupUi(self)
         self.data_User = data_User
+
+        output_user_statistic(1)
 
         self.ui.NameSurnameUser.setTextInteractionFlags(Qt.TextInteractionFlag(False))
         self.ui.ResultsTest.setTextInteractionFlags(Qt.TextInteractionFlag(False))
