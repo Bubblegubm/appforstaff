@@ -575,7 +575,6 @@ class Window_ChangePassword(QMainWindow):
 
 
 class Window_SpeedTest(QMainWindow):
-
     def __init__(self, parent, data_User: dict):
         super(Window_SpeedTest, self).__init__(parent)
         self.ui = Ui_SpeedTest()
@@ -623,6 +622,8 @@ class Window_SpeedTest(QMainWindow):
 
     def pressed_button_forward(self):
         if self.current_page == self.count_page - 1:
+            self.timer.stop()
+
             self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
         if self.current_page != self.count_page - 1:
