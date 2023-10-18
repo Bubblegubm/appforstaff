@@ -349,28 +349,29 @@ class Window_Test(QMainWindow):
         self.ui.ButtonAnswer3.clicked.connect(self.pressed_button_answer3)
 
     def pressed_button_forward(self):
-        if self.current_page == self.count_page:
+        if self.current_page == self.count_page - 1:
             self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
-        if self.current_page < self.count_page: self.array_answers[self.current_page] = [self.select_answer1,
-                                                                                         self.select_answer2,
-                                                                                         self.select_answer3]
+        if self.current_page != self.count_page - 1:
+            if self.current_page < self.count_page: self.array_answers[self.current_page] = [self.select_answer1,
+                                                                                             self.select_answer2,
+                                                                                             self.select_answer3]
 
-        if (self.current_page < self.count_page) and (
-                self.select_answer1 or self.select_answer2 or self.select_answer3): self.current_page += 1
+            if (self.current_page < self.count_page) and (
+                    self.select_answer1 or self.select_answer2 or self.select_answer3): self.current_page += 1
 
-        if self.current_page < self.count_page:
-            self.select_answer1 = self.array_answers[self.current_page][0]
-            self.select_answer2 = self.array_answers[self.current_page][1]
-            self.select_answer3 = self.array_answers[self.current_page][2]
+            if self.current_page < self.count_page:
+                self.select_answer1 = self.array_answers[self.current_page][0]
+                self.select_answer2 = self.array_answers[self.current_page][1]
+                self.select_answer3 = self.array_answers[self.current_page][2]
 
-        self.design_button_answer1()
-        self.design_button_answer2()
-        self.design_button_answer3()
+            self.design_button_answer1()
+            self.design_button_answer2()
+            self.design_button_answer3()
 
-        self.design_button_back()
-        self.design_button_forward()
-        self.design_progress_bar()
+            self.design_button_back()
+            self.design_button_forward()
+            self.design_progress_bar()
 
     def pressed_button_back(self):
         if self.current_page < self.count_page: self.array_answers[self.current_page] = [self.select_answer1,
@@ -575,10 +576,6 @@ class Window_ChangePassword(QMainWindow):
 
 class Window_SpeedTest(QMainWindow):
 
-    def update_timer(self):
-        self.time += 1
-        self.design_timer()
-
     def __init__(self, parent, data_User: dict):
         super(Window_SpeedTest, self).__init__(parent)
         self.ui = Ui_SpeedTest()
@@ -611,37 +608,43 @@ class Window_SpeedTest(QMainWindow):
         self.ui.ButtonAnswer3.clicked.connect(self.pressed_button_answer3)
 
         # Создание таймера
-        timer = QTimer()
-
+        self.timer = QTimer()
         # Установка интервала времени в миллисекундах
-        timer.setInterval(1000)
-
+        self.timer.setInterval(1000)
         # Подключение обработчика события timeout
-        timer.timeout.connect(self.update_timer)
+        self.timer.timeout.connect(self.update_timer)
+
+        self.timer.start()
+
+    def update_timer(self):
+        self.time += 1
+        # print(self.time)
+        self.design_timer()
 
     def pressed_button_forward(self):
-        if self.current_page == self.count_page:
+        if self.current_page == self.count_page - 1:
             self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
-        
-        if self.current_page < self.count_page: self.array_answers[self.current_page] = [self.select_answer1,
-                                                                                         self.select_answer2,
-                                                                                         self.select_answer3]
 
-        if (self.current_page < self.count_page) and (
-                self.select_answer1 or self.select_answer2 or self.select_answer3): self.current_page += 1
+        if self.current_page != self.count_page - 1:
+            if self.current_page < self.count_page: self.array_answers[self.current_page] = [self.select_answer1,
+                                                                                             self.select_answer2,
+                                                                                             self.select_answer3]
 
-        if self.current_page < self.count_page:
-            self.select_answer1 = self.array_answers[self.current_page][0]
-            self.select_answer2 = self.array_answers[self.current_page][1]
-            self.select_answer3 = self.array_answers[self.current_page][2]
+            if (self.current_page < self.count_page) and (
+                    self.select_answer1 or self.select_answer2 or self.select_answer3): self.current_page += 1
 
-        self.design_button_answer1()
-        self.design_button_answer2()
-        self.design_button_answer3()
+            if self.current_page < self.count_page:
+                self.select_answer1 = self.array_answers[self.current_page][0]
+                self.select_answer2 = self.array_answers[self.current_page][1]
+                self.select_answer3 = self.array_answers[self.current_page][2]
 
-        self.design_button_back()
-        self.design_button_forward()
-        self.design_progress_bar()
+            self.design_button_answer1()
+            self.design_button_answer2()
+            self.design_button_answer3()
+
+            self.design_button_back()
+            self.design_button_forward()
+            self.design_progress_bar()
 
     def pressed_button_back(self):
         if self.current_page < self.count_page: self.array_answers[self.current_page] = [self.select_answer1,
@@ -741,12 +744,12 @@ class Window_SpeedTest(QMainWindow):
     def design_timer(self):
         time_text = "00:00"
         if ((self.time // 60) < 10):
-            time_text[1] = str(self.time // 60)
+            time_text = "0" + str(self.time // 60) + ":00"
         else:
             time_text = str(self.time // 60) + ":00"
 
         if ((self.time % 60) < 10):
-            time_text[4] = str(self.time % 60)
+            time_text = time_text[:4] + str(self.time % 60)
         else:
             time_text = time_text[:3] + str(self.time % 60)
 
