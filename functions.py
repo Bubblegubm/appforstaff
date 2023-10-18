@@ -86,3 +86,9 @@ def recoverPassword1(name, surname, surname2, login, secret_word):
 
 def recoverPassword2(password, id):
     return conn.update_user_query(password, id)
+
+def output_test():
+    return conn.output_test_query()
+
+def output_speed_test():
+    return conn.output_speed_test_query()
