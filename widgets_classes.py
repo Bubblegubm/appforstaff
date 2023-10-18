@@ -454,18 +454,18 @@ class Window_Test(QMainWindow):
     def design_button_answer2(self):
         if (self.select_answer2):
             self.ui.ButtonAnswer2.setStyleSheet(StyleSheetForButtonSelected)
-            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][2])
+            self.ui.ButtonAnswer2.setText(self.dataTest[self.current_page][2])
         else:
             self.ui.ButtonAnswer2.setStyleSheet(StyleSheetForButtonAvailableForVariantAnswer)
-            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][2])
+            self.ui.ButtonAnswer2.setText(self.dataTest[self.current_page][2])
 
     def design_button_answer3(self):
         if (self.select_answer3):
             self.ui.ButtonAnswer3.setStyleSheet(StyleSheetForButtonSelected)
-            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][3])
+            self.ui.ButtonAnswer3.setText(self.dataTest[self.current_page][3])
         else:
             self.ui.ButtonAnswer3.setStyleSheet(StyleSheetForButtonAvailableForVariantAnswer)
-            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][3])
+            self.ui.ButtonAnswer3.setText(self.dataTest[self.current_page][3])
 
 
 class Window_RecoverPassword1(QMainWindow):
