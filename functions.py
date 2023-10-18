@@ -93,8 +93,17 @@ def output_test():
 def output_speed_test():
     return conn.output_speed_test_query()
 
+def add_statistic_test(score_test, user_id):
+    conn.add_statistic_test_query(score_test, user_id)
+
+def update_statistic_test(score_test, user_id):
+    conn.update_statistic_test_query(score_test, user_id)
+
 def add_statistic_speed_test(time, score_speed_test, user_id):
     conn.add_statistic_speed_test_query(time, score_speed_test, user_id)
 
 def update_statistic_speed_test(time, score_speed_test, user_id):
     conn.update_statistic_speed_test_query(time, score_speed_test, user_id)
+
+def output_user_statistic(ID):
+    conn.output_user_statistic(ID)

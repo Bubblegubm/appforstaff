@@ -21,7 +21,7 @@ class Data:
                    " Secret_word VARCHAR(30), Role BOOLEAN)")
 
         query.exec("CREATE TABLE IF NOT EXISTS statistics (ID integer primary key AUTOINCREMENT, "
-                   "Time REAL, Score_test REAL,, Score_speed_test REAL User_ID INTEGER)")
+                   "Time INTEGER, Score_test INTEGER, Score_speed_test INTEGER, User_ID INTEGER)")
 
         query.exec("CREATE TABLE IF NOT EXISTS theory (ID integer primary key AUTOINCREMENT, Question VARCHAR(200),"
                    "Answer VARCHAR(1000)")
@@ -49,7 +49,6 @@ class Data:
                            secret_word, role):
         sql_query = "INSERT INTO users (Name, Surname, Surname2, Login, Password, Secret_word, Role)" \
                     " VALUES (?, ?, ?, ?, ?, ?, ?)"
-        print(True)
         self.execute_query_with_params(sql_query, [name, surname, surname2, login, password, secret_word, role])
 
     def update_user_query(self, password, id):
@@ -110,14 +109,15 @@ class Data:
 
     def update_statistic_test_query(self, score_test, user_id):
         sql_query = "UPDATE statistics SET Score_test=? WHERE User_ID=?"
+        print(True)
         self.execute_query_with_params(sql_query, [score_test, user_id])
 
     def add_statistic_speed_test_query(self, time, score_speed_test, user_id):
-        sql_query = "INSERT INTO statistics (Time, Score_test, User_ID) VALUES (?, ?, ?)"
-        self.execute_query_with_params(sql_query, [time, score_speed_test, user_id])
+        sql_query = "INSERT INTO statistics (Time, Score_speed_test, User_ID) VALUES (?, ?, ?)"
+        self.execute_query_with_params(sql_query, [time,score_speed_test, user_id])
 
     def update_statistic_speed_test_query(self, time, score_speed_test, user_id):
-        sql_query = "UPDATE statistics SET Time=?, Score_test=? WHERE User_ID=?"
+        sql_query = "UPDATE statistics SET Time=?, Score_speed_test=? WHERE User_ID=?"
         self.execute_query_with_params(sql_query, [time, score_speed_test, user_id])
 
     def output_test_query(self):
@@ -139,3 +139,12 @@ class Data:
             array.append([sql_query.value(sql_quest), sql_query.value(sql_true), sql_query.value(sql_false1),
                           sql_query.value(sql_false2)])
         return array
+
+    def output_user_statistic(self, ID):
+        sql_query = QtSql.QSqlQuery()
+        sql_query.exec("SELECT Time, Score_test, Score_speed_test, User_ID FROM statistics")
+        sql_id, sql_time, sql_score_test, sql_score_speed_test = range(4)
+        while sql_query.next():
+            if sql_query.value(sql_id):
+                return [sql_query.value(sql_time), sql_query.value(sql_score_test),
+                        sql_query.value(sql_score_speed_test)]

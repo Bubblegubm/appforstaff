@@ -17,7 +17,8 @@ from speed_test import Ui_SpeedTest
 
 from functions import check_valid_input_registration, check_valid_password, check_login_password, output_ID, dataUser, \
     recoverPassword1, \
-    recoverPassword2, output_test, output_speed_test
+    recoverPassword2, output_test, output_speed_test, add_statistic_speed_test, update_statistic_speed_test, \
+    add_statistic_test, update_statistic_test
 
 StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
                                "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;}" \
@@ -350,6 +351,8 @@ class Window_Test(QMainWindow):
 
     def pressed_button_forward(self):
         if self.current_page == self.count_page - 1:
+            #add_statistic_test(score_test=4, user_id=1)
+            #update_statistic_test(score_test=4, user_id=1)
             self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
         if self.current_page != self.count_page - 1:
@@ -623,6 +626,8 @@ class Window_SpeedTest(QMainWindow):
     def pressed_button_forward(self):
         if self.current_page == self.count_page - 1:
             self.timer.stop()
+            #add_statistic_speed_test(time=14, score_speed_test=14, user_id=1)
+            #update_statistic_speed_test(time=20, score_speed_test=10, user_id=1)
 
             self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
