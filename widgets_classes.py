@@ -349,6 +349,9 @@ class Window_Test(QMainWindow):
         self.ui.ButtonAnswer3.clicked.connect(self.pressed_button_answer3)
 
     def pressed_button_forward(self):
+        if self.current_page == self.count_page:
+            self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
+
         if self.current_page < self.count_page: self.array_answers[self.current_page] = [self.select_answer1,
                                                                                          self.select_answer2,
                                                                                          self.select_answer3]
@@ -368,9 +371,6 @@ class Window_Test(QMainWindow):
         self.design_button_back()
         self.design_button_forward()
         self.design_progress_bar()
-
-        if self.current_page == self.count_page:
-            self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
     def pressed_button_back(self):
         if self.current_page < self.count_page: self.array_answers[self.current_page] = [self.select_answer1,
@@ -620,6 +620,9 @@ class Window_SpeedTest(QMainWindow):
         timer.timeout.connect(self.update_timer)
 
     def pressed_button_forward(self):
+        if self.current_page == self.count_page:
+            self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
+        
         if self.current_page < self.count_page: self.array_answers[self.current_page] = [self.select_answer1,
                                                                                          self.select_answer2,
                                                                                          self.select_answer3]
@@ -639,9 +642,6 @@ class Window_SpeedTest(QMainWindow):
         self.design_button_back()
         self.design_button_forward()
         self.design_progress_bar()
-
-        if self.current_page == self.count_page:
-            self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
     def pressed_button_back(self):
         if self.current_page < self.count_page: self.array_answers[self.current_page] = [self.select_answer1,
@@ -725,18 +725,18 @@ class Window_SpeedTest(QMainWindow):
     def design_button_answer2(self):
         if (self.select_answer2):
             self.ui.ButtonAnswer2.setStyleSheet(StyleSheetForButtonSelected)
-            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][2])
+            self.ui.ButtonAnswer2.setText(self.dataTest[self.current_page][2])
         else:
             self.ui.ButtonAnswer2.setStyleSheet(StyleSheetForButtonAvailableForVariantAnswer)
-            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][2])
+            self.ui.ButtonAnswer2.setText(self.dataTest[self.current_page][2])
 
     def design_button_answer3(self):
         if (self.select_answer3):
             self.ui.ButtonAnswer3.setStyleSheet(StyleSheetForButtonSelected)
-            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][3])
+            self.ui.ButtonAnswer3.setText(self.dataTest[self.current_page][3])
         else:
             self.ui.ButtonAnswer3.setStyleSheet(StyleSheetForButtonAvailableForVariantAnswer)
-            self.ui.ButtonAnswer1.setText(self.dataTest[self.current_page][3])
+            self.ui.ButtonAnswer3.setText(self.dataTest[self.current_page][3])
 
     def design_timer(self):
         time_text = "00:00"
