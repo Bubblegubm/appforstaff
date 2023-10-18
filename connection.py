@@ -120,4 +120,22 @@ class Data:
         sql_query = "UPDATE statistics SET Time=?, Score_test=? WHERE User_ID=?"
         self.execute_query_with_params(sql_query, [time, score_speed_test, user_id])
 
+    def output_test_query(self):
+        sql_query = QtSql.QSqlQuery()
+        sql_query.exec("SELECT Question, True_answer, False_answer, Second_false_answer FROM test")
+        sql_quest, sql_true, sql_false1, sql_false2 = range(4)
+        array = []
+        while sql_query.next():
+            array.append([sql_query.value(sql_quest), sql_query.value(sql_true), sql_query.value(sql_false1),
+                          sql_query.value(sql_false2)])
+        return array
 
+    def output_speed_test_query(self):
+        sql_query = QtSql.QSqlQuery()
+        sql_query.exec("SELECT Question, True_answer, False_answer, Second_false_answer FROM speed_test")
+        sql_quest, sql_true, sql_false1, sql_false2 = range(4)
+        array = []
+        while sql_query.next():
+            array.append([sql_query.value(sql_quest), sql_query.value(sql_true), sql_query.value(sql_false1),
+                          sql_query.value(sql_false2)])
+        return array
