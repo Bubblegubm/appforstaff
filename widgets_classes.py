@@ -19,7 +19,8 @@ from speed_test import Ui_SpeedTest
 
 from functions import check_valid_input_registration, check_valid_password, check_login_password, output_ID, dataUser, \
     recoverPassword1, recoverPassword2, output_test, output_speed_test, add_statistic_test, \
-    output_user_statistic, shuffle_answers, get_number_of_questions, update_statistic_test, update_statistic_speed_test
+    output_user_statistic, shuffle_answers, get_number_of_questions, update_statistic_test, update_statistic_speed_test, \
+    output_theory
 
 StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
                                "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;}" \
@@ -267,7 +268,8 @@ class Window_Theory(QMainWindow):
         self.data_User = data_User
 
         self.current_page = 0
-        self.count_page, self.dataTheory = 1, 1
+        self.dataTheory = output_theory()
+        self.count_page = len(self.dataTheory)
 
         self.design_button_back()
         self.design_button_forward()
@@ -280,18 +282,24 @@ class Window_Theory(QMainWindow):
         self.ui.ButtonExit.clicked.connect(self.pressed_button_exit)
 
     def pressed_button_forward(self):
-        if self.current_page < self.count_page: self.current_page += 1
-        self.design_button_back()
-        self.design_button_forward()
-        self.design_progress_bar()
-        if self.current_page == self.count_page:
+        if self.current_page == self.count_page - 1:
             self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
+
+        if self.current_page < self.count_page - 1:
+            self.current_page += 1
+            self.design_button_back()
+            self.design_button_forward()
+            self.design_progress_bar()
+            self.design_question()
+            self.design_answer()
 
     def pressed_button_back(self):
         if self.current_page > 0: self.current_page -= 1
         self.design_button_back()
         self.design_button_forward()
         self.design_progress_bar()
+        self.design_question()
+        self.design_answer()
 
     def pressed_button_exit(self):
         self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
