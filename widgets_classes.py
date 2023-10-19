@@ -19,7 +19,7 @@ from speed_test import Ui_SpeedTest
 
 from functions import check_valid_input_registration, check_valid_password, check_login_password, output_ID, dataUser, \
     recoverPassword1, recoverPassword2, output_test, output_speed_test, add_statistic_test, add_statistic_speed_test, \
-    output_user_statistic
+    output_user_statistic, shuffle_answers, get_number_of_questions
 
 StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
                                "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;}" \
@@ -327,7 +327,7 @@ class Window_Test(QMainWindow):
         self.data_User = data_User
 
         self.current_page = 0
-        self.dataTest, self.trueAnswers = output_test()
+        self.dataTest, self.trueAnswers = shuffle_answers(output_test())
         self.count_page = len(self.dataTest)
         self.count_true_answers = 0
 
@@ -373,6 +373,7 @@ class Window_Test(QMainWindow):
                 self.select_answer2 = self.array_answers[self.current_page][1]
                 self.select_answer3 = self.array_answers[self.current_page][2]
 
+            self.design_question()
             self.design_button_answer1()
             self.design_button_answer2()
             self.design_button_answer3()
@@ -391,6 +392,7 @@ class Window_Test(QMainWindow):
         self.select_answer2 = self.array_answers[self.current_page][1]
         self.select_answer3 = self.array_answers[self.current_page][2]
 
+        self.design_question()
         self.design_button_answer1()
         self.design_button_answer2()
         self.design_button_answer3()
@@ -547,9 +549,9 @@ class Window_Profile(QMainWindow):
         self.ui.NameSurnameUser.setText(
             f"{self.data_User.get('Name')}\n{self.data_User.get('Surname')}\n{self.data_User.get('Surname2')}")
         self.ui.ResultsTest.setText(
-            f"Результаты теста:\n{self.statistic_user[1]} из 20 правильных\nответов")
+            f"Результаты теста:\n{self.statistic_user[1]} из {get_number_of_questions(output_test())} правильных\nответов")
         self.ui.ResultsSpeedTest.setText(
-            f"Результаты скоростного\nтеста:\n{self.statistic_user[2]} из 20 правильных\nответов\n"
+            f"Результаты скоростного\nтеста:\n{self.statistic_user[2]} из {get_number_of_questions(output_speed_test())} правильных\nответов\n"
             f"Пройден за {self.statistic_user[0] // 60} мин. {self.statistic_user[0] % 60} с.")
         # print(f"sadasdasdasd {self.data_User['Name']}\n{self.data_User['Surname']}\n{self.data_User['Surname2']}")
 
@@ -597,7 +599,7 @@ class Window_SpeedTest(QMainWindow):
         self.time = 0
 
         self.current_page = 0
-        self.dataTest, self.trueAnswers = output_speed_test()
+        self.dataTest, self.trueAnswers = shuffle_answers(output_speed_test())
         self.count_page = len(self.dataTest)
         self.count_true_answers = 0
 
@@ -658,6 +660,7 @@ class Window_SpeedTest(QMainWindow):
                 self.select_answer2 = self.array_answers[self.current_page][1]
                 self.select_answer3 = self.array_answers[self.current_page][2]
 
+            self.design_question()
             self.design_button_answer1()
             self.design_button_answer2()
             self.design_button_answer3()
