@@ -548,7 +548,7 @@ class Window_Profile(QMainWindow):
             f"{self.data_User.get('Name')}\n{self.data_User.get('Surname')}\n{self.data_User.get('Surname2')}")
         self.ui.ResultsTest.setText(
             f"Результаты теста:\n{self.statistic_user[1]} из 20 правильных\nответов")
-        self.ui.ResultsTest.setText(
+        self.ui.ResultsSpeedTest.setText(
             f"Результаты скоростного\nтеста:\n{self.statistic_user[2]} из 20 правильных\nответов\n"
             f"Пройден за {self.statistic_user[0] // 60} мин. {self.statistic_user[0] % 60} с.")
         # print(f"sadasdasdasd {self.data_User['Name']}\n{self.data_User['Surname']}\n{self.data_User['Surname2']}")

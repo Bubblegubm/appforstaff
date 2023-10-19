@@ -54,13 +54,13 @@
                         &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ambient(RUS BY LYAJKA)';
                         font-size:26pt; font-weight:400; font-style:normal;&quot;&gt;
                         &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;
-                        -qt-block-indent:0; text-indent:0px;&quot;&gt;1 строчка вопроса&lt;/p&gt;
+                        -qt-block-indent:0; text-indent:0px;&quot;&gt;1 строчка вопроса &lt;/p&gt;
                         &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;
-                        -qt-block-indent:0; text-indent:0px;&quot;&gt;2 строчка вопроса&lt;/p&gt;
+                        -qt-block-indent:0; text-indent:0px;&quot;&gt;2 строчка вопроса &lt;/p&gt;
                         &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;
-                        -qt-block-indent:0; text-indent:0px;&quot;&gt;3 строчка вопроса&lt;/p&gt;
+                        -qt-block-indent:0; text-indent:0px;&quot;&gt;3 строчка вопроса &lt;/p&gt;
                         &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px;
-                        -qt-block-indent:0; text-indent:0px;&quot;&gt;4 строчка вопроса&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
+                        -qt-block-indent:0; text-indent:0px;&quot;&gt;4 строчка вопроса &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;
                     </string>
                 </property>
             </widget>
