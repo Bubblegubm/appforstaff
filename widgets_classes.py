@@ -18,8 +18,8 @@ from profile import Ui_Profile
 from speed_test import Ui_SpeedTest
 
 from functions import check_valid_input_registration, check_valid_password, check_login_password, output_ID, dataUser, \
-    recoverPassword1, recoverPassword2, output_test, output_speed_test, add_statistic_test, add_statistic_speed_test, \
-    output_user_statistic, shuffle_answers, get_number_of_questions
+    recoverPassword1, recoverPassword2, output_test, output_speed_test, add_statistic_test, \
+    output_user_statistic, shuffle_answers, get_number_of_questions, update_statistic_test, update_statistic_speed_test
 
 StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
                                "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;}" \
@@ -171,6 +171,7 @@ class Window_Registration(QMainWindow):
         if not (a or b or c or d or e or f):
             ID = output_ID(login, password)
             self.data_User = dataUser(ID)
+            add_statistic_test(0, 0, 0, self.data_User.get('ID'))
             self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
 
@@ -357,7 +358,7 @@ class Window_Test(QMainWindow):
                 if functools.reduce(lambda x, y: x and y, map(lambda p, q: p == q, self.array_answers[i],
                                                               self.trueAnswers[i]), True):
                     self.count_true_answers += 1
-            add_statistic_test(self.count_true_answers, self.data_User.get('ID'))
+            update_statistic_test(self.count_true_answers, self.data_User.get('ID'))
             self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
         if self.current_page != self.count_page - 1:
@@ -644,7 +645,7 @@ class Window_SpeedTest(QMainWindow):
                 if functools.reduce(lambda x, y: x and y, map(lambda p, q: p == q, self.array_answers[i],
                                                               self.trueAnswers[i]), True):
                     self.count_true_answers += 1
-            add_statistic_speed_test(self.time, self.count_true_answers, self.data_User.get('ID'))
+            update_statistic_speed_test(self.time, self.count_true_answers, self.data_User.get('ID'))
             self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
         if self.current_page != self.count_page - 1:
