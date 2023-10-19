@@ -103,18 +103,13 @@ class Data:
                 return sql_query.value(sql_id)
         return -1
 
-    def add_statistic_test_query(self, score_test, user_id):
-        sql_query = "INSERT INTO statistics (Score_test, User_ID) VALUES (?, ?)"
-        self.execute_query_with_params(sql_query, [score_test, user_id])
+    def add_statistic_test_query(self, time, score_test, score_speed_test, user_id):
+        sql_query = "INSERT INTO statistics (Time, Score_test, Score_speed_test, User_ID) VALUES (?, ?, ?, ?)"
+        self.execute_query_with_params(sql_query, [time, score_test, score_speed_test, user_id])
 
     def update_statistic_test_query(self, score_test, user_id):
         sql_query = "UPDATE statistics SET Score_test=? WHERE User_ID=?"
-        print(True)
         self.execute_query_with_params(sql_query, [score_test, user_id])
-
-    def add_statistic_speed_test_query(self, time, score_speed_test, user_id):
-        sql_query = "INSERT INTO statistics (Time, Score_speed_test, User_ID) VALUES (?, ?, ?)"
-        self.execute_query_with_params(sql_query, [time,score_speed_test, user_id])
 
     def update_statistic_speed_test_query(self, time, score_speed_test, user_id):
         sql_query = "UPDATE statistics SET Time=?, Score_speed_test=? WHERE User_ID=?"
