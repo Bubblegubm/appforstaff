@@ -3,6 +3,7 @@ import PySide6
 from PySide6.QtWidgets import QApplication, QMainWindow
 from connection import Data
 import re
+import random
 
 conn = Data()
 
@@ -119,3 +120,25 @@ def update_statistic_speed_test(time, score_speed_test, user_id):
 
 def output_user_statistic(ID):
     return conn.output_user_statistic(ID)
+
+
+def shuffle_answers(array):
+    questions_with_shuffled_answers = []
+    correctness_array = []
+
+    for item in array:
+        question, true_answer, false1, false2 = item
+
+        answers = [true_answer, false1, false2]
+        shuffled_answers = answers.copy()
+        random.shuffle(shuffled_answers)
+
+        correctness = [answer == true_answer for answer in shuffled_answers]
+
+        questions_with_shuffled_answers.append([question] + shuffled_answers)
+        correctness_array.append(correctness)
+
+    return questions_with_shuffled_answers, correctness_array
+
+def get_number_of_questions(array):
+    return len(array)
