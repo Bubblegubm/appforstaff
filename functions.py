@@ -138,3 +138,6 @@ def shuffle_answers(array):
 
 def get_number_of_questions(array):
     return len(array)
+
+def output_theory():
+    return conn.output_theory_query()

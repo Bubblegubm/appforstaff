@@ -143,3 +143,12 @@ class Data:
             if sql_query.value(sql_id) == ID:
                 return [sql_query.value(sql_time), sql_query.value(sql_score_test), \
                         sql_query.value(sql_score_speed_test)]
+
+    def output_theory_query(self):
+        sql_query = QtSql.QSqlQuery()
+        sql_query.exec("SELECT Question, Answer FROM theory")
+        sql_quest, sql_answer = range(2)
+        array = []
+        while sql_query.next():
+            array.append([sql_query.value(sql_quest), sql_query.value(sql_answer)])
+        return array
