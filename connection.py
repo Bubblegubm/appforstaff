@@ -24,7 +24,7 @@ class Data:
                    "Time INTEGER, Score_test INTEGER, Score_speed_test INTEGER, User_ID INTEGER)")
 
         query.exec("CREATE TABLE IF NOT EXISTS theory (ID integer primary key AUTOINCREMENT, Question VARCHAR(200),"
-                   "Answer VARCHAR(1000)")
+                   "Answer VARCHAR(1000))")
 
         query.exec("CREATE TABLE IF NOT EXISTS test (ID integer primary key AUTOINCREMENT, Question VARCHAR(200),"
                    "True_answer VARCHAR(1000), False_answer VARCHAR(1000), Second_false_answer VARCHAR(1000))")
