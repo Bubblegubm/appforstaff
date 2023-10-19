@@ -1,3 +1,5 @@
+import functools
+
 from PySide6.QtCore import Qt, QTimer
 from PySide6.QtGui import Qt, QFontDatabase
 from PySide6.QtWidgets import QApplication, QMainWindow
@@ -16,9 +18,8 @@ from profile import Ui_Profile
 from speed_test import Ui_SpeedTest
 
 from functions import check_valid_input_registration, check_valid_password, check_login_password, output_ID, dataUser, \
-    recoverPassword1, \
-    recoverPassword2, output_test, output_speed_test, add_statistic_speed_test, update_statistic_speed_test, \
-    add_statistic_test, update_statistic_test, output_user_statistic
+    recoverPassword1, recoverPassword2, output_test, output_speed_test, add_statistic_test, add_statistic_speed_test, \
+    output_user_statistic
 
 StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
                                "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;}" \
@@ -326,8 +327,9 @@ class Window_Test(QMainWindow):
         self.data_User = data_User
 
         self.current_page = 0
-        self.dataTest = output_test()
+        self.dataTest, self.trueAnswers = output_test()
         self.count_page = len(self.dataTest)
+        self.count_true_answers = 0
 
         self.array_answers = [[False for j in range(3)] for i in range(self.count_page)]
 
@@ -351,8 +353,11 @@ class Window_Test(QMainWindow):
 
     def pressed_button_forward(self):
         if self.current_page == self.count_page - 1:
-            #add_statistic_test(score_test=4, user_id=1)
-            #update_statistic_test(score_test=4, user_id=1)
+            for i in range(0, self.count_page):
+                if functools.reduce(lambda x, y: x and y, map(lambda p, q: p == q, self.array_answers[i],
+                                                              self.trueAnswers[i]), True):
+                    self.count_true_answers += 1
+            add_statistic_test(self.count_true_answers, self.data_User.get('ID'))
             self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
         if self.current_page != self.count_page - 1:
@@ -533,8 +538,7 @@ class Window_Profile(QMainWindow):
         self.ui = Ui_Profile()
         self.ui.setupUi(self)
         self.data_User = data_User
-
-        output_user_statistic(1)
+        self.statistic_user = output_user_statistic(self.data_User.get('ID'))
 
         self.ui.NameSurnameUser.setTextInteractionFlags(Qt.TextInteractionFlag(False))
         self.ui.ResultsTest.setTextInteractionFlags(Qt.TextInteractionFlag(False))
@@ -542,6 +546,11 @@ class Window_Profile(QMainWindow):
 
         self.ui.NameSurnameUser.setText(
             f"{self.data_User.get('Name')}\n{self.data_User.get('Surname')}\n{self.data_User.get('Surname2')}")
+        self.ui.ResultsTest.setText(
+            f"Результаты теста:\n{self.statistic_user[1]} из 20 правильных\nответов")
+        self.ui.ResultsTest.setText(
+            f"Результаты скоростного\nтеста:\n{self.statistic_user[2]} из 20 правильных\nответов\n"
+            f"Пройден за {self.statistic_user[0] // 60} мин. {self.statistic_user[0] % 60} с.")
         # print(f"sadasdasdasd {self.data_User['Name']}\n{self.data_User['Surname']}\n{self.data_User['Surname2']}")
 
         self.ui.ButtonBack.clicked.connect(self.pressed_button_back)
@@ -588,8 +597,9 @@ class Window_SpeedTest(QMainWindow):
         self.time = 0
 
         self.current_page = 0
-        self.dataTest = output_speed_test()
+        self.dataTest, self.trueAnswers = output_speed_test()
         self.count_page = len(self.dataTest)
+        self.count_true_answers = 0
 
         self.array_answers = [[False for j in range(3)] for i in range(self.count_page)]
 
@@ -628,9 +638,11 @@ class Window_SpeedTest(QMainWindow):
     def pressed_button_forward(self):
         if self.current_page == self.count_page - 1:
             self.timer.stop()
-            #add_statistic_speed_test(time=14, score_speed_test=14, user_id=1)
-            #update_statistic_speed_test(time=20, score_speed_test=10, user_id=1)
-
+            for i in range(0, self.count_page):
+                if functools.reduce(lambda x, y: x and y, map(lambda p, q: p == q, self.array_answers[i],
+                                                              self.trueAnswers[i]), True):
+                    self.count_true_answers += 1
+            add_statistic_speed_test(self.time, self.count_true_answers, self.data_User.get('ID'))
             self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
         if self.current_page != self.count_page - 1:
