@@ -77,7 +77,7 @@ def check_valid_input_registration(surname, name, surname2, login, password, sec
         F = 1
 
     if A == 0 and B == 0 and C == 0 and D == 0 and E == 0 and F == 0:
-        conn.add_new_user_query(name, surname, surname2, login, password, secret_word, 1)
+        conn.add_new_user_query(name, surname, surname2, login, password, secret_word, 0)
 
     return A, B, C, D, E, F
 
@@ -136,8 +136,10 @@ def shuffle_answers(array):
 
     return questions_with_shuffled_answers, correctness_array
 
+
 def get_number_of_questions(array):
     return len(array)
+
 
 def output_theory():
     return conn.output_theory_query()

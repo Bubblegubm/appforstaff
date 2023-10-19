@@ -137,11 +137,11 @@ class Data:
 
     def output_user_statistic(self, ID):
         sql_query = QtSql.QSqlQuery()
-        sql_query.exec("SELECT ID, Time, Score_test, Score_speed_test FROM statistics")
-        sql_id, sql_time, sql_score_test, sql_score_speed_test = range(4)
+        sql_query.exec("SELECT Time, Score_test, Score_speed_test, User_ID FROM statistics")
+        sql_time, sql_score_test, sql_score_speed_test, sql_id = range(4)
         while sql_query.next():
             if sql_query.value(sql_id) == ID:
-                return [sql_query.value(sql_time), sql_query.value(sql_score_test), \
+                return [sql_query.value(sql_time), sql_query.value(sql_score_test),
                         sql_query.value(sql_score_speed_test)]
 
     def output_theory_query(self):

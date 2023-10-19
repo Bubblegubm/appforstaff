@@ -170,8 +170,7 @@ class Window_Registration(QMainWindow):
             self.ui.IconFailSecretWord.setVisible(False)
 
         if not (a or b or c or d or e or f):
-            ID = output_ID(login, password)
-            self.data_User = dataUser(ID)
+            self.data_User = dataUser(output_ID(login, password))
             add_statistic_test(0, 0, 0, self.data_User.get('ID'))
             self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
