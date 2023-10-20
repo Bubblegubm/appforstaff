@@ -112,7 +112,7 @@ class Data:
             decrypted_password = self.Decrypt_password(sql_query.value(sql_password), sql_query.value(sql_crypt_key))
             if (sql_query.value(sql_name) == name) and (sql_query.value(sql_surname) == surname) \
                     and (sql_query.value(sql_surname2) == surname2) and (sql_query.value(sql_login) == login) \
-                    and (sql_query.value(sql_secret_word) == secret_word) and (decrypted_password == password):
+                    and (sql_query.value(sql_secret_word) == secret_word):
                 return sql_query.value(sql_id)
         return -1
 
