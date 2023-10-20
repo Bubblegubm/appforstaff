@@ -1,4 +1,6 @@
 from PySide6 import QtWidgets, QtSql
+from cryptography.fernet import Fernet
+
 
 
 class Data:
@@ -17,8 +19,8 @@ class Data:
 
         query = QtSql.QSqlQuery()
         query.exec("CREATE TABLE IF NOT EXISTS users (ID integer primary key AUTOINCREMENT, Name VARCHAR(20), "
-                   "Surname VARCHAR(30), Surname2 VARCHAR(30), Login VARCHAR(30), Password VARCHAR(30),"
-                   " Secret_word VARCHAR(30), Role BOOLEAN)")
+                   "Surname VARCHAR(30), Surname2 VARCHAR(30), Login VARCHAR(30), Password VARCHAR(1000),"
+                   " Secret_word VARCHAR(30), Role BOOLEAN, Crypt_key VARCHAR(1000))")
 
         query.exec("CREATE TABLE IF NOT EXISTS statistics (ID integer primary key AUTOINCREMENT, "
                    "Time INTEGER, Score_test INTEGER, Score_speed_test INTEGER, User_ID INTEGER)")
@@ -45,15 +47,20 @@ class Data:
         query.exec()
         return query
 
-    def add_new_user_query(self, name, surname, surname2, login, password,
-                           secret_word, role):
-        sql_query = "INSERT INTO users (Name, Surname, Surname2, Login, Password, Secret_word, Role)" \
-                    " VALUES (?, ?, ?, ?, ?, ?, ?)"
-        self.execute_query_with_params(sql_query, [name, surname, surname2, login, password, secret_word, role])
+    def add_new_user_query(self, name, surname, surname2, login, password, secret_word, role):
+        crypt_key = Fernet.generate_key().decode('utf-8')
+        encrypted_password = self.Crypt_password(password, crypt_key)
+        sql_query = "INSERT INTO users (Name, Surname, Surname2, Login, Password, Secret_word, Role, Crypt_key)" \
+                    " VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+        self.execute_query_with_params(sql_query,
+                                       [name, surname, surname2, login, encrypted_password, secret_word, role,
+                                        crypt_key])
 
     def update_user_query(self, password, id):
+        crypt_key = self.get_crypt_key(id)
+        encrypted_password = self.Crypt_password(password, crypt_key)
         sql_query = "UPDATE users SET Password=? WHERE ID=?"
-        self.execute_query_with_params(sql_query, [password, id])
+        self.execute_query_with_params(sql_query, [encrypted_password, id])
 
     def delete_user_query(self, id):
         sql_query = "DELETE FROM users WHERE ID=?"
@@ -61,45 +68,51 @@ class Data:
 
     def output_login_password_query(self, login, password):
         sql_query = QtSql.QSqlQuery()
-        sql_query.exec("SELECT Login, Password FROM users")
-        sql_login, sql_password = range(2)
+        sql_query.exec("SELECT Login, Password, Crypt_key FROM users")
+        sql_login, sql_password, sql_crypt_key = range(3)
 
         while sql_query.next():
-            if sql_query.value(sql_login) == login and sql_query.value(sql_password) == password:
+            decrypted_password = self.Decrypt_password(sql_query.value(sql_password), sql_query.value(sql_crypt_key))
+            if sql_query.value(sql_login) == login and decrypted_password == password:
                 return True, True
-            elif sql_query.value(sql_login) == login and sql_query.value(sql_password) != password:
+            elif sql_query.value(sql_login) == login and decrypted_password != password:
                 return True, False
 
         return False, False
 
     def output_ID(self, login, password):
         sql_query = QtSql.QSqlQuery()
-        sql_query.exec("SELECT ID, Login, Password FROM users")
-        sql_id, sql_login, sql_password = range(3)
+        sql_query.exec("SELECT ID, Login, Password, Crypt_key FROM users")
+        sql_id, sql_login, sql_password, sql_crypt_key = range(4)
 
         while sql_query.next():
-            if sql_query.value(sql_login) == login and sql_query.value(sql_password) == password:
+            decrypted_password = self.Decrypt_password(sql_query.value(sql_password), sql_query.value(sql_crypt_key))
+            if sql_query.value(sql_login) == login and decrypted_password == password:
                 return sql_query.value(sql_id)
 
     def dataUser(self, ID):
         sql_query = QtSql.QSqlQuery()
-        sql_query.exec("SELECT ID, Name, Surname, Surname2, Login, Password, Secret_word, Role FROM users")
-        sql_id, sql_name, sql_surname, sql_surname2, sql_login, sql_password, sql_secret_word, sql_role = range(8)
+        sql_query.exec("SELECT ID, Name, Surname, Surname2, Login, Password, Secret_word, Role, Crypt_key FROM users")
+        sql_id, sql_name, sql_surname, sql_surname2, sql_login, sql_password, sql_secret_word, sql_role, sql_crypt_key = range(
+            9)
         while sql_query.next():
             if ID == sql_query.value(sql_id):
+                decrypted_password = self.Decrypt_password(sql_query.value(sql_password),
+                                                           sql_query.value(sql_crypt_key))
                 return {'ID': sql_query.value(sql_id), 'Name': sql_query.value(sql_name),
                         'Surname': sql_query.value(sql_surname), 'Surname2': sql_query.value(sql_surname2),
-                        'Login': sql_query.value(sql_login), 'Password': sql_query.value(sql_password),
+                        'Login': sql_query.value(sql_login), 'Password': decrypted_password,
                         'SecretWord': sql_query.value(sql_secret_word), 'Role': sql_query.value(sql_role)}
 
     def recoverPassword1(self, name, surname, surname2, login, secret_word):
         sql_query = QtSql.QSqlQuery()
-        sql_query.exec("SELECT ID, Name, Surname, Surname2, Login, Secret_word FROM users")
-        sql_id, sql_name, sql_surname, sql_surname2, sql_login, sql_secret_word = range(6)
+        sql_query.exec("SELECT ID, Name, Surname, Surname2, Login, Secret_word, Password, Crypt_key FROM users")
+        sql_id, sql_name, sql_surname, sql_surname2, sql_login, sql_secret_word, sql_password, sql_crypt_key = range(8)
         while sql_query.next():
+            decrypted_password = self.Decrypt_password(sql_query.value(sql_password), sql_query.value(sql_crypt_key))
             if (sql_query.value(sql_name) == name) and (sql_query.value(sql_surname) == surname) \
                     and (sql_query.value(sql_surname2) == surname2) and (sql_query.value(sql_login) == login) \
-                    and (sql_query.value(sql_secret_word) == secret_word):
+                    and (sql_query.value(sql_secret_word) == secret_word) and (decrypted_password == password):
                 return sql_query.value(sql_id)
         return -1
 
@@ -152,3 +165,26 @@ class Data:
         while sql_query.next():
             array.append([sql_query.value(sql_quest), sql_query.value(sql_answer)])
         return array
+
+    def get_crypt_key(self, user_id):
+        sql_query = QtSql.QSqlQuery()
+        sql_query.prepare("SELECT Crypt_key FROM users WHERE ID=?")
+        sql_query.addBindValue(user_id)
+        sql_query.exec()
+
+        if sql_query.next():
+            key = sql_query.value(0)
+            return key
+        else:
+            return None
+
+    def Crypt_password(self, password, crypt_key):
+        cipher = Fernet(crypt_key.encode('utf-8'))
+        crypt_password = cipher.encrypt(password.encode('utf-8'))
+        return crypt_password.decode('utf-8')
+
+    def Decrypt_password(self, password, crypt_key):
+
+        cipher = Fernet(crypt_key.encode('utf-8'))
+        decrypt_password = cipher.decrypt(password.encode('utf-8'))
+        return decrypt_password.decode('utf-8')

@@ -7,7 +7,6 @@ import random
 
 conn = Data()
 
-
 def check_login_password(login, password):
     return conn.output_login_password_query(login, password)
 
