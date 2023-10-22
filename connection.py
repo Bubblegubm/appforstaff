@@ -188,3 +188,14 @@ class Data:
         cipher = Fernet(crypt_key.encode('utf-8'))
         decrypt_password = cipher.decrypt(password.encode('utf-8'))
         return decrypt_password.decode('utf-8')
+
+    def is_login_exist(self, login):
+        sql_query = QtSql.QSqlQuery()
+        sql_query.prepare("SELECT Login FROM users WHERE Login=?")
+        sql_query.addBindValue(login)
+        sql_query.exec()
+
+        if sql_query.next():
+            return True
+        else:
+            return False
