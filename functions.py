@@ -25,7 +25,7 @@ def check_valid_name(name):
 
 def check_valid_login(login):
     pattern = r'^[a-zA-Z][a-zA-Z0-9_-]{5,19}$'
-    if re.match(pattern, login):
+    if re.match(pattern, login) and not conn.is_login_exist(login):
         return 1
     else:
         return 0
