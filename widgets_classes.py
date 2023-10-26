@@ -42,6 +42,9 @@ StyleSheetForButtonSelected = u"color: rgba(255, 255, 255, 255); border: 3px sol
                               "background-color: rgba(17, 207, 0, 255); width: 50px; text-align:" \
                               "top, left; padding-left: 10px; padding-top: 5px;"
 
+StyleSheetForLabel = "color: rgb(255, 255, 255); border: 3px solid rgb(255, 255, 255); border-radius: 7px;" \
+                     "font: 30pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100);"
+
 
 class Window(QMainWindow):
     def __init__(self):
@@ -116,6 +119,8 @@ class Window_Registration(QMainWindow):
         self.ui.IconFailLoginNone.setVisible(False)
         self.ui.IconFailLoginBusy.setVisible(False)
         self.ui.IconFailPassword.setVisible(False)
+        self.ui.IconFailPasswordText.setVisible(False)
+        self.ui.IconFailPasswordText.setStyleSheet(StyleSheetForLabel)
         self.ui.IconFailSecretWord.setVisible(False)
 
         self.ui.ButtonBack.clicked.connect(self.pressed_button_back)
@@ -161,8 +166,10 @@ class Window_Registration(QMainWindow):
 
         if e == 1:
             self.ui.IconFailPassword.setVisible(True)
+            self.ui.IconFailPasswordText.setVisible(True)
         else:
             self.ui.IconFailPassword.setVisible(False)
+            self.ui.IconFailPasswordText.setVisible(False)
 
         if f == 1:
             self.ui.IconFailSecretWord.setVisible(True)

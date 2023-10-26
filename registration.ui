@@ -1,707 +1,754 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Registration</class>
- <widget class="QMainWindow" name="Registration">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>1280</width>
-    <height>720</height>
-   </rect>
-  </property>
-  <property name="focusPolicy">
-   <enum>Qt::ClickFocus</enum>
-  </property>
-  <property name="windowTitle">
-   <string>MainWindow</string>
-  </property>
-  <property name="styleSheet">
-   <string notr="true">background-color: qlineargradient(spread:pad, x1:0.358, y1:0.266636, x2:1, y2:1, stop:0 rgba(163, 5, 255, 255), stop:1 rgba(92, 51, 255, 255))</string>
-  </property>
-  <widget class="QWidget" name="centralwidget">
-   <widget class="QLineEdit" name="Surname">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>180</y>
-      <width>400</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>0</height>
-     </size>
-    </property>
-    <property name="sizeIncrement">
-     <size>
-      <width>300</width>
-      <height>40</height>
-     </size>
-    </property>
-    <property name="baseSize">
-     <size>
-      <width>300</width>
-      <height>40</height>
-     </size>
-    </property>
-    <property name="mouseTracking">
-     <bool>true</bool>
-    </property>
-    <property name="tabletTracking">
-     <bool>false</bool>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLineEdit{
-color: rgb(255, 255, 255);
-font: 20pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-background-color: rgba(0, 0, 0, 150);
-border: 3px solid rgba(255, 255, 255, 255);
-border-radius: 10px;
-padding: 0 8px;
-}
-QLineEdit::hover{
-background-color: rgba(0, 0, 0, 100);
-}
-QLineEdit::focus{
-background-color: rgba(0, 0, 0, 200)
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-    <property name="placeholderText">
-     <string>Фамилия</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="ButtonRegistration">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>610</y>
-      <width>400</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>16777215</width>
-      <height>16777215</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Ambient(RUS BY LYAJKA)</family>
-      <pointsize>26</pointsize>
-      <weight>50</weight>
-      <italic>false</italic>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton{
-color: rgb(255, 255, 255);
-border: 3px solid rgb(255, 255, 255);
-border-radius: 7px;
-font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-background-color: rgba(0, 0, 0, 100);
-width: 50px;
-}
+    <class>Registration</class>
+    <widget class="QMainWindow" name="Registration">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>1280</width>
+                <height>720</height>
+            </rect>
+        </property>
+        <property name="focusPolicy">
+            <enum>Qt::ClickFocus</enum>
+        </property>
+        <property name="windowTitle">
+            <string>MainWindow</string>
+        </property>
+        <property name="styleSheet">
+            <string notr="true">background-color: qlineargradient(spread:pad, x1:0.358, y1:0.266636, x2:1, y2:1, stop:0
+                rgba(163, 5, 255, 255), stop:1 rgba(92, 51, 255, 255))
+            </string>
+        </property>
+        <widget class="QWidget" name="centralwidget">
+            <widget class="QLineEdit" name="Surname">
+                <property name="enabled">
+                    <bool>true</bool>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>440</x>
+                        <y>180</y>
+                        <width>400</width>
+                        <height>50</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>0</width>
+                        <height>0</height>
+                    </size>
+                </property>
+                <property name="sizeIncrement">
+                    <size>
+                        <width>300</width>
+                        <height>40</height>
+                    </size>
+                </property>
+                <property name="baseSize">
+                    <size>
+                        <width>300</width>
+                        <height>40</height>
+                    </size>
+                </property>
+                <property name="mouseTracking">
+                    <bool>true</bool>
+                </property>
+                <property name="tabletTracking">
+                    <bool>false</bool>
+                </property>
+                <property name="focusPolicy">
+                    <enum>Qt::ClickFocus</enum>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+                        color: rgb(255, 255, 255);
+                        font: 20pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(0, 0, 0, 150);
+                        border: 3px solid rgba(255, 255, 255, 255);
+                        border-radius: 10px;
+                        padding: 0 8px;
+                        }
+                        QLineEdit::hover{
+                        background-color: rgba(0, 0, 0, 100);
+                        }
+                        QLineEdit::focus{
+                        background-color: rgba(0, 0, 0, 200)
+                        }
+                    </string>
+                </property>
+                <property name="text">
+                    <string/>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                </property>
+                <property name="placeholderText">
+                    <string>Фамилия</string>
+                </property>
+            </widget>
+            <widget class="QPushButton" name="ButtonRegistration">
+                <property name="enabled">
+                    <bool>true</bool>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>440</x>
+                        <y>610</y>
+                        <width>400</width>
+                        <height>50</height>
+                    </rect>
+                </property>
+                <property name="maximumSize">
+                    <size>
+                        <width>16777215</width>
+                        <height>16777215</height>
+                    </size>
+                </property>
+                <property name="font">
+                    <font>
+                        <family>Ambient(RUS BY LYAJKA)</family>
+                        <pointsize>26</pointsize>
+                        <weight>50</weight>
+                        <italic>false</italic>
+                        <bold>false</bold>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">QPushButton{
+                        color: rgb(255, 255, 255);
+                        border: 3px solid rgb(255, 255, 255);
+                        border-radius: 7px;
+                        font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(0, 0, 0, 100);
+                        width: 50px;
+                        }
 
-QPushButton::hover{
-background-color: rgba(0, 0, 0, 150);
-}
+                        QPushButton::hover{
+                        background-color: rgba(0, 0, 0, 150);
+                        }
 
-QPushButton::pressed{
-background-color: rgba(0, 0, 0, 200);
-}</string>
-    </property>
-    <property name="text">
-     <string>Зарегистрироваться</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="Name">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>250</y>
-      <width>400</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>0</height>
-     </size>
-    </property>
-    <property name="sizeIncrement">
-     <size>
-      <width>300</width>
-      <height>40</height>
-     </size>
-    </property>
-    <property name="baseSize">
-     <size>
-      <width>300</width>
-      <height>40</height>
-     </size>
-    </property>
-    <property name="mouseTracking">
-     <bool>true</bool>
-    </property>
-    <property name="tabletTracking">
-     <bool>false</bool>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLineEdit{
-color: rgb(255, 255, 255);
-font: 20pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-background-color: rgba(0, 0, 0, 150);
-border: 3px solid rgba(255, 255, 255, 255);
-border-radius: 10px;
-padding: 0 8px;
-}
-QLineEdit::hover{
-background-color: rgba(0, 0, 0, 100);
-}
-QLineEdit::focus{
-background-color: rgba(0, 0, 0, 200)
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-    <property name="placeholderText">
-     <string>Имя</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="Surname2">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>320</y>
-      <width>400</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>0</height>
-     </size>
-    </property>
-    <property name="sizeIncrement">
-     <size>
-      <width>300</width>
-      <height>40</height>
-     </size>
-    </property>
-    <property name="baseSize">
-     <size>
-      <width>300</width>
-      <height>40</height>
-     </size>
-    </property>
-    <property name="mouseTracking">
-     <bool>true</bool>
-    </property>
-    <property name="tabletTracking">
-     <bool>false</bool>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLineEdit{
-color: rgb(255, 255, 255);
-font: 20pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-background-color: rgba(0, 0, 0, 150);
-border: 3px solid rgba(255, 255, 255, 255);
-border-radius: 10px;
-padding: 0 8px;
-}
-QLineEdit::hover{
-background-color: rgba(0, 0, 0, 100);
-}
-QLineEdit::focus{
-background-color: rgba(0, 0, 0, 200)
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-    <property name="placeholderText">
-     <string>Отчество</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="Login">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>390</y>
-      <width>400</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>0</height>
-     </size>
-    </property>
-    <property name="sizeIncrement">
-     <size>
-      <width>300</width>
-      <height>40</height>
-     </size>
-    </property>
-    <property name="baseSize">
-     <size>
-      <width>300</width>
-      <height>40</height>
-     </size>
-    </property>
-    <property name="mouseTracking">
-     <bool>true</bool>
-    </property>
-    <property name="tabletTracking">
-     <bool>false</bool>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLineEdit{
-color: rgb(255, 255, 255);
-font: 20pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-background-color: rgba(0, 0, 0, 150);
-border: 3px solid rgba(255, 255, 255, 255);
-border-radius: 10px;
-padding: 0 8px;
-}
-QLineEdit::hover{
-background-color: rgba(0, 0, 0, 100);
-}
-QLineEdit::focus{
-background-color: rgba(0, 0, 0, 200)
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-    <property name="placeholderText">
-     <string>Логин</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="Password">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>460</y>
-      <width>400</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>0</height>
-     </size>
-    </property>
-    <property name="sizeIncrement">
-     <size>
-      <width>300</width>
-      <height>40</height>
-     </size>
-    </property>
-    <property name="baseSize">
-     <size>
-      <width>300</width>
-      <height>40</height>
-     </size>
-    </property>
-    <property name="mouseTracking">
-     <bool>true</bool>
-    </property>
-    <property name="tabletTracking">
-     <bool>false</bool>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLineEdit{
-color: rgb(255, 255, 255);
-font: 20pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-background-color: rgba(0, 0, 0, 150);
-border: 3px solid rgba(255, 255, 255, 255);
-border-radius: 10px;
-padding: 0 8px;
-}
-QLineEdit::hover{
-background-color: rgba(0, 0, 0, 100);
-}
-QLineEdit::focus{
-background-color: rgba(0, 0, 0, 200)
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-    <property name="placeholderText">
-     <string>Пароль</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="LabelRegistration">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>50</y>
-      <width>400</width>
-      <height>100</height>
-     </rect>
-    </property>
-    <property name="sizeIncrement">
-     <size>
-      <width>400</width>
-      <height>100</height>
-     </size>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-font: 40pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-background-color: rgba(255, 255, 255, 50);
-border: 3px solid rgb(255, 255, 255);
-border-radius: 30px;
+                        QPushButton::pressed{
+                        background-color: rgba(0, 0, 0, 200);
+                        }
+                    </string>
+                </property>
+                <property name="text">
+                    <string>Зарегистрироваться</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit" name="Name">
+                <property name="enabled">
+                    <bool>true</bool>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>440</x>
+                        <y>250</y>
+                        <width>400</width>
+                        <height>50</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>0</width>
+                        <height>0</height>
+                    </size>
+                </property>
+                <property name="sizeIncrement">
+                    <size>
+                        <width>300</width>
+                        <height>40</height>
+                    </size>
+                </property>
+                <property name="baseSize">
+                    <size>
+                        <width>300</width>
+                        <height>40</height>
+                    </size>
+                </property>
+                <property name="mouseTracking">
+                    <bool>true</bool>
+                </property>
+                <property name="tabletTracking">
+                    <bool>false</bool>
+                </property>
+                <property name="focusPolicy">
+                    <enum>Qt::ClickFocus</enum>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+                        color: rgb(255, 255, 255);
+                        font: 20pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(0, 0, 0, 150);
+                        border: 3px solid rgba(255, 255, 255, 255);
+                        border-radius: 10px;
+                        padding: 0 8px;
+                        }
+                        QLineEdit::hover{
+                        background-color: rgba(0, 0, 0, 100);
+                        }
+                        QLineEdit::focus{
+                        background-color: rgba(0, 0, 0, 200)
+                        }
+                    </string>
+                </property>
+                <property name="text">
+                    <string/>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                </property>
+                <property name="placeholderText">
+                    <string>Имя</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit" name="Surname2">
+                <property name="enabled">
+                    <bool>true</bool>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>440</x>
+                        <y>320</y>
+                        <width>400</width>
+                        <height>50</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>0</width>
+                        <height>0</height>
+                    </size>
+                </property>
+                <property name="sizeIncrement">
+                    <size>
+                        <width>300</width>
+                        <height>40</height>
+                    </size>
+                </property>
+                <property name="baseSize">
+                    <size>
+                        <width>300</width>
+                        <height>40</height>
+                    </size>
+                </property>
+                <property name="mouseTracking">
+                    <bool>true</bool>
+                </property>
+                <property name="tabletTracking">
+                    <bool>false</bool>
+                </property>
+                <property name="focusPolicy">
+                    <enum>Qt::ClickFocus</enum>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+                        color: rgb(255, 255, 255);
+                        font: 20pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(0, 0, 0, 150);
+                        border: 3px solid rgba(255, 255, 255, 255);
+                        border-radius: 10px;
+                        padding: 0 8px;
+                        }
+                        QLineEdit::hover{
+                        background-color: rgba(0, 0, 0, 100);
+                        }
+                        QLineEdit::focus{
+                        background-color: rgba(0, 0, 0, 200)
+                        }
+                    </string>
+                </property>
+                <property name="text">
+                    <string/>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                </property>
+                <property name="placeholderText">
+                    <string>Отчество</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit" name="Login">
+                <property name="enabled">
+                    <bool>true</bool>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>440</x>
+                        <y>390</y>
+                        <width>400</width>
+                        <height>50</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>0</width>
+                        <height>0</height>
+                    </size>
+                </property>
+                <property name="sizeIncrement">
+                    <size>
+                        <width>300</width>
+                        <height>40</height>
+                    </size>
+                </property>
+                <property name="baseSize">
+                    <size>
+                        <width>300</width>
+                        <height>40</height>
+                    </size>
+                </property>
+                <property name="mouseTracking">
+                    <bool>true</bool>
+                </property>
+                <property name="tabletTracking">
+                    <bool>false</bool>
+                </property>
+                <property name="focusPolicy">
+                    <enum>Qt::ClickFocus</enum>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+                        color: rgb(255, 255, 255);
+                        font: 20pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(0, 0, 0, 150);
+                        border: 3px solid rgba(255, 255, 255, 255);
+                        border-radius: 10px;
+                        padding: 0 8px;
+                        }
+                        QLineEdit::hover{
+                        background-color: rgba(0, 0, 0, 100);
+                        }
+                        QLineEdit::focus{
+                        background-color: rgba(0, 0, 0, 200)
+                        }
+                    </string>
+                </property>
+                <property name="text">
+                    <string/>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                </property>
+                <property name="placeholderText">
+                    <string>Логин</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit" name="Password">
+                <property name="enabled">
+                    <bool>true</bool>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>440</x>
+                        <y>460</y>
+                        <width>400</width>
+                        <height>50</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>0</width>
+                        <height>0</height>
+                    </size>
+                </property>
+                <property name="sizeIncrement">
+                    <size>
+                        <width>300</width>
+                        <height>40</height>
+                    </size>
+                </property>
+                <property name="baseSize">
+                    <size>
+                        <width>300</width>
+                        <height>40</height>
+                    </size>
+                </property>
+                <property name="mouseTracking">
+                    <bool>true</bool>
+                </property>
+                <property name="tabletTracking">
+                    <bool>false</bool>
+                </property>
+                <property name="focusPolicy">
+                    <enum>Qt::ClickFocus</enum>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+                        color: rgb(255, 255, 255);
+                        font: 20pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(0, 0, 0, 150);
+                        border: 3px solid rgba(255, 255, 255, 255);
+                        border-radius: 10px;
+                        padding: 0 8px;
+                        }
+                        QLineEdit::hover{
+                        background-color: rgba(0, 0, 0, 100);
+                        }
+                        QLineEdit::focus{
+                        background-color: rgba(0, 0, 0, 200)
+                        }
+                    </string>
+                </property>
+                <property name="text">
+                    <string/>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                </property>
+                <property name="placeholderText">
+                    <string>Пароль</string>
+                </property>
+            </widget>
+            <widget class="QLabel" name="LabelRegistration">
+                <property name="geometry">
+                    <rect>
+                        <x>440</x>
+                        <y>50</y>
+                        <width>400</width>
+                        <height>100</height>
+                    </rect>
+                </property>
+                <property name="sizeIncrement">
+                    <size>
+                        <width>400</width>
+                        <height>100</height>
+                    </size>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        font: 40pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(255, 255, 255, 50);
+                        border: 3px solid rgb(255, 255, 255);
+                        border-radius: 30px;
 
-</string>
-    </property>
-    <property name="text">
-     <string>Регистрация</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="ButtonBack">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>620</y>
-      <width>150</width>
-      <height>80</height>
-     </rect>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>16777215</width>
-      <height>16777215</height>
-     </size>
-    </property>
-    <property name="font">
-     <font>
-      <family>Ambient(RUS BY LYAJKA)</family>
-      <pointsize>26</pointsize>
-      <weight>50</weight>
-      <italic>false</italic>
-      <bold>false</bold>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QPushButton{
-color: rgb(255, 255, 255);
-border: 3px solid rgb(255, 255, 255);
-border-radius: 7px;
-font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-background-color: rgba(0, 0, 0, 100);
-width: 50px;
-}
+                    </string>
+                </property>
+                <property name="text">
+                    <string>Регистрация</string>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                </property>
+            </widget>
+            <widget class="QPushButton" name="ButtonBack">
+                <property name="enabled">
+                    <bool>true</bool>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>20</x>
+                        <y>620</y>
+                        <width>150</width>
+                        <height>80</height>
+                    </rect>
+                </property>
+                <property name="maximumSize">
+                    <size>
+                        <width>16777215</width>
+                        <height>16777215</height>
+                    </size>
+                </property>
+                <property name="font">
+                    <font>
+                        <family>Ambient(RUS BY LYAJKA)</family>
+                        <pointsize>26</pointsize>
+                        <weight>50</weight>
+                        <italic>false</italic>
+                        <bold>false</bold>
+                    </font>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">QPushButton{
+                        color: rgb(255, 255, 255);
+                        border: 3px solid rgb(255, 255, 255);
+                        border-radius: 7px;
+                        font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(0, 0, 0, 100);
+                        width: 50px;
+                        }
 
-QPushButton::hover{
-background-color: rgba(0, 0, 0, 150);
-}
+                        QPushButton::hover{
+                        background-color: rgba(0, 0, 0, 150);
+                        }
 
-QPushButton::pressed{
-background-color: rgba(0, 0, 0, 200);
-}</string>
-    </property>
-    <property name="text">
-     <string>Назад</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="IconFailSurname">
-    <property name="geometry">
-     <rect>
-      <x>860</x>
-      <y>180</y>
-      <width>50</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-border: 3px solid rgb(255, 255, 255);
-border-radius: 7px;
-font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-background-color: rgba(0, 0, 0, 100);</string>
-    </property>
-    <property name="text">
-     <string>!</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="IconFailName">
-    <property name="geometry">
-     <rect>
-      <x>860</x>
-      <y>250</y>
-      <width>50</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-border: 3px solid rgb(255, 255, 255);
-border-radius: 7px;
-font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-background-color: rgba(0, 0, 0, 100);</string>
-    </property>
-    <property name="text">
-     <string>!</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="IconFailSurname2">
-    <property name="geometry">
-     <rect>
-      <x>860</x>
-      <y>320</y>
-      <width>50</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-border: 3px solid rgb(255, 255, 255);
-border-radius: 7px;
-font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-background-color: rgba(0, 0, 0, 100);</string>
-    </property>
-    <property name="text">
-     <string>!</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="IconFailLoginNone">
-    <property name="geometry">
-     <rect>
-      <x>860</x>
-      <y>390</y>
-      <width>50</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-border: 3px solid rgb(255, 255, 255);
-border-radius: 7px;
-font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-background-color: rgba(0, 0, 0, 100);</string>
-    </property>
-    <property name="text">
-     <string>!</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="IconFailPassword">
-    <property name="geometry">
-     <rect>
-      <x>860</x>
-      <y>460</y>
-      <width>50</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-border: 3px solid rgb(255, 255, 255);
-border-radius: 7px;
-font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-background-color: rgba(0, 0, 0, 100);</string>
-    </property>
-    <property name="text">
-     <string>!</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="IconFailLoginBusy">
-    <property name="geometry">
-     <rect>
-      <x>860</x>
-      <y>390</y>
-      <width>370</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-border: 3px solid rgb(255, 255, 255);
-border-radius: 7px;
-font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-background-color: rgba(0, 0, 0, 100);</string>
-    </property>
-    <property name="text">
-     <string>Этот логин уже занят</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="SecretWord">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>530</y>
-      <width>400</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>0</width>
-      <height>0</height>
-     </size>
-    </property>
-    <property name="sizeIncrement">
-     <size>
-      <width>300</width>
-      <height>40</height>
-     </size>
-    </property>
-    <property name="baseSize">
-     <size>
-      <width>300</width>
-      <height>40</height>
-     </size>
-    </property>
-    <property name="mouseTracking">
-     <bool>true</bool>
-    </property>
-    <property name="tabletTracking">
-     <bool>false</bool>
-    </property>
-    <property name="focusPolicy">
-     <enum>Qt::ClickFocus</enum>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLineEdit{
-color: rgb(255, 255, 255);
-font: 20pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-background-color: rgba(0, 0, 0, 150);
-border: 3px solid rgba(255, 255, 255, 255);
-border-radius: 10px;
-padding: 0 8px;
-}
-QLineEdit::hover{
-background-color: rgba(0, 0, 0, 100);
-}
-QLineEdit::focus{
-background-color: rgba(0, 0, 0, 200)
-}</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-    <property name="placeholderText">
-     <string>Секретное слово</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="IconFailSecretWord">
-    <property name="geometry">
-     <rect>
-      <x>860</x>
-      <y>530</y>
-      <width>50</width>
-      <height>50</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-border: 3px solid rgb(255, 255, 255);
-border-radius: 7px;
-font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-background-color: rgba(0, 0, 0, 100);</string>
-    </property>
-    <property name="text">
-     <string>!</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-  </widget>
- </widget>
- <resources/>
- <connections/>
+                        QPushButton::pressed{
+                        background-color: rgba(0, 0, 0, 200);
+                        }
+                    </string>
+                </property>
+                <property name="text">
+                    <string>Назад</string>
+                </property>
+            </widget>
+            <widget class="QLabel" name="IconFailSurname">
+                <property name="geometry">
+                    <rect>
+                        <x>860</x>
+                        <y>180</y>
+                        <width>50</width>
+                        <height>50</height>
+                    </rect>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        border: 3px solid rgb(255, 255, 255);
+                        border-radius: 7px;
+                        font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(0, 0, 0, 100);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>!</string>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                </property>
+            </widget>
+            <widget class="QLabel" name="IconFailName">
+                <property name="geometry">
+                    <rect>
+                        <x>860</x>
+                        <y>250</y>
+                        <width>50</width>
+                        <height>50</height>
+                    </rect>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        border: 3px solid rgb(255, 255, 255);
+                        border-radius: 7px;
+                        font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(0, 0, 0, 100);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>!</string>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                </property>
+            </widget>
+            <widget class="QLabel" name="IconFailSurname2">
+                <property name="geometry">
+                    <rect>
+                        <x>860</x>
+                        <y>320</y>
+                        <width>50</width>
+                        <height>50</height>
+                    </rect>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        border: 3px solid rgb(255, 255, 255);
+                        border-radius: 7px;
+                        font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(0, 0, 0, 100);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>!</string>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                </property>
+            </widget>
+            <widget class="QLabel" name="IconFailLoginNone">
+                <property name="geometry">
+                    <rect>
+                        <x>860</x>
+                        <y>390</y>
+                        <width>50</width>
+                        <height>50</height>
+                    </rect>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        border: 3px solid rgb(255, 255, 255);
+                        border-radius: 7px;
+                        font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(0, 0, 0, 100);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>!</string>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                </property>
+            </widget>
+            <widget class="QLabel" name="IconFailPassword">
+                <property name="geometry">
+                    <rect>
+                        <x>860</x>
+                        <y>460</y>
+                        <width>50</width>
+                        <height>50</height>
+                    </rect>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        border: 3px solid rgb(255, 255, 255);
+                        border-radius: 7px;
+                        font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(0, 0, 0, 100);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>!</string>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                </property>
+            </widget>
+            <widget class="QLabel" name="IconFailLoginBusy">
+                <property name="geometry">
+                    <rect>
+                        <x>860</x>
+                        <y>390</y>
+                        <width>370</width>
+                        <height>50</height>
+                    </rect>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        border: 3px solid rgb(255, 255, 255);
+                        border-radius: 7px;
+                        font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(0, 0, 0, 100);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>Этот логин уже занят</string>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+            </widget>
+            <widget class="QLineEdit" name="SecretWord">
+                <property name="enabled">
+                    <bool>true</bool>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>440</x>
+                        <y>530</y>
+                        <width>400</width>
+                        <height>50</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>0</width>
+                        <height>0</height>
+                    </size>
+                </property>
+                <property name="sizeIncrement">
+                    <size>
+                        <width>300</width>
+                        <height>40</height>
+                    </size>
+                </property>
+                <property name="baseSize">
+                    <size>
+                        <width>300</width>
+                        <height>40</height>
+                    </size>
+                </property>
+                <property name="mouseTracking">
+                    <bool>true</bool>
+                </property>
+                <property name="tabletTracking">
+                    <bool>false</bool>
+                </property>
+                <property name="focusPolicy">
+                    <enum>Qt::ClickFocus</enum>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">QLineEdit{
+                        color: rgb(255, 255, 255);
+                        font: 20pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(0, 0, 0, 150);
+                        border: 3px solid rgba(255, 255, 255, 255);
+                        border-radius: 10px;
+                        padding: 0 8px;
+                        }
+                        QLineEdit::hover{
+                        background-color: rgba(0, 0, 0, 100);
+                        }
+                        QLineEdit::focus{
+                        background-color: rgba(0, 0, 0, 200)
+                        }
+                    </string>
+                </property>
+                <property name="text">
+                    <string/>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                </property>
+                <property name="placeholderText">
+                    <string>Секретное слово</string>
+                </property>
+            </widget>
+            <widget class="QLabel" name="IconFailSecretWord">
+                <property name="geometry">
+                    <rect>
+                        <x>860</x>
+                        <y>530</y>
+                        <width>50</width>
+                        <height>50</height>
+                    </rect>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        border: 3px solid rgb(255, 255, 255);
+                        border-radius: 7px;
+                        font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(0, 0, 0, 100);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>!</string>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                </property>
+            </widget>
+            <widget class="QLabel" name="IconFailPasswordText">
+                <property name="geometry">
+                    <rect>
+                        <x>60</x>
+                        <y>240</y>
+                        <width>320</width>
+                        <height>280</height>
+                    </rect>
+                </property>
+                <property name="styleSheet">
+                    <string notr="true">color: rgb(255, 255, 255);
+                        border: 3px solid rgb(255, 255, 255);
+                        border-radius: 7px;
+                        font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        background-color: rgba(0, 0, 0, 100);
+                    </string>
+                </property>
+                <property name="text">
+                    <string>Пароль должен
+                        содержать буквы
+                        латинского
+                        алфавита и цифры!
+                        Пример:
+                        Password12345
+                    </string>
+                </property>
+                <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                </property>
+            </widget>
+        </widget>
+    </widget>
+    <resources/>
+    <connections/>
 </ui>
