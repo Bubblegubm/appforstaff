@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-    <class>Profile</class>
-    <widget class="QMainWindow" name="Profile">
+    <class>ProfileAdmin</class>
+    <widget class="QMainWindow" name="ProfileAdmin">
         <property name="geometry">
             <rect>
                 <x>0</x>
@@ -78,9 +78,9 @@
                 </property>
                 <property name="geometry">
                     <rect>
-                        <x>120</x>
-                        <y>440</y>
-                        <width>410</width>
+                        <x>440</x>
+                        <y>450</y>
+                        <width>400</width>
                         <height>80</height>
                     </rect>
                 </property>
@@ -122,70 +122,12 @@
                     <string>Сменить пароль</string>
                 </property>
             </widget>
-            <widget class="QLabel" name="ResultsTest">
+            <widget class="QLabel" name="NameSurnameAdmin">
                 <property name="geometry">
                     <rect>
-                        <x>650</x>
-                        <y>20</y>
-                        <width>610</width>
-                        <height>220</height>
-                    </rect>
-                </property>
-                <property name="styleSheet">
-                    <string notr="true">color: rgb(255, 255, 255);
-                        border: 3px solid rgb(255, 255, 255);
-                        border-radius: 7px;
-                        font: 36pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-                        background-color: rgba(0, 0, 0, 100);
-                        padding-left: 10px;
-                    </string>
-                </property>
-                <property name="text">
-                    <string>Результаты теста:
-                        10 из 20 правильных
-                        ответов
-                    </string>
-                </property>
-                <property name="alignment">
-                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-            </widget>
-            <widget class="QLabel" name="ResultsSpeedTest">
-                <property name="geometry">
-                    <rect>
-                        <x>650</x>
-                        <y>260</y>
-                        <width>610</width>
-                        <height>340</height>
-                    </rect>
-                </property>
-                <property name="styleSheet">
-                    <string notr="true">color: rgb(255, 255, 255);
-                        border: 3px solid rgb(255, 255, 255);
-                        border-radius: 7px;
-                        font: 36pt &quot;Ambient(RUS BY LYAJKA)&quot;;
-                        background-color: rgba(0, 0, 0, 100);
-                        padding-left: 10px;
-                    </string>
-                </property>
-                <property name="text">
-                    <string>Результаты скоростного
-                        теста:
-                        15 из 20 правильных
-                        ответов
-                        Пройден за 2 мин. 10 с.
-                    </string>
-                </property>
-                <property name="alignment">
-                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                </property>
-            </widget>
-            <widget class="QLabel" name="NameSurnameUser">
-                <property name="geometry">
-                    <rect>
-                        <x>20</x>
+                        <x>340</x>
                         <y>200</y>
-                        <width>610</width>
+                        <width>600</width>
                         <height>220</height>
                     </rect>
                 </property>
@@ -211,9 +153,9 @@
             <widget class="QLabel" name="LableProfile">
                 <property name="geometry">
                     <rect>
-                        <x>120</x>
-                        <y>60</y>
-                        <width>410</width>
+                        <x>440</x>
+                        <y>50</y>
+                        <width>400</width>
                         <height>100</height>
                     </rect>
                 </property>

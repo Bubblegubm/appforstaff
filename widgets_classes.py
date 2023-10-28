@@ -16,6 +16,8 @@ from recover_password_2 import Ui_RecoverPassword2
 from change_password import Ui_ChangePassword
 from profile import Ui_Profile
 from speed_test import Ui_SpeedTest
+from main_window_admin import Ui_MainWindowAdmin
+from profile_admin import Ui_ProfileAdmin
 
 from functions import check_valid_input_registration, check_valid_password, check_login_password, output_ID, dataUser, \
     recoverPassword1, recoverPassword2, output_test, output_speed_test, add_statistic_test, \
@@ -100,7 +102,10 @@ class Window_Authorization(QMainWindow):
             ID = output_ID(login, password)
             self.data_User = dataUser(ID)
             print(self.data_User)
-            self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
+            if self.data_User['Role'] == 1:
+                self.setCentralWidget(Window_MainWindowAdmin(self.centralWidget(), self.data_User))
+            else:
+                self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
 
     def pressed_button_problems_with_authorization(self):
         self.setCentralWidget(Window_RecoverPassword1(self.centralWidget(), self.data_User))
@@ -600,7 +605,10 @@ class Window_ChangePassword(QMainWindow):
         if check_valid_password(password):
             recoverPassword2(password, self.data_User['ID'])
             self.data_User = dataUser(self.data_User['ID'])
-            self.setCentralWidget(Window_Profile(self.centralWidget(), self.data_User))
+            if self.data_User['Role'] == 1:
+                self.setCentralWidget(Window_ProfileAdmin(self.centralWidget(), self.data_User))
+            else:
+                self.setCentralWidget(Window_Profile(self.centralWidget(), self.data_User))
         else:
             self.ui.IconFailPassword.setVisible(True)
 
@@ -792,3 +800,54 @@ class Window_SpeedTest(QMainWindow):
             time_text = time_text[:3] + str(self.time % 60)
 
         self.ui.Timer.setText(time_text)
+
+
+class Window_MainWindowAdmin(QMainWindow):
+    def __init__(self, parent, data_User: dict):
+        super(Window_MainWindowAdmin, self).__init__(parent)
+        self.ui = Ui_MainWindowAdmin()
+        self.ui.setupUi(self)
+        self.data_User = data_User
+
+        self.ui.ButtonStatisticsUsers.clicked.connect(self.pressed_button_statistics_users)
+        self.ui.ButtonTheory.clicked.connect(self.pressed_button_theory)
+        self.ui.ButtonTest.clicked.connect(self.pressed_button_test)
+        self.ui.ButtonSpeedTest.clicked.connect(self.pressed_button_speed_test)
+        self.ui.ButtonProfile.clicked.connect(self.pressed_button_profile)
+
+    def pressed_button_statistics_users(self):
+        return 1
+
+    def pressed_button_theory(self):
+        return 1
+
+    def pressed_button_test(self):
+        return 1
+
+    def pressed_button_speed_test(self):
+        return 1
+
+    def pressed_button_profile(self):
+        self.setCentralWidget(Window_ProfileAdmin(self.centralWidget(), self.data_User))
+
+
+class Window_ProfileAdmin(QMainWindow):
+    def __init__(self, parent, data_User: dict):
+        super(Window_ProfileAdmin, self).__init__(parent)
+        self.ui = Ui_ProfileAdmin()
+        self.ui.setupUi(self)
+        self.data_User = data_User
+
+        self.ui.NameSurnameAdmin.setTextInteractionFlags(Qt.TextInteractionFlag(False))
+
+        self.ui.NameSurnameAdmin.setText(
+            f"{self.data_User.get('Name')}\n{self.data_User.get('Surname')}\n{self.data_User.get('Surname2')}")
+
+        self.ui.ButtonBack.clicked.connect(self.pressed_button_back)
+        self.ui.ButtonChangePassword.clicked.connect(self.pressed_button_change_password)
+
+    def pressed_button_back(self):
+        self.setCentralWidget(Window_MainWindowAdmin(self.centralWidget(), self.data_User))
+
+    def pressed_button_change_password(self):
+        self.setCentralWidget(Window_ChangePassword(self.centralWidget(), self.data_User))
