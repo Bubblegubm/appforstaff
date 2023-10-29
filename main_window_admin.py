@@ -26,7 +26,10 @@ class Ui_MainWindowAdmin(object):
         MainWindowAdmin.resize(1280, 720)
         MainWindowAdmin.setFocusPolicy(Qt.ClickFocus)
         MainWindowAdmin.setStyleSheet(
-            u"background-color: qlineargradient(spread:pad, x1:0.358, y1:0.266636, x2:1, y2:1, stop:0 rgba(163, 5, 255, 255), stop:1 rgba(92, 51, 255, 255))")
+            u"background-color: qlineargradient(spread:pad, x1:0.358, y1:0.266636, x2:1, y2:1, stop:0\n"
+            "                rgba(163,\n"
+            "                5, 255, 255), stop:1 rgba(92, 51, 255, 255))\n"
+            "            ")
         self.centralwidget = QWidget(MainWindowAdmin)
         self.centralwidget.setObjectName(u"centralwidget")
         self.ButtonTheory = QPushButton(self.centralwidget)
@@ -41,21 +44,22 @@ class Ui_MainWindowAdmin(object):
         font.setItalic(False)
         self.ButtonTheory.setFont(font)
         self.ButtonTheory.setStyleSheet(u"QPushButton{\n"
-                                        "color: rgb(255, 255, 255);\n"
-                                        "border: 3px solid rgb(255, 255, 255);\n"
-                                        "border-radius: 7px;\n"
-                                        "font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
-                                        "background-color: rgba(0, 0, 0, 100);\n"
-                                        "width: 50px;\n"
-                                        "}\n"
+                                        "                        color: rgb(255, 255, 255);\n"
+                                        "                        border: 3px solid rgb(255, 255, 255);\n"
+                                        "                        border-radius: 7px;\n"
+                                        "                        font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+                                        "                        background-color: rgba(0, 0, 0, 100);\n"
+                                        "                        width: 50px;\n"
+                                        "                        }\n"
                                         "\n"
-                                        "QPushButton::hover{\n"
-                                        "background-color: rgba(0, 0, 0, 150);\n"
-                                        "}\n"
+                                        "                        QPushButton::hover{\n"
+                                        "                        background-color: rgba(0, 0, 0, 150);\n"
+                                        "                        }\n"
                                         "\n"
-                                        "QPushButton::pressed{\n"
-                                        "background-color: rgba(0, 0, 0, 200);\n"
-                                        "}")
+                                        "                        QPushButton::pressed{\n"
+                                        "                        background-color: rgba(0, 0, 0, 200);\n"
+                                        "                        }\n"
+                                        "                    ")
         self.ButtonTest = QPushButton(self.centralwidget)
         self.ButtonTest.setObjectName(u"ButtonTest")
         self.ButtonTest.setEnabled(True)
@@ -63,21 +67,22 @@ class Ui_MainWindowAdmin(object):
         self.ButtonTest.setMaximumSize(QSize(16777215, 16777215))
         self.ButtonTest.setFont(font)
         self.ButtonTest.setStyleSheet(u"QPushButton{\n"
-                                      "color: rgb(255, 255, 255);\n"
-                                      "border: 3px solid rgb(255, 255, 255);\n"
-                                      "border-radius: 7px;\n"
-                                      "font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
-                                      "background-color: rgba(0, 0, 0, 100);\n"
-                                      "width: 50px;\n"
-                                      "}\n"
+                                      "                        color: rgb(255, 255, 255);\n"
+                                      "                        border: 3px solid rgb(255, 255, 255);\n"
+                                      "                        border-radius: 7px;\n"
+                                      "                        font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+                                      "                        background-color: rgba(0, 0, 0, 100);\n"
+                                      "                        width: 50px;\n"
+                                      "                        }\n"
                                       "\n"
-                                      "QPushButton::hover{\n"
-                                      "background-color: rgba(0, 0, 0, 150);\n"
-                                      "}\n"
+                                      "                        QPushButton::hover{\n"
+                                      "                        background-color: rgba(0, 0, 0, 150);\n"
+                                      "                        }\n"
                                       "\n"
-                                      "QPushButton::pressed{\n"
-                                      "background-color: rgba(0, 0, 0, 200);\n"
-                                      "}")
+                                      "                        QPushButton::pressed{\n"
+                                      "                        background-color: rgba(0, 0, 0, 200);\n"
+                                      "                        }\n"
+                                      "                    ")
         self.ButtonSpeedTest = QPushButton(self.centralwidget)
         self.ButtonSpeedTest.setObjectName(u"ButtonSpeedTest")
         self.ButtonSpeedTest.setEnabled(True)
@@ -85,21 +90,22 @@ class Ui_MainWindowAdmin(object):
         self.ButtonSpeedTest.setMaximumSize(QSize(16777215, 16777215))
         self.ButtonSpeedTest.setFont(font)
         self.ButtonSpeedTest.setStyleSheet(u"QPushButton{\n"
-                                           "color: rgb(255, 255, 255);\n"
-                                           "border: 3px solid rgb(255, 255, 255);\n"
-                                           "border-radius: 7px;\n"
-                                           "font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
-                                           "background-color: rgba(0, 0, 0, 100);\n"
-                                           "width: 50px;\n"
-                                           "}\n"
+                                           "                        color: rgb(255, 255, 255);\n"
+                                           "                        border: 3px solid rgb(255, 255, 255);\n"
+                                           "                        border-radius: 7px;\n"
+                                           "                        font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+                                           "                        background-color: rgba(0, 0, 0, 100);\n"
+                                           "                        width: 50px;\n"
+                                           "                        }\n"
                                            "\n"
-                                           "QPushButton::hover{\n"
-                                           "background-color: rgba(0, 0, 0, 150);\n"
-                                           "}\n"
+                                           "                        QPushButton::hover{\n"
+                                           "                        background-color: rgba(0, 0, 0, 150);\n"
+                                           "                        }\n"
                                            "\n"
-                                           "QPushButton::pressed{\n"
-                                           "background-color: rgba(0, 0, 0, 200);\n"
-                                           "}")
+                                           "                        QPushButton::pressed{\n"
+                                           "                        background-color: rgba(0, 0, 0, 200);\n"
+                                           "                        }\n"
+                                           "                    ")
         self.ButtonProfile = QPushButton(self.centralwidget)
         self.ButtonProfile.setObjectName(u"ButtonProfile")
         self.ButtonProfile.setEnabled(True)
@@ -107,21 +113,22 @@ class Ui_MainWindowAdmin(object):
         self.ButtonProfile.setMaximumSize(QSize(16777215, 16777215))
         self.ButtonProfile.setFont(font)
         self.ButtonProfile.setStyleSheet(u"QPushButton{\n"
-                                         "color: rgb(255, 255, 255);\n"
-                                         "border: 3px solid rgb(255, 255, 255);\n"
-                                         "border-radius: 7px;\n"
-                                         "font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
-                                         "background-color: rgba(0, 0, 0, 100);\n"
-                                         "width: 50px;\n"
-                                         "}\n"
+                                         "                        color: rgb(255, 255, 255);\n"
+                                         "                        border: 3px solid rgb(255, 255, 255);\n"
+                                         "                        border-radius: 7px;\n"
+                                         "                        font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+                                         "                        background-color: rgba(0, 0, 0, 100);\n"
+                                         "                        width: 50px;\n"
+                                         "                        }\n"
                                          "\n"
-                                         "QPushButton::hover{\n"
-                                         "background-color: rgba(0, 0, 0, 150);\n"
-                                         "}\n"
+                                         "                        QPushButton::hover{\n"
+                                         "                        background-color: rgba(0, 0, 0, 150);\n"
+                                         "                        }\n"
                                          "\n"
-                                         "QPushButton::pressed{\n"
-                                         "background-color: rgba(0, 0, 0, 200);\n"
-                                         "}")
+                                         "                        QPushButton::pressed{\n"
+                                         "                        background-color: rgba(0, 0, 0, 200);\n"
+                                         "                        }\n"
+                                         "                    ")
         self.ButtonStatisticsUsers = QPushButton(self.centralwidget)
         self.ButtonStatisticsUsers.setObjectName(u"ButtonStatisticsUsers")
         self.ButtonStatisticsUsers.setEnabled(True)
@@ -129,21 +136,45 @@ class Ui_MainWindowAdmin(object):
         self.ButtonStatisticsUsers.setMaximumSize(QSize(16777215, 16777215))
         self.ButtonStatisticsUsers.setFont(font)
         self.ButtonStatisticsUsers.setStyleSheet(u"QPushButton{\n"
-                                                 "color: rgb(255, 255, 255);\n"
-                                                 "border: 3px solid rgb(255, 255, 255);\n"
-                                                 "border-radius: 7px;\n"
-                                                 "font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
-                                                 "background-color: rgba(0, 0, 0, 100);\n"
-                                                 "width: 50px;\n"
-                                                 "}\n"
+                                                 "                        color: rgb(255, 255, 255);\n"
+                                                 "                        border: 3px solid rgb(255, 255, 255);\n"
+                                                 "                        border-radius: 7px;\n"
+                                                 "                        font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+                                                 "                        background-color: rgba(0, 0, 0, 100);\n"
+                                                 "                        width: 50px;\n"
+                                                 "                        }\n"
                                                  "\n"
-                                                 "QPushButton::hover{\n"
-                                                 "background-color: rgba(0, 0, 0, 150);\n"
-                                                 "}\n"
+                                                 "                        QPushButton::hover{\n"
+                                                 "                        background-color: rgba(0, 0, 0, 150);\n"
+                                                 "                        }\n"
                                                  "\n"
-                                                 "QPushButton::pressed{\n"
-                                                 "background-color: rgba(0, 0, 0, 200);\n"
-                                                 "}")
+                                                 "                        QPushButton::pressed{\n"
+                                                 "                        background-color: rgba(0, 0, 0, 200);\n"
+                                                 "                        }\n"
+                                                 "                    ")
+        self.ButtonBack = QPushButton(self.centralwidget)
+        self.ButtonBack.setObjectName(u"ButtonBack")
+        self.ButtonBack.setEnabled(True)
+        self.ButtonBack.setGeometry(QRect(20, 620, 180, 80))
+        self.ButtonBack.setMaximumSize(QSize(16777215, 16777215))
+        self.ButtonBack.setFont(font)
+        self.ButtonBack.setStyleSheet(u"QPushButton{\n"
+                                      "                        color: rgb(255, 255, 255);\n"
+                                      "                        border: 3px solid rgb(255, 255, 255);\n"
+                                      "                        border-radius: 7px;\n"
+                                      "                        font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+                                      "                        background-color: rgba(0, 0, 0, 100);\n"
+                                      "                        width: 50px;\n"
+                                      "                        }\n"
+                                      "\n"
+                                      "                        QPushButton::hover{\n"
+                                      "                        background-color: rgba(0, 0, 0, 150);\n"
+                                      "                        }\n"
+                                      "\n"
+                                      "                        QPushButton::pressed{\n"
+                                      "                        background-color: rgba(0, 0, 0, 200);\n"
+                                      "                        }\n"
+                                      "                    ")
         MainWindowAdmin.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindowAdmin)
@@ -168,4 +199,5 @@ class Ui_MainWindowAdmin(object):
         self.ButtonStatisticsUsers.setText(QCoreApplication.translate("MainWindowAdmin",
                                                                       u"\u0421\u0442\u0430\u0442\u0438\u0441\u0442\u0438\u043a\u0430 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439",
                                                                       None))
+        self.ButtonBack.setText(QCoreApplication.translate("MainWindowAdmin", u"\u041d\u0430\u0437\u0430\u0434", None))
     # retranslateUi

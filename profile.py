@@ -143,19 +143,21 @@ class Ui_Profile(object):
                                                                      None))
         self.ResultsTest.setText(QCoreApplication.translate("Profile",
                                                             u"\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u044b \u0442\u0435\u0441\u0442\u0430:\n"
-                                                            "10 \u0438\u0437 20 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u044b\u0445\n"
-                                                            "\u043e\u0442\u0432\u0435\u0442\u043e\u0432", None))
+                                                            "                        10 \u0438\u0437 20 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u044b\u0445\n"
+                                                            "                        \u043e\u0442\u0432\u0435\u0442\u043e\u0432\n"
+                                                            "                    ", None))
         self.ResultsSpeedTest.setText(QCoreApplication.translate("Profile",
                                                                  u"\u0420\u0435\u0437\u0443\u043b\u044c\u0442\u0430\u0442\u044b \u0441\u043a\u043e\u0440\u043e\u0441\u0442\u043d\u043e\u0433\u043e\n"
-                                                                 "\u0442\u0435\u0441\u0442\u0430:\n"
-                                                                 "15 \u0438\u0437 20 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u044b\u0445\n"
-                                                                 "\u043e\u0442\u0432\u0435\u0442\u043e\u0432\n"
-                                                                 "\u041f\u0440\u043e\u0439\u0434\u0435\u043d \u0437\u0430 2 \u043c\u0438\u043d. 10 \u0441.",
-                                                                 None))
+                                                                 "                        \u0442\u0435\u0441\u0442\u0430:\n"
+                                                                 "                        15 \u0438\u0437 20 \u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u044b\u0445\n"
+                                                                 "                        \u043e\u0442\u0432\u0435\u0442\u043e\u0432\n"
+                                                                 "                        \u041f\u0440\u043e\u0439\u0434\u0435\u043d \u0437\u0430 2 \u043c\u0438\u043d. 10 \u0441.\n"
+                                                                 "                    ", None))
         self.NameSurnameUser.setText(
             QCoreApplication.translate("Profile", u"\u0424\u0430\u043c\u0438\u043b\u0438\u044f\n"
-                                                  "\u0418\u043c\u044f\n"
-                                                  "\u041e\u0442\u0447\u0435\u0441\u0442\u0432\u043e", None))
+                                                  "                        \u0418\u043c\u044f\n"
+                                                  "                        \u041e\u0442\u0447\u0435\u0441\u0442\u0432\u043e\n"
+                                                  "                    ", None))
         self.LableProfile.setText(
             QCoreApplication.translate("Profile", u"\u041f\u0440\u043e\u0444\u0438\u043b\u044c", None))
     # retranslateUi
