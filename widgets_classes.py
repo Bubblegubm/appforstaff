@@ -1,9 +1,9 @@
 import functools
 
-from PySide6.QtCore import Qt, QTimer
+from PySide6.QtCore import Qt, QTimer, QSize
 from PySide6.QtGui import Qt, QFontDatabase
 from PySide6.QtWidgets import QApplication, QMainWindow
-from PySide6 import QtWidgets
+from PySide6 import QtWidgets, QtCore
 import time
 
 from authorization import Ui_Authorization
@@ -17,6 +17,7 @@ from change_password import Ui_ChangePassword
 from profile import Ui_Profile
 from speed_test import Ui_SpeedTest
 from main_window_admin import Ui_MainWindowAdmin
+from statistics_users import Ui_StatisticsUsers
 
 from functions import check_valid_input_registration, check_valid_password, check_login_password, output_ID, dataUser, \
     recoverPassword1, recoverPassword2, output_test, output_speed_test, add_statistic_test, \
@@ -574,7 +575,7 @@ class Window_Profile(QMainWindow):
         self.ui.ResultsSpeedTest.setTextInteractionFlags(Qt.TextInteractionFlag(False))
 
         self.ui.NameSurnameUser.setText(
-            f"{self.data_User.get('Name')}\n{self.data_User.get('Surname')}\n{self.data_User.get('Surname2')}")
+            f"{self.data_User.get('Surname')}\n{self.data_User.get('Name')}\n{self.data_User.get('Surname2')}")
         self.ui.ResultsTest.setText(
             f"Результаты теста:\n{self.statistic_user[1]} из {get_number_of_questions(output_test())} правильных\nответов")
         self.ui.ResultsSpeedTest.setText(
@@ -821,7 +822,7 @@ class Window_MainWindowAdmin(QMainWindow):
         self.ui.ButtonBack.clicked.connect(self.pressed_button_back)
 
     def pressed_button_statistics_users(self):
-        return 1
+        self.setCentralWidget(Window_StatisticsUsers(self.centralWidget(), self.data_User))
 
     def pressed_button_back(self):
         self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))
@@ -837,3 +838,33 @@ class Window_MainWindowAdmin(QMainWindow):
 
     def pressed_button_profile(self):
         self.setCentralWidget(Window_Profile(self.centralWidget(), self.data_User))
+
+
+class Window_StatisticsUsers(QMainWindow):
+    def __init__(self, parent, data_User: dict):
+        super(Window_StatisticsUsers, self).__init__(parent)
+        self.ui = Ui_StatisticsUsers()
+        self.ui.setupUi(self)
+        self.data_User = data_User
+
+        self.ui.tableWidget.horizontalHeader().setStyleSheet(
+            "QHeaderView::section { background-color: rgba(0, 0, 0, 10) }")
+        self.ui.tableWidget.setColumnWidth(0, 100)
+        self.ui.tableWidget.setColumnWidth(1, 150)
+        self.ui.tableWidget.setColumnWidth(2, 240)
+        self.ui.tableWidget.setColumnWidth(3, 200)
+        self.ui.tableWidget.setColumnWidth(4, 125)
+        self.ui.tableWidget.setColumnWidth(5, 250)
+        self.ui.tableWidget.setColumnWidth(6, 165)
+        self.ui.tableWidget.verticalHeader().setDefaultSectionSize(80)
+
+        self.data_statistics_users = get_data_statistics_users()
+
+        for i in range(len(self.data_statistics_users)):
+            self.ui.tableWidget.setItem(i, 0, self.data_statistics_users[i]['Number'])
+            self.ui.tableWidget.setItem(i, 1, self.data_statistics_users[i]['Surname'])
+            self.ui.tableWidget.setItem(i, 2, self.data_statistics_users[i]['Name'])
+            self.ui.tableWidget.setItem(i, 3, self.data_statistics_users[i]['Surname2'])
+            self.ui.tableWidget.setItem(i, 4, self.data_statistics_users[i]['Test'])
+            self.ui.tableWidget.setItem(i, 5, self.data_statistics_users[i]['SpeedTest'])
+            self.ui.tableWidget.setItem(i, 6, self.data_statistics_users[i]['Time'])
