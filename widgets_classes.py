@@ -22,7 +22,7 @@ from statistics_users import Ui_StatisticsUsers
 from functions import check_valid_input_registration, check_valid_password, check_login_password, output_ID, dataUser, \
     recoverPassword1, recoverPassword2, output_test, output_speed_test, add_statistic_test, \
     output_user_statistic, shuffle_answers, get_number_of_questions, update_statistic_test, \
-    update_statistic_speed_test, output_theory
+    update_statistic_speed_test, output_theory, get_data_statistics_users
 
 StyleSheetForButtonAvailable = u"QPushButton{color: rgba(255, 255, 255, 255); border: 3px solid rgb(255, 255, 255);" \
                                "border-radius: 7px; font: 26pt \"Ambient(RUS BY LYAJKA)\"; background-color: rgba(0, 0, 0, 100); width: 50px;}" \
@@ -868,3 +868,16 @@ class Window_StatisticsUsers(QMainWindow):
             self.ui.tableWidget.setItem(i, 4, self.data_statistics_users[i]['Test'])
             self.ui.tableWidget.setItem(i, 5, self.data_statistics_users[i]['SpeedTest'])
             self.ui.tableWidget.setItem(i, 6, self.data_statistics_users[i]['Time'])
+
+        """
+        Может быть это пофиксит возникшие проблемы. Надо потестить.
+
+        for i in range(len(self.data_statistics_users)):
+            self.ui.tableWidget.setItem(i, 0, QTableWidgetItem(str(self.data_statistics_users[i]['Number'])))
+            self.ui.tableWidget.setItem(i, 1, QTableWidgetItem(self.data_statistics_users[i]['Surname']))
+            self.ui.tableWidget.setItem(i, 2, QTableWidgetItem(self.data_statistics_users[i]['Name']))
+            self.ui.tableWidget.setItem(i, 3, QTableWidgetItem(self.data_statistics_users[i]['Surname2']))
+            self.ui.tableWidget.setItem(i, 4, QTableWidgetItem(str(self.data_statistics_users[i]['Test'])))
+            self.ui.tableWidget.setItem(i, 5, QTableWidgetItem(str(self.data_statistics_users[i]['SpeedTest'])))
+            self.ui.tableWidget.setItem(i, 6, QTableWidgetItem(str(self.data_statistics_users[i]['Time'])))
+        """

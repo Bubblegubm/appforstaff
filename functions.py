@@ -142,3 +142,7 @@ def get_number_of_questions(array):
 
 def output_theory():
     return conn.output_theory_query()
+
+def get_data_statistics_users():
+    return conn.data_statistics_users()
+

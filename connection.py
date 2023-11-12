@@ -199,3 +199,20 @@ class Data:
             return True
         else:
             return False
+
+    def data_statistics_users(self):
+        query = QtSql.QSqlQuery()
+        query.exec("SELECT * FROM statistics JOIN users ON statistics.User_ID = users.ID")
+        users_data = []
+        while query.next():
+            user_data = {
+                "Number": query.value(0),
+                "Name": query.value(1),
+                "Surname": query.value(2),
+                "Surname2": query.value(3),
+                "Test": query.value(4),
+                "SpeedTest": query.value(5),
+                "Time": query.value(6)
+            }
+            users_data.append(user_data)
+        return users_data
