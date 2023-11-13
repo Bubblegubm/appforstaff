@@ -202,7 +202,9 @@ class Data:
 
     def data_statistics_users(self):
         query = QtSql.QSqlQuery()
-        query.exec("SELECT * FROM statistics JOIN users ON statistics.User_ID = users.ID")
+        query.exec("SELECT statistics.ID, users.Name, users.Surname, users.Surname2, "
+                   "statistics.Score_test, statistics.Score_speed_test, statistics.Time "
+                   "FROM statistics JOIN users ON statistics.User_ID = users.ID")
         users_data = []
         while query.next():
             user_data = {
