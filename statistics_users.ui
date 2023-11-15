@@ -22,7 +22,7 @@
             </string>
         </property>
         <widget class="QWidget" name="centralwidget">
-            <widget class="QPushButton" name="ButtonProfile">
+            <widget class="QPushButton" name="ButtonBack">
                 <property name="enabled">
                     <bool>true</bool>
                 </property>

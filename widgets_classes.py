@@ -3,7 +3,7 @@ import functools
 import PySide6
 from PySide6.QtCore import Qt, QTimer, QSize
 from PySide6.QtGui import Qt, QFontDatabase, QStandardItemModel
-from PySide6.QtWidgets import QApplication, QMainWindow, QHeaderView
+from PySide6.QtWidgets import QApplication, QMainWindow, QHeaderView, QAbstractItemView
 from PySide6 import QtWidgets, QtCore
 import time
 
@@ -201,7 +201,7 @@ class Window_MainWindow(QMainWindow):
         self.ui.ButtonTest.clicked.connect(self.pressed_button_test)
         self.ui.ButtonSpeedTest.clicked.connect(self.pressed_button_speed_test)
         self.ui.ButtonProfile.clicked.connect(self.pressed_button_profile)
-        self.ui.ButtonAdminFunctions.clicked.connect(self.pressed_button_admin_functions)
+        self.ui.ButtonStatisticsUsers.clicked.connect(self.pressed_button_statistics_users)
         self.ui.ButtonCancel.clicked.connect(self.pressed_button_cancel)
         self.ui.ButtonBegin.clicked.connect(self.pressed_button_begin)
 
@@ -223,9 +223,9 @@ class Window_MainWindow(QMainWindow):
         if not (self.countAcceptTest or self.countAcceptSpeedTest):
             self.setCentralWidget(Window_Profile(self.centralWidget(), self.data_User))
 
-    def pressed_button_admin_functions(self):
+    def pressed_button_statistics_users(self):
         if not (self.countAcceptTest or self.countAcceptSpeedTest):
-            self.setCentralWidget(Window_MainWindowAdmin(self.centralWidget(), self.data_User))
+            self.setCentralWidget(Window_StatisticsUsers(self.centralWidget(), self.data_User))
 
     def pressed_button_cancel(self):
         self.countAcceptTest = False
@@ -240,14 +240,14 @@ class Window_MainWindow(QMainWindow):
 
     def design_window(self):
         if self.data_User['Role'] != 1:
-            self.ui.ButtonAdminFunctions.setVisible(False)
+            self.ui.ButtonStatisticsUsers.setVisible(False)
 
         if self.countAcceptTest:
             self.ui.ButtonTheory.setVisible(False)
             self.ui.ButtonTest.setVisible(False)
             self.ui.ButtonSpeedTest.setVisible(False)
             self.ui.ButtonProfile.setStyleSheet(StyleSheetForButtonUnavailable)
-            self.ui.ButtonAdminFunctions.setStyleSheet(StyleSheetForButtonUnavailable)
+            self.ui.ButtonStatisticsUsers.setStyleSheet(StyleSheetForButtonUnavailable)
 
             self.ui.AcceptTest.setText("Вы готовы приступить\nк тесту?\nВыйти из него будет нельзя!")
 
@@ -260,7 +260,7 @@ class Window_MainWindow(QMainWindow):
             self.ui.ButtonTest.setVisible(False)
             self.ui.ButtonSpeedTest.setVisible(False)
             self.ui.ButtonProfile.setStyleSheet(StyleSheetForButtonUnavailable)
-            self.ui.ButtonAdminFunctions.setStyleSheet(StyleSheetForButtonUnavailable)
+            self.ui.ButtonStatisticsUsers.setStyleSheet(StyleSheetForButtonUnavailable)
 
             self.ui.AcceptTest.setText("Вы готовы приступить\nк скоростному тесту?\nВыйти из него будет нельзя!")
 
@@ -273,7 +273,7 @@ class Window_MainWindow(QMainWindow):
             self.ui.ButtonTest.setVisible(True)
             self.ui.ButtonSpeedTest.setVisible(True)
             self.ui.ButtonProfile.setStyleSheet(StyleSheetForButtonAvailable)
-            self.ui.ButtonAdminFunctions.setStyleSheet(StyleSheetForButtonAvailable)
+            self.ui.ButtonStatisticsUsers.setStyleSheet(StyleSheetForButtonAvailable)
 
             self.ui.AcceptTest.setVisible(False)
             self.ui.ButtonCancel.setVisible(False)
@@ -848,6 +848,8 @@ class Window_StatisticsUsers(QMainWindow):
         self.ui.setupUi(self)
         self.data_User = data_User
 
+        self.ui.ButtonBack.clicked.connect(self.pressed_button_back)
+
         """self.ui.tableWidget.setColumnWidth(0, 100)
         self.ui.tableWidget.setColumnWidth(1, 150)
         self.ui.tableWidget.setColumnWidth(2, 240)
@@ -890,6 +892,9 @@ class Window_StatisticsUsers(QMainWindow):
             self.ui.tableWidget.horizontalHeader().resizeSection(4, 250)
             self.ui.tableWidget.horizontalHeader().resizeSection(5, 175)
 
+        self.ui.tableWidget.setEditTriggers(QAbstractItemView.EditTrigger(False))
+        self.ui.tableWidget.setSelectionMode(QAbstractItemView.SelectionMode(False))
+
         """
         for i in range(len(self.data_statistics_users)):
             self.ui.tableWidget.setItem(i, 0,
@@ -904,3 +909,6 @@ class Window_StatisticsUsers(QMainWindow):
                                         PySide6.QtWidgets.QTableWidgetItem(self.data_statistics_users[i]['SpeedTest']))
             self.ui.tableWidget.setItem(i, 6, PySide6.QtWidgets.QTableWidgetItem(self.data_statistics_users[i]['Time']))
         """
+
+    def pressed_button_back(self):
+        self.setCentralWidget(Window_MainWindow(self.centralWidget(), self.data_User))

@@ -44,7 +44,6 @@
                     <font>
                         <family>Ambient(RUS BY LYAJKA)</family>
                         <pointsize>26</pointsize>
-                        <weight>50</weight>
                         <italic>false</italic>
                         <bold>false</bold>
                     </font>
@@ -94,7 +93,6 @@
                     <font>
                         <family>Ambient(RUS BY LYAJKA)</family>
                         <pointsize>26</pointsize>
-                        <weight>50</weight>
                         <italic>false</italic>
                         <bold>false</bold>
                     </font>
@@ -144,7 +142,6 @@
                     <font>
                         <family>Ambient(RUS BY LYAJKA)</family>
                         <pointsize>26</pointsize>
-                        <weight>50</weight>
                         <italic>false</italic>
                         <bold>false</bold>
                     </font>
@@ -194,7 +191,6 @@
                     <font>
                         <family>Ambient(RUS BY LYAJKA)</family>
                         <pointsize>26</pointsize>
-                        <weight>50</weight>
                         <italic>false</italic>
                         <bold>false</bold>
                     </font>
@@ -244,7 +240,6 @@
                     <font>
                         <family>Ambient(RUS BY LYAJKA)</family>
                         <pointsize>26</pointsize>
-                        <weight>50</weight>
                         <italic>false</italic>
                         <bold>false</bold>
                     </font>
@@ -294,7 +289,6 @@
                     <font>
                         <family>Ambient(RUS BY LYAJKA)</family>
                         <pointsize>26</pointsize>
-                        <weight>50</weight>
                         <italic>false</italic>
                         <bold>false</bold>
                     </font>
@@ -347,16 +341,16 @@
                     <set>Qt::AlignCenter</set>
                 </property>
             </widget>
-            <widget class="QPushButton" name="ButtonAdminFunctions">
+            <widget class="QPushButton" name="ButtonStatisticsUsers">
                 <property name="enabled">
                     <bool>true</bool>
                 </property>
                 <property name="geometry">
                     <rect>
                         <x>20</x>
-                        <y>560</y>
-                        <width>300</width>
-                        <height>140</height>
+                        <y>600</y>
+                        <width>260</width>
+                        <height>100</height>
                     </rect>
                 </property>
                 <property name="maximumSize">
@@ -369,7 +363,6 @@
                     <font>
                         <family>Ambient(RUS BY LYAJKA)</family>
                         <pointsize>26</pointsize>
-                        <weight>50</weight>
                         <italic>false</italic>
                         <bold>false</bold>
                     </font>
@@ -394,8 +387,8 @@
                     </string>
                 </property>
                 <property name="text">
-                    <string>Функции
-                        администратора
+                    <string>Статистика
+                        пользователей
                     </string>
                 </property>
             </widget>
