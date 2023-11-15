@@ -3,7 +3,7 @@ import functools
 import PySide6
 from PySide6.QtCore import Qt, QTimer, QSize
 from PySide6.QtGui import Qt, QFontDatabase, QStandardItemModel
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication, QMainWindow, QHeaderView
 from PySide6 import QtWidgets, QtCore
 import time
 
@@ -877,22 +877,9 @@ class Window_StatisticsUsers(QMainWindow):
             index = self.model.index(i, 5)
             self.model.setData(index, self.data_statistics_users[i]['Time'])
 
+        self.header_labels = ["Фамилия", "Имя", "Отчество", "Тест", "Скоростной тест", "Время"]
+        self.model.setHorizontalHeaderLabels(self.header_labels)
         self.ui.tableWidget.setModel(self.model)
-
-        self.model2 = QStandardItemModel(1, 6)
-        index = self.model2.index(0, 0)
-        self.model2.setData(index, "Фамилия")
-        index = self.model2.index(0, 1)
-        self.model2.setData(index, "Имя")
-        index = self.model2.index(0, 2)
-        self.model2.setData(index, "Отчество")
-        index = self.model2.index(0, 3)
-        self.model2.setData(index, "Тест")
-        index = self.model2.index(0, 4)
-        self.model2.setData(index, "Скоростной тест")
-        index = self.model2.index(0, 5)
-        self.model2.setData(index, "Время")
-        self.ui.tableWidget.horizontalHeader().setModel(self.model2)
 
         for i in range(len(self.data_statistics_users)):
             self.ui.tableWidget.verticalHeader().resizeSection(i, 50)
