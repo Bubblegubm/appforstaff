@@ -2,7 +2,6 @@ from PySide6 import QtWidgets, QtSql
 from cryptography.fernet import Fernet
 
 
-
 class Data:
     def __init__(self):
         super(Data, self).__init__()
@@ -202,19 +201,18 @@ class Data:
 
     def data_statistics_users(self):
         query = QtSql.QSqlQuery()
-        query.exec("SELECT statistics.ID, users.Name, users.Surname, users.Surname2, "
+        query.exec("SELECT users.Name, users.Surname, users.Surname2, "
                    "statistics.Score_test, statistics.Score_speed_test, statistics.Time "
                    "FROM statistics JOIN users ON statistics.User_ID = users.ID")
         users_data = []
         while query.next():
             user_data = {
-                "Number": query.value(0),
-                "Name": query.value(1),
-                "Surname": query.value(2),
-                "Surname2": query.value(3),
-                "Test": query.value(4),
-                "SpeedTest": query.value(5),
-                "Time": query.value(6)
+                "Name": str(query.value(0)),
+                "Surname": str(query.value(1)),
+                "Surname2": str(query.value(2)),
+                "Test": str(query.value(3)),
+                "SpeedTest": str(query.value(4)),
+                "Time": str(query.value(5))
             }
             users_data.append(user_data)
         return users_data

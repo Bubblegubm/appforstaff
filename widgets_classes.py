@@ -1,7 +1,8 @@
 import functools
 
+import PySide6
 from PySide6.QtCore import Qt, QTimer, QSize
-from PySide6.QtGui import Qt, QFontDatabase
+from PySide6.QtGui import Qt, QFontDatabase, QStandardItemModel
 from PySide6.QtWidgets import QApplication, QMainWindow
 from PySide6 import QtWidgets, QtCore
 import time
@@ -847,37 +848,72 @@ class Window_StatisticsUsers(QMainWindow):
         self.ui.setupUi(self)
         self.data_User = data_User
 
-        self.ui.tableWidget.horizontalHeader().setStyleSheet(
-            "QHeaderView::section { background-color: rgba(0, 0, 0, 10) }")
-        self.ui.tableWidget.setColumnWidth(0, 100)
+        """self.ui.tableWidget.setColumnWidth(0, 100)
         self.ui.tableWidget.setColumnWidth(1, 150)
         self.ui.tableWidget.setColumnWidth(2, 240)
         self.ui.tableWidget.setColumnWidth(3, 200)
         self.ui.tableWidget.setColumnWidth(4, 125)
         self.ui.tableWidget.setColumnWidth(5, 250)
         self.ui.tableWidget.setColumnWidth(6, 165)
-        self.ui.tableWidget.verticalHeader().setDefaultSectionSize(80)
-
+"""
         self.data_statistics_users = get_data_statistics_users()
 
+        print(self.data_statistics_users)
+        print(len(self.data_statistics_users))
+
+        self.model = QStandardItemModel(len(self.data_statistics_users), 6)
+
         for i in range(len(self.data_statistics_users)):
-            self.ui.tableWidget.setItem(i, 0, self.data_statistics_users[i]['Number'])
-            self.ui.tableWidget.setItem(i, 1, self.data_statistics_users[i]['Surname'])
-            self.ui.tableWidget.setItem(i, 2, self.data_statistics_users[i]['Name'])
-            self.ui.tableWidget.setItem(i, 3, self.data_statistics_users[i]['Surname2'])
-            self.ui.tableWidget.setItem(i, 4, self.data_statistics_users[i]['Test'])
-            self.ui.tableWidget.setItem(i, 5, self.data_statistics_users[i]['SpeedTest'])
-            self.ui.tableWidget.setItem(i, 6, self.data_statistics_users[i]['Time'])
+            index = self.model.index(i, 0)
+            self.model.setData(index, self.data_statistics_users[i]['Surname'])
+            index = self.model.index(i, 1)
+            self.model.setData(index, self.data_statistics_users[i]['Name'])
+            index = self.model.index(i, 2)
+            self.model.setData(index, self.data_statistics_users[i]['Surname2'])
+            index = self.model.index(i, 3)
+            self.model.setData(index, self.data_statistics_users[i]['Test'])
+            index = self.model.index(i, 4)
+            self.model.setData(index, self.data_statistics_users[i]['SpeedTest'])
+            index = self.model.index(i, 5)
+            self.model.setData(index, self.data_statistics_users[i]['Time'])
+
+        self.ui.tableWidget.setModel(self.model)
+
+        self.model2 = QStandardItemModel(1, 6)
+        index = self.model2.index(0, 0)
+        self.model2.setData(index, "Фамилия")
+        index = self.model2.index(0, 1)
+        self.model2.setData(index, "Имя")
+        index = self.model2.index(0, 2)
+        self.model2.setData(index, "Отчество")
+        index = self.model2.index(0, 3)
+        self.model2.setData(index, "Тест")
+        index = self.model2.index(0, 4)
+        self.model2.setData(index, "Скоростной тест")
+        index = self.model2.index(0, 5)
+        self.model2.setData(index, "Время")
+        self.ui.tableWidget.horizontalHeader().setModel(self.model2)
+
+        for i in range(len(self.data_statistics_users)):
+            self.ui.tableWidget.verticalHeader().resizeSection(i, 50)
+            self.ui.tableWidget.horizontalHeader().resizeSection(0, 150)
+            self.ui.tableWidget.horizontalHeader().resizeSection(1, 258)
+            self.ui.tableWidget.horizontalHeader().resizeSection(2, 220)
+            self.ui.tableWidget.horizontalHeader().resizeSection(3, 125)
+            self.ui.tableWidget.horizontalHeader().resizeSection(4, 250)
+            self.ui.tableWidget.horizontalHeader().resizeSection(5, 175)
 
         """
-        Может быть это пофиксит возникшие проблемы. Надо потестить.
-
         for i in range(len(self.data_statistics_users)):
-            self.ui.tableWidget.setItem(i, 0, QTableWidgetItem(str(self.data_statistics_users[i]['Number'])))
-            self.ui.tableWidget.setItem(i, 1, QTableWidgetItem(self.data_statistics_users[i]['Surname']))
-            self.ui.tableWidget.setItem(i, 2, QTableWidgetItem(self.data_statistics_users[i]['Name']))
-            self.ui.tableWidget.setItem(i, 3, QTableWidgetItem(self.data_statistics_users[i]['Surname2']))
-            self.ui.tableWidget.setItem(i, 4, QTableWidgetItem(str(self.data_statistics_users[i]['Test'])))
-            self.ui.tableWidget.setItem(i, 5, QTableWidgetItem(str(self.data_statistics_users[i]['SpeedTest'])))
-            self.ui.tableWidget.setItem(i, 6, QTableWidgetItem(str(self.data_statistics_users[i]['Time'])))
+            self.ui.tableWidget.setItem(i, 0,
+                                        PySide6.QtWidgets.QTableWidgetItem(self.data_statistics_users[i]['Number']))
+            self.ui.tableWidget.setItem(i, 1,
+                                        PySide6.QtWidgets.QTableWidgetItem(self.data_statistics_users[i]['Surname']))
+            self.ui.tableWidget.setItem(i, 2, PySide6.QtWidgets.QTableWidgetItem(self.data_statistics_users[i]['Name']))
+            self.ui.tableWidget.setItem(i, 3,
+                                        PySide6.QtWidgets.QTableWidgetItem(self.data_statistics_users[i]['Surname2']))
+            self.ui.tableWidget.setItem(i, 4, PySide6.QtWidgets.QTableWidgetItem(self.data_statistics_users[i]['Test']))
+            self.ui.tableWidget.setItem(i, 5,
+                                        PySide6.QtWidgets.QTableWidgetItem(self.data_statistics_users[i]['SpeedTest']))
+            self.ui.tableWidget.setItem(i, 6, PySide6.QtWidgets.QTableWidgetItem(self.data_statistics_users[i]['Time']))
         """

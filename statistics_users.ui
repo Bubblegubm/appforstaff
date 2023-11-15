@@ -71,10 +71,7 @@
                     <string>Назад</string>
                 </property>
             </widget>
-            <widget class="QTableWidget" name="tableWidget">
-                <property name="enabled">
-                    <bool>false</bool>
-                </property>
+            <widget class="QTableView" name="tableWidget">
                 <property name="geometry">
                     <rect>
                         <x>20</x>
@@ -83,74 +80,35 @@
                         <height>580</height>
                     </rect>
                 </property>
-                <property name="font">
-                    <font>
-                        <family>Ambient(RUS BY LYAJKA)</family>
-                        <pointsize>26</pointsize>
-                        <italic>false</italic>
-                        <bold>false</bold>
-                        <kerning>true</kerning>
-                    </font>
-                </property>
                 <property name="focusPolicy">
-                    <enum>Qt::StrongFocus</enum>
+                    <enum>Qt::WheelFocus</enum>
                 </property>
                 <property name="styleSheet">
-                    <string notr="true">color: rgba(255, 255, 255, 255);
+                    <string notr="true">QTableView{
+                        color: white;
                         border: 3px solid rgb(255, 255, 255);
+                        background-color: rgba(255, 255, 255, 50);
                         font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        }
+                        QHeaderView::section{
+                        color: white;
                         background-color: rgba(0, 0, 0, 100);
-                        alternate-background-color: rgb(170, 170, 127);
-                        header-color: rgba(0, 0, 0, 100);
-                        gridline-color: rgb(255, 255, 255);
-
-                        QTableWidget::horizontalHeader{
-                        color: rgba(255, 255, 255, 255);
+                        alternate-background-color: rgba(0, 0, 0, 0);
                         border: 3px solid rgb(255, 255, 255);
+                        height: 50px;
+                        width: 50 px;
                         font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        }
+                        QTableWidget::item{
                         background-color: rgba(0, 0, 0, 100);
-                        alternate-background-color: rgb(170, 170, 127);
+                        border: border: 3px solid rgb(255, 255, 255);
+                        font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
                         }
                     </string>
                 </property>
-                <property name="textElideMode">
-                    <enum>Qt::ElideRight</enum>
-                </property>
-                <column>
-                    <property name="text">
-                        <string>Номер</string>
-                    </property>
-                </column>
-                <column>
-                    <property name="text">
-                        <string>Фамилия</string>
-                    </property>
-                </column>
-                <column>
-                    <property name="text">
-                        <string>Имя</string>
-                    </property>
-                </column>
-                <column>
-                    <property name="text">
-                        <string>Отчество</string>
-                    </property>
-                </column>
-                <column>
-                    <property name="text">
-                        <string>Тест</string>
-                    </property>
-                </column>
-                <column>
-                    <property name="text">
-                        <string>Скоростной тест</string>
-                    </property>
-                </column>
-                <column>
-                    <property name="text">
-                        <string>Время</string>
-                    </property>
-                </column>
+                <attribute name="horizontalHeaderCascadingSectionResizes">
+                    <bool>false</bool>
+                </attribute>
             </widget>
         </widget>
     </widget>
