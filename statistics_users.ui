@@ -89,6 +89,7 @@
                         border: 3px solid rgb(255, 255, 255);
                         background-color: rgba(255, 255, 255, 50);
                         font: 26pt &quot;Ambient(RUS BY LYAJKA)&quot;;
+                        gridline-color: rgb(255, 255, 255);
                         }
                         QHeaderView::section{
                         color: white;

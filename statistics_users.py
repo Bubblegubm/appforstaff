@@ -68,6 +68,7 @@ class Ui_StatisticsUsers(object):
                                        "                        border: 3px solid rgb(255, 255, 255);\n"
                                        "                        background-color: rgba(255, 255, 255, 50);\n"
                                        "                        font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
+                                       "						gridline-color: rgb(255, 255, 255);\n"
                                        "                        }\n"
                                        "                        QHeaderView::section{\n"
                                        "                        color: white;\n"
@@ -81,8 +82,8 @@ class Ui_StatisticsUsers(object):
                                        "                        QTableWidget::item{\n"
                                        "                        background-color: rgba(0, 0, 0, 100);\n"
                                        "                        border: border: 3px solid rgb(255, 255, 255);\n"
-                                       "                        font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
-                                       ""
+                                       "                    "
+                                       "    font: 26pt \"Ambient(RUS BY LYAJKA)\";\n"
                                        "                        }\n"
                                        "                    ")
         self.tableWidget.horizontalHeader().setCascadingSectionResizes(False)
