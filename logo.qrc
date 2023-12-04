@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="logo">
+        <file>images/without back 478x528.png</file>
+    </qresource>
+</RCC>
