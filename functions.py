@@ -32,13 +32,8 @@ def check_valid_login(login):
 
 
 def check_valid_password(password):
-    if len(password) < 6:
-        return False
-    if not any(char.isdigit() for char in password):
-        return False
-    if not any(char.islower() for char in password):
-        return False
-    return True
+    pattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}$'
+    return bool(re.match(pattern, password))
 
 
 def check_secret_word(secret_word):

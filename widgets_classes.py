@@ -58,7 +58,6 @@ class Window(QMainWindow):
                           'SecretWord': "",
                           'Role': ""}
         # self.dataUser = {"ID": 0, "Name": "", "Surname": "", "Surname2": "", "Login": "", "Password": "", "SecretWord": "", "Role": ""}
-        QFontDatabase.addApplicationFont("Fonts\\ljk_Ambient-Medium.ttf")
         self.setCentralWidget(Window_Authorization(self.data_User, self.centralWidget()))
 
 

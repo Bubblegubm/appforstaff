@@ -1,3 +1,5 @@
+import sys
+import os
 from PySide6 import QtWidgets, QtSql
 from cryptography.fernet import Fernet
 
@@ -8,10 +10,21 @@ class Data:
         self.create_connection()
 
     def create_connection(self):
-        db = QtSql.QSqlDatabase.addDatabase('QSQLITE')
-        db.setDatabaseName('app_db.db')
+        try:
+            base_path = sys._MEIPASS
+        except AttributeError:
+            base_path = os.path.abspath(".")
 
-        if not db.open():
+        db_path = os.path.join(base_path, 'app_db.db')
+
+        # Попробуйте закрыть существующее соединение перед созданием нового
+        QtSql.QSqlDatabase.removeDatabase('qt_sql_default_connection')
+
+        # Создаем атрибут self.db для хранения объекта QSqlDatabase
+        self.db = QtSql.QSqlDatabase.addDatabase('QSQLITE', 'qt_sql_default_connection')  # Указываем имя соединения
+        self.db.setDatabaseName(db_path)
+
+        if not self.db.open():
             QtWidgets.QMessageBox.critical(None, "Cannot open database",
                                            "Click Cancel to exit.", QtWidgets.QMessageBox.Cancel)
             return False
@@ -43,7 +56,8 @@ class Data:
             for query_value in query_values:
                 query.addBindValue(query_value)
 
-        query.exec()
+        # Вызывать метод exec() автоматически фиксирует изменения в базе данных
+        query.exec_()
         return query
 
     def add_new_user_query(self, name, surname, surname2, login, password, secret_word, role):
@@ -216,3 +230,15 @@ class Data:
             }
             users_data.append(user_data)
         return users_data
+
+    def commit_and_close(self):
+        try:
+            self.db.commit()
+            self.db.close()
+            print("Database saved and connection closed")
+        except Exception as e:
+            print(f"Error committing data to the database: {e}")
+
+    def save_data_to_database(self):
+        self.commit_and_close()
+        print("Database saved and connection closed")
