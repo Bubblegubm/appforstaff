@@ -1,8 +1,9 @@
+# connection.py
 import sys
 import os
 from PySide6 import QtWidgets, QtSql
 from cryptography.fernet import Fernet
-
+import autofill
 
 class Data:
     def __init__(self):
@@ -10,41 +11,52 @@ class Data:
         self.create_connection()
 
     def create_connection(self):
-        try:
-            base_path = sys._MEIPASS
-        except AttributeError:
-            base_path = os.path.abspath(".")
+        app_data_dir = os.path.join(os.path.expanduser("~"), "ServeSmart")
+        db_path = os.path.join(app_data_dir, 'app_db.db')
 
-        db_path = os.path.join(base_path, 'app_db.db')
+        if not os.path.exists(db_path):
+            if not os.path.isdir(app_data_dir):
+                os.makedirs(app_data_dir)
 
-        # Попробуйте закрыть существующее соединение перед созданием нового
-        QtSql.QSqlDatabase.removeDatabase('qt_sql_default_connection')
+            self.db = QtSql.QSqlDatabase.addDatabase('QSQLITE', 'qt_sql_default_connection')  # Указываем имя соединения
+            self.db.setDatabaseName(db_path)
+            print(f"Database path: {db_path}")
 
-        # Создаем атрибут self.db для хранения объекта QSqlDatabase
-        self.db = QtSql.QSqlDatabase.addDatabase('QSQLITE', 'qt_sql_default_connection')  # Указываем имя соединения
-        self.db.setDatabaseName(db_path)
+            if not self.db.open():
+                QtWidgets.QMessageBox.critical(None, "Cannot open database",
+                                               "Click Cancel to exit.", QtWidgets.QMessageBox.Cancel)
+                return False
 
-        if not self.db.open():
-            QtWidgets.QMessageBox.critical(None, "Cannot open database",
-                                           "Click Cancel to exit.", QtWidgets.QMessageBox.Cancel)
-            return False
+            query = QtSql.QSqlQuery()
+            query.exec("CREATE TABLE IF NOT EXISTS users (ID integer primary key AUTOINCREMENT, Name VARCHAR(20), "
+                       "Surname VARCHAR(30), Surname2 VARCHAR(30), Login VARCHAR(30), Password VARCHAR(1000),"
+                       " Secret_word VARCHAR(30), Role BOOLEAN, Crypt_key VARCHAR(1000))")
 
-        query = QtSql.QSqlQuery()
-        query.exec("CREATE TABLE IF NOT EXISTS users (ID integer primary key AUTOINCREMENT, Name VARCHAR(20), "
-                   "Surname VARCHAR(30), Surname2 VARCHAR(30), Login VARCHAR(30), Password VARCHAR(1000),"
-                   " Secret_word VARCHAR(30), Role BOOLEAN, Crypt_key VARCHAR(1000))")
+            query.exec("CREATE TABLE IF NOT EXISTS statistics (ID integer primary key AUTOINCREMENT, "
+                       "Time INTEGER, Score_test INTEGER, Score_speed_test INTEGER, User_ID INTEGER)")
 
-        query.exec("CREATE TABLE IF NOT EXISTS statistics (ID integer primary key AUTOINCREMENT, "
-                   "Time INTEGER, Score_test INTEGER, Score_speed_test INTEGER, User_ID INTEGER)")
+            query.exec("CREATE TABLE IF NOT EXISTS theory (ID integer primary key AUTOINCREMENT, Question VARCHAR(200),"
+                       "Answer VARCHAR(1000))")
 
-        query.exec("CREATE TABLE IF NOT EXISTS theory (ID integer primary key AUTOINCREMENT, Question VARCHAR(200),"
-                   "Answer VARCHAR(1000))")
+            query.exec("CREATE TABLE IF NOT EXISTS test (ID integer primary key AUTOINCREMENT, Question VARCHAR(200),"
+                       "True_answer VARCHAR(1000), False_answer VARCHAR(1000), Second_false_answer VARCHAR(1000))")
 
-        query.exec("CREATE TABLE IF NOT EXISTS test (ID integer primary key AUTOINCREMENT, Question VARCHAR(200),"
-                   "True_answer VARCHAR(1000), False_answer VARCHAR(1000), Second_false_answer VARCHAR(1000))")
+            query.exec(
+                "CREATE TABLE IF NOT EXISTS speed_test (ID integer primary key AUTOINCREMENT, Question VARCHAR(200),"
+                "True_answer VARCHAR(1000), False_answer VARCHAR(1000), Second_false_answer VARCHAR(1000))")
 
-        query.exec("CREATE TABLE IF NOT EXISTS speed_test (ID integer primary key AUTOINCREMENT, Question VARCHAR(200),"
-                   "True_answer VARCHAR(1000), False_answer VARCHAR(1000), Second_false_answer VARCHAR(1000))")
+            autofill.fill_database(self)
+            print(f"База данных создана и заполнена")
+
+        else:
+            self.db = QtSql.QSqlDatabase.addDatabase('QSQLITE', 'qt_sql_default_connection')  # Указываем имя соединения
+            self.db.setDatabaseName(db_path)
+            print(f"Database path: {db_path}")
+
+            if not self.db.open():
+                QtWidgets.QMessageBox.critical(None, "Cannot open database",
+                                               "Click Cancel to exit.", QtWidgets.QMessageBox.Cancel)
+                return False
 
         return True
 
